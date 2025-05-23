@@ -1,0 +1,196 @@
+{
+  "main": {
+    "id": "8a49a6efbb7c3354",
+    "type": "split",
+    "children": [
+      {
+        "id": "77d0688bb5afccb5",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6fe13d4674c18625",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "2d027d074c8b2786",
+    "type": "split",
+    "children": [
+      {
+        "id": "e3edde667f392769",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0eae2e2847eb3eab",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "04296614260cb0fb",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "902a270c0c944909",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 469.5,
+    "collapsed": true
+  },
+  "right": {
+    "id": "65c15737aa1b58ac",
+    "type": "split",
+    "children": [
+      {
+        "id": "5ce0862260c0f504",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7b85068205c9e144",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "HorizonFrame/Vault/000_Progress_Log.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for 000_Progress_Log"
+            }
+          },
+          {
+            "id": "7c95e0c1bf1af431",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "HorizonFrame/Vault/000_Progress_Log.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from 000_Progress_Log"
+            }
+          },
+          {
+            "id": "43679824b92749a1",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "ad82de1bd6118cab",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "HorizonFrame/Vault/000_Progress_Log.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of 000_Progress_Log"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "6fe13d4674c18625",
+  "lastOpenFiles": [
+    "Horizon-Frame/Horizon-Frame.xcodeproj/project.pbxproj",
+    "Horizon-Frame/Horizon-Frame.xcodeproj/project.xcworkspace/xcuserdata/colesegura.xcuserdatad/UserInterfaceState.xcuserstate",
+    "Horizon-Frame/Horizon-Frame.xcodeproj/project.xcworkspace/xcuserdata/colesegura.xcuserdatad",
+    "Horizon-Frame/Horizon-Frame.xcodeproj/project.xcworkspace/xcuserdata",
+    "Horizon-Frame/Horizon-Frame.xcodeproj/project.xcworkspace/contents.xcworkspacedata",
+    "Horizon-Frame/Horizon-Frame.xcodeproj/project.xcworkspace",
+    "Horizon-Frame/Horizon-Frame.xcodeproj",
+    "Horizon-Frame",
+    "Horizon-Frame/Docs/DevLog.md",
+    "HorizonFrame_Workspace/Horizon-Frame.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/configuration",
+    "HorizonFrame_Workspace/Horizon-Frame.xcodeproj/xcuserdata/colesegura.xcuserdatad/xcschemes/xcschememanagement.plist",
+    "HorizonFrame_Workspace/Horizon-Frame.xcodeproj/project.xcworkspace/xcuserdata/colesegura.xcuserdatad/UserInterfaceState.xcuserstate",
+    "HorizonFrame_Workspace/Docs/DevLog.md",
+    "HorizonFrame_Workspace/Docs/Decisions.md",
+    "HorizonFrame_Workspace/Docs/TASKS.md",
+    "HorizonFrame_Workspace/Docs/Architecture.md",
+    "HorizonFrame_Workspace/README.md",
+    "HorizonFrame_Workspace/CHANGELOG.md",
+    "Horizon-Frame/Docs/TASKS.md",
+    "Horizon-Frame/Docs/Decisions.md",
+    "Horizon-Frame/Docs/Architecture.md",
+    "Horizon-Frame/CHANGELOG.md",
+    "Horizon-Frame/README.md",
+    "HorizonFrame/Vault/000_Progress_Log.md",
+    "HorizonFrame/Vault/01_App_Components/01.01_App_Components.md"
+  ]
+}
