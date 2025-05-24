@@ -86,15 +86,14 @@ Welcome to the team! Here’s how you can contribute:
 
 1.  **Get Set Up:** Start by reading the `Docs/Onboarding.md` guide. It will walk you through setting up your development environment (this should take about 20 minutes).
 2.  **Find a Task:**
-    *   Check our **Todoist board (look for the "Current Sprint" section)** for available tasks. Pick one that interests you and assign it to yourself.
-    *   If you're addressing a bug or adding a small improvement not listed in Todoist, you can note it in `Docs/TASKS.md` under the "Current Sprint" heading.
+    *   Check our **Todoist board (look for the "Current Sprint" section)** for available tasks. Pick one that interests you and assign it to yourself. (Note: The role of Todoist in our workflow is currently under review; please also consult `Docs/DailyBriefing.md` for immediate tasks and `Docs/Roadmap.md` for longer-term goals.)
 3.  **Coding and Committing Your Work:**
     *   Always create a new branch for your changes. This keeps the main codebase stable.
     *   Save your work frequently by making commits. Use clear and descriptive commit messages (e.g., `feat: implement user profile screen`, `fix: resolve issue with data saving`, `docs: clarify setup instructions`).
 4.  **Reporting Your Progress:**
     *   Each day you contribute, please add a brief note to `Docs/DevLog.md` under the current date. Describe what you accomplished, any significant decisions you made, or any problems you encountered. This helps keep everyone informed.
 5.  **Keeping Documentation Up-to-Date (Automated Doc Refresher):**
-    *   We use an "Automated Doc Refresher" process. This system, often facilitated by an LLM assistant, ensures our key documentation (`DailyBriefing.md`, `DevLog.md`, `TASKS.md`, `Architecture.md`, `README.md`) remains consistent with the latest code changes and project status. This up-to-date documentation is vital for effective daily handoffs and onboarding for all contributors.
+    *   We use an "Automated Doc Refresher" process. This system, often facilitated by an LLM assistant, ensures our key documentation (`DailyBriefing.md`, `DevLog.md`, `Architecture.md`, `README.md`) remains consistent with the latest code changes and project status. This up-to-date documentation is vital for effective daily handoffs and onboarding for all contributors.
     *   If you make significant changes to the code (like adding a major new feature or altering how a core part of the app works), please also update `Docs/Architecture.md` as needed. The "Automated Doc Refresher" process includes support for incorporating daily progress into `DevLog.md` and preparing `DailyBriefing.md` for the next session.
 6.  **Submitting Your Changes (Pull Requests):**
     *   When your feature or bug fix is complete and you've tested it, submit a Pull Request (PR) on GitHub.
