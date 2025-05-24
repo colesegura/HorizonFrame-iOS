@@ -11,6 +11,7 @@ _(This version will be achieved upon completion of Sprints 0.1.3, 0.1.4, etc. be
 - [x] **AlignView Add Behavior:** Change the "Craft a new intention..." field so that new statements are added to the *bottom* of the personal code list, instead of the top. (From old v0.2.1) (Completed: 2025-05-24 15:57)
 - [ ] **AlignView Edit Action (Definition & Implementation):** Define and implement the specific interaction for editing a personal code statement via swipe-to-reveal (e.g., inline TextEditor, modal, or navigation to a dedicated edit view). (From old v0.2.1)
     *   **User Vision:** (Placeholder for USER to detail the exact requirements/vision for this task).
+    *   Status (2025-05-24): Swipe-to-reveal actions (for delete/edit) are not currently working in the macOS simulator despite several debugging attempts (ScrollView, LazyVStack, gesture simplification). Further investigation or alternative (e.g., device testing) needed.
     - [ ] _Consolidates: "Implement swipe-to-reveal edit action (mechanism for editing TBD: inline expansion or dedicated plinth)" from old v0.2.0 and the 3-dot menu item that was moved._
 - [ ] **AlignView Styling & Polish:** Refine visual appearance of swipe actions, add field, and row presentation. Add haptic feedback. (From old v0.2.1)
     *   **User Vision:** (Placeholder for USER to detail the exact requirements/vision for this task).

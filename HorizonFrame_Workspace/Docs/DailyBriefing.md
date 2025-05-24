@@ -1,6 +1,6 @@
 # Daily Briefing - HorizonFrame
 
-**Session Start:** 2025-05-26 09:00
+**Session Start:** 2025-05-25 09:00
 
 ---
 
@@ -11,45 +11,37 @@
 
 ---
 
-## 2. Status from Previous Session (2025-05-25)
+## 2. Status from Previous Session (2025-05-24, Session 3)
 
 *   **Key Accomplishments:**
-    *   Updated documentation (`Docs/Daily Doc Bot.md`, `README.md`, `Docs/DailyBriefing.md`) to reflect GitHub Desktop usage for version control and to outline UI refinement tasks.
-    *   Corrected the repository structure diagram in `README.md` to accurately show the location of `Models`, `ViewModels`, `Views`, and `Services` directories within the `Horizon-Frame` sub-directory.
-    *   Implemented UI refinements:
-        *   **AlignView:** Added a 3-dots menu with a placeholder "Edit Personal Code" action.
-        *   **CollectView:** Styled personal code line boxes and insight collection items to have black/transparent backgrounds; changed the "Deposit" button color to white.
-        *   **SettingsView:** Ensured a consistent black background.
-    *   Confirmed all previous and current session changes were committed and pushed to `origin/main` via GitHub Desktop.
-*   **Link to detailed DevLog entry:** [Docs/DevLog.md#2025-05-25](./DevLog.md#2025-05-25)
+    *   Systematically attempted several common SwiftUI fixes for swipe action issues in `AlignView` (ensuring `ScrollView`, simplifying `ForEach`, trying `LazyVStack`, commenting out other gestures).
+    *   Created `Docs/MetaPrompts/EndOfDayProcedure_LLMPrompt.md` to standardize end-of-session documentation updates.
+    *   Updated `Docs/Roadmap.md` and `Docs/DevLog.md` to reflect the current status.
+*   **Link to detailed DevLog entry:** [Docs/DevLog.md#2025-05-24---session-3-approx-1600---1645](./DevLog.md#2025-05-24---session-3-approx-1600---1645)
 *   **Decisions Made:**
-    *   Proceeded with UI tasks as outlined in the `DailyBriefing.md` after confirming previous documentation commits.
-    *   The `Views` directory is located at `HorizonFrame_Workspace/Horizon-Frame/Views/`, not directly under the workspace root.
-*   **Outstanding Issues/Blockers (Resolved from previous session):**
-    *   Initial file searches for View components failed because the `README.md`'s repository structure was slightly inaccurate. (Resolved by correcting `README.md`).
-    *   A minor duplication error occurred during the `CollectView.swift` modification for the "Deposit" button. (Resolved).
+    *   Paused swipe action debugging in the macOS simulator due to persistent issues.
+*   **Outstanding Issues/Blockers:**
+    *   **Critical:** Swipe actions in `AlignView.swift` remain non-functional in the macOS simulator. The root cause is still undetermined despite multiple attempts. This blocks the implementation of swipe-to-edit/delete functionality.
 
 ---
 
-## 3. 🔥 Key Tasks for This Session (2025-05-26 09:00) (for LLM/Programmer) 🔥
+## 3. 🔥 Key Tasks for This Session (2025-05-25 09:00) (for LLM/Programmer) 🔥
 
-*   **Primary Objective:** Implement the "Edit Personal Code" functionality in `AlignView.swift`.
-*   **Task 1 (Align Page - Edit Functionality):**
-    *   Review the existing placeholder code in `AlignView.swift` (the `Menu` and the `@State var isShowingEditSheet`).
-    *   Design and implement a sheet or modal view that allows the user to edit their personal code statements. This should likely involve:
-        *   Presenting the current list of personal code statements.
-        *   Allowing modification of existing statements.
-        *   Allowing addition of new statements.
-        *   Allowing deletion of statements.
-        *   Providing "Save" and "Cancel" options.
-    *   Ensure changes made in the edit view are reflected in the `AppData` (e.g., `data.personalCode`) and are persisted if the app has persistence mechanisms.
-*   **Task 2 (Testing):**
-    *   Thoroughly test the editing functionality:
-        *   Verify that existing personal code displays correctly in the edit view.
-        *   Test modifying, adding, and deleting statements.
-        *   Confirm changes are saved and reflected in `AlignView` and `CollectView` (if `personalCode` is shared).
-        *   Test canceling edits.
-*   **Task 3 (Session Wrap-up):**
+*   **Primary Objective:** Resolve the `AlignView.swift` swipe action issue or decide on an alternative interaction for edit/delete.
+*   **Task 1 (AlignView Swipe Actions - Investigation):**
+    *   **Option A (Recommended First Step):** Test the current `AlignView.swift` implementation (with `ScrollView` and `LazyVStack`) on a physical iOS device. This will help determine if the issue is simulator-specific.
+    *   **Option B (If Device Testing Fails or is Not Possible):**
+        *   Revisit `AlignView.swift`. Consider temporarily replacing `ScrollView { LazyVStack { ForEach ... } }` with a standard SwiftUI `List { ForEach ... } .onDelete { ... } .swipeActions { ... }` to see if basic `List`-based swipes work. This is for diagnostic purposes to isolate the issue further.
+        *   Research any known SwiftUI swipe action bugs or specific considerations for macOS Catalyst if the app is intended for macOS (though current focus seems iOS).
+*   **Task 2 (AlignView - Alternative Interaction - If Swipes Remain Blocked):**
+    *   If swipe actions cannot be made functional quickly, discuss and begin implementing an alternative mechanism for editing and deleting personal code statements in `AlignView`. Examples:
+        *   Long-press context menu on each item.
+        *   Visible edit/delete buttons next to each item (perhaps appearing on selection or hover if on macOS).
+        *   Utilizing the existing 3-dot menu more directly for per-item actions if an item can be marked as 'active' or 'selected'.
+*   **Task 3 (Documentation & Planning):**
+    *   Based on the outcome of Task 1 & 2, update `Docs/Roadmap.md` regarding the approach for `AlignView` edit/delete actions.
+    *   If a new approach is chosen, outline sub-tasks for its implementation.
+*   **Task 4 (Session Wrap-up):**
     *   Commit all new code and documentation changes made during this session using GitHub Desktop.
     *   Push these changes to `origin/main` using GitHub Desktop.
     *   Update `Docs/DevLog.md` to summarize this session's accomplishments, decisions, and any issues.
@@ -69,7 +61,7 @@
 
 ## 5. For the User (Cole): Quick Re-entry Notes
 
-*   **Last thing we did (this session - 2025-05-25):** Completed UI refinements for Align, Collect, and Settings pages. Updated `DevLog.md` and prepared this `DailyBriefing.md` for 2025-05-26.
-*   **Focus for next personal session/next LLM session (2025-05-26 09:00):** Implement the 'Edit Personal Code' functionality in `AlignView.swift`.
+*   **Last thing we did (2025-05-24, Session 3):** Attempted to debug `AlignView.swift` swipe actions (unsuccessful in simulator). Created `EndOfDayProcedure_LLMPrompt.md`. Updated `DevLog.md`, `Roadmap.md`, and this `DailyBriefing.md`.
+*   **Focus for next personal session/next LLM session (2025-05-25 09:00):** Resolve `AlignView` swipe action issue (try on device) or implement alternative edit/delete interaction.
 *   **Mental State/Energy Level:** (User to fill at start of next session)
 *   **Quick Reminders/Todos:** (User to fill at start of next session)
