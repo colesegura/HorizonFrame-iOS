@@ -46,9 +46,10 @@ public struct AlignView: View {
                         .font(.title2)
                         .fontWeight(idx == index ? .bold : .regular)
                         .foregroundColor(idx == index ? .white : Color.white.opacity(0.6))
-                        .onTapGesture { advance() }
-                        .animation(.easeInOut, value: index)
+                        // .onTapGesture { advance() } // Temporarily removed for swipe debugging
+                        // .animation(.easeInOut, value: index) // Temporarily removed for swipe debugging
                         .frame(maxWidth: .infinity, alignment: .leading) // Ensure text takes full width
+                        .padding(.vertical, 2) // Added for consistent spacing with CollectView
                         .swipeActions(edge: .trailing, allowsFullSwipe: false) {
                             Button(role: .destructive) {
                                 itemIndexToDelete = idx
