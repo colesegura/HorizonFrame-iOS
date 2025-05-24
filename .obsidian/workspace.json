@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "HorizonFrame_Workspace/README.md",
+                "file": "HorizonFrame_Workspace/Docs/WorkflowGuide.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "WorkflowGuide"
             }
           }
         ]
@@ -171,8 +171,9 @@
   },
   "active": "6fe13d4674c18625",
   "lastOpenFiles": [
-    "HorizonFrame_Workspace/CHANGELOG.md",
+    "HorizonFrame_Workspace/Specs/Onboarding.md",
     "HorizonFrame_Workspace/README.md",
+    "HorizonFrame_Workspace/CHANGELOG.md",
     "HorizonFrame_Workspace/Docs/CodeStyle.md",
     "HorizonFrame_Workspace/Docs/DailyBriefing.md",
     "HorizonFrame_Workspace/Docs/MetaPrompts/ExploratoryIdeation_LLMPrompt.md",
@@ -206,7 +207,6 @@
     "00-09 Meta & System/00 Active Files/Crimson Entrepreneurship Academy/Marketing Strategy.md",
     "00-09 Meta & System/06 Periodic/06.10 Daily/2025-05-21.md",
     "00-09 Meta & System/00 Active Files/30-39 Personal Knowledge Base/Research/Asking Better Questions.md",
-    "00-09 Meta & System/00 Active Files/00.01 Life Log.md",
     "00-09 Meta & System/00 Active Files/30-39 Personal Knowledge Base/Research/Nutrition & Health/Blocking Blue Light.canvas",
     "00-09 Meta & System/00 Active Files/30-39 Personal Knowledge Base/Research/JFK.canvas",
     "00-09 Meta & System/00 Active Files/30-39 Personal Knowledge Base/Research/Ian Carroll - Obsidian.canvas",
