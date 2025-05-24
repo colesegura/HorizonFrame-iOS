@@ -1,52 +1,55 @@
 # Daily Briefing - HorizonFrame
 
-**Session Start:** 2025-05-25 09:00
+**Session Start:** 2025-05-26 09:00
 
 ---
 
 ## 1. Overall Project Goal & Current Focus
 
 *   **Project Goal:** To build a daily alignment journal that helps users live more intentionally by reflecting on their personal code and insights.
-*   **Current Sprint/Phase Goal:** With the enhanced documentation and handoff system in place, the current focus is to implement UI refinements on the Align, Collect, and Settings pages.
+*   **Current Sprint/Phase Goal:** With the UI refinements for Align, Collect, and Settings pages completed, the next focus is to implement core functionalities, starting with editing personal code in the Align view.
 
 ---
 
-## 2. Status from Previous Session (2025-05-24, Session 2, approx. 11:00 AM - 12:00 PM)
+## 2. Status from Previous Session (2025-05-25)
 
 *   **Key Accomplishments:**
-    *   Refined the daily handoff document system (`DailyBriefing.md`, `DailyStart_LLMPrompt.md`, `DailyFinish_LLMPrompt.md`) to support multiple LLM work sessions per day.
-    *   Updated `Docs/DailyBriefing.md` structure for timestamped sessions and `Docs/MetaPrompts/DailyFinish_LLMPrompt.md` for session-specific guidance.
-    *   Clarified user (Cole) workflow for using `MetaPrompt` scripts at session start/end.
-    *   Executed the "Daily Finish" routine: updated `Docs/DevLog.md` for this session and prepared this `DailyBriefing.md` for the next session (2025-05-25).
-*   **Link to detailed DevLog entry:** [Docs/DevLog.md#2025-05-24---session-2-approx-1100-am---1200-pm](./DevLog.md#2025-05-24---session-2-approx-1100-am---1200-pm) (Ensure DevLog heading matches for linking)
+    *   Updated documentation (`Docs/Daily Doc Bot.md`, `README.md`, `Docs/DailyBriefing.md`) to reflect GitHub Desktop usage for version control and to outline UI refinement tasks.
+    *   Corrected the repository structure diagram in `README.md` to accurately show the location of `Models`, `ViewModels`, `Views`, and `Services` directories within the `Horizon-Frame` sub-directory.
+    *   Implemented UI refinements:
+        *   **AlignView:** Added a 3-dots menu with a placeholder "Edit Personal Code" action.
+        *   **CollectView:** Styled personal code line boxes and insight collection items to have black/transparent backgrounds; changed the "Deposit" button color to white.
+        *   **SettingsView:** Ensured a consistent black background.
+    *   Confirmed all previous and current session changes were committed and pushed to `origin/main` via GitHub Desktop.
+*   **Link to detailed DevLog entry:** [Docs/DevLog.md#2025-05-25](./DevLog.md#2025-05-25)
 *   **Decisions Made:**
-    *   Adopted multi-session support for handoff documents.
-    *   User will use `MetaPrompt` scripts for LLM interaction at session boundaries.
-*   **Outstanding Issues/Blockers:**
-    *   **Critical:** Confirmation needed that all documentation changes (initial handoff system files AND multi-session adaptations) were successfully committed to Git. The commit message for multi-session changes should be `"docs: adapt handoff system for multi-session days"`. Files potentially affected by CLI staging issues: `README.md`, initial `Docs/DailyBriefing.md`, `Docs/MetaPrompts/DailyStart_LLMPrompt.md`.
-    *   The `Docs/DevLog.md` and the current `Docs/DailyBriefing.md` (this file, as prepared at end of 2025-05-24 S2) also need to be committed.
+    *   Proceeded with UI tasks as outlined in the `DailyBriefing.md` after confirming previous documentation commits.
+    *   The `Views` directory is located at `HorizonFrame_Workspace/Horizon-Frame/Views/`, not directly under the workspace root.
+*   **Outstanding Issues/Blockers (Resolved from previous session):**
+    *   Initial file searches for View components failed because the `README.md`'s repository structure was slightly inaccurate. (Resolved by correcting `README.md`).
+    *   A minor duplication error occurred during the `CollectView.swift` modification for the "Deposit" button. (Resolved).
 
 ---
 
-## 3. 🔥 Key Tasks for This Session (2025-05-25 09:00) (for LLM/Programmer) 🔥
+## 3. 🔥 Key Tasks for This Session (2025-05-26 09:00) (for LLM/Programmer) 🔥
 
-*   **Primary Objective:** Verify all prior documentation work is committed and pushed, then implement UI refinements for the Align, Collect, and Settings pages.
-*   **Task 1 (Git Workflow Verification - Carried Over):**
-    *   Verify with Cole that all recent documentation changes (as listed in the previous briefing and session logs) are committed. This includes:
-        1.  Initial handoff system files (`README.md`, `DailyBriefing.md` v1, `DailyStart_LLMPrompt.md`, `DailyFinish_LLMPrompt.md` v1).
-        2.  Multi-session adaptation files (`DailyBriefing.md` v2, `DailyFinish_LLMPrompt.md` v2 - ideally committed with message `"docs: adapt handoff system for multi-session days"`).
-        3.  The `Docs/DevLog.md` entry for 2025-05-24 Session 2.
-        4.  This `Docs/DailyBriefing.md` file (as prepared for 2025-05-25).
-    *   If all are confirmed as committed, ensure they have been pushed to `origin/main` using GitHub Desktop.
-*   **Task 2 (UI - Align Page):**
-    *   Implement functionality for the 3-dots menu to allow editing of personal code statements.
-*   **Task 3 (UI - Collect Page Styling):**
-    *   Ensure the background of personal code line boxes is black, matching the screen background.
-    *   Apply the same black background styling to insight collection elements if the issue is present there.
-    *   Change the "Deposit" button color from blue to white.
-*   **Task 4 (UI - Settings Page Styling):**
-    *   Ensure the page background is consistently black.
-*   **Task 5 (Session Wrap-up):**
+*   **Primary Objective:** Implement the "Edit Personal Code" functionality in `AlignView.swift`.
+*   **Task 1 (Align Page - Edit Functionality):**
+    *   Review the existing placeholder code in `AlignView.swift` (the `Menu` and the `@State var isShowingEditSheet`).
+    *   Design and implement a sheet or modal view that allows the user to edit their personal code statements. This should likely involve:
+        *   Presenting the current list of personal code statements.
+        *   Allowing modification of existing statements.
+        *   Allowing addition of new statements.
+        *   Allowing deletion of statements.
+        *   Providing "Save" and "Cancel" options.
+    *   Ensure changes made in the edit view are reflected in the `AppData` (e.g., `data.personalCode`) and are persisted if the app has persistence mechanisms.
+*   **Task 2 (Testing):**
+    *   Thoroughly test the editing functionality:
+        *   Verify that existing personal code displays correctly in the edit view.
+        *   Test modifying, adding, and deleting statements.
+        *   Confirm changes are saved and reflected in `AlignView` and `CollectView` (if `personalCode` is shared).
+        *   Test canceling edits.
+*   **Task 3 (Session Wrap-up):**
     *   Commit all new code and documentation changes made during this session using GitHub Desktop.
     *   Push these changes to `origin/main` using GitHub Desktop.
     *   Update `Docs/DevLog.md` to summarize this session's accomplishments, decisions, and any issues.
@@ -66,7 +69,7 @@
 
 ## 5. For the User (Cole): Quick Re-entry Notes
 
-*   **Last thing we did (this session - 2025-05-24 S2):** Completed Daily Finish routine: updated `DevLog.md` for 2025-05-24 S2, and prepared this `DailyBriefing.md` for 2025-05-25 09:00.
-*   **Focus for next personal session/next LLM session (2025-05-25 09:00):** Confirm all commits are done & push to GitHub. Then, select and plan the next development task.
+*   **Last thing we did (this session - 2025-05-25):** Completed UI refinements for Align, Collect, and Settings pages. Updated `DevLog.md` and prepared this `DailyBriefing.md` for 2025-05-26.
+*   **Focus for next personal session/next LLM session (2025-05-26 09:00):** Implement the 'Edit Personal Code' functionality in `AlignView.swift`.
 *   **Mental State/Energy Level:** (User to fill at start of next session)
 *   **Quick Reminders/Todos:** (User to fill at start of next session)
