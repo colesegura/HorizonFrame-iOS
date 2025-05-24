@@ -46,9 +46,7 @@ The app helps you:
 
 ## 🗺 Current Status — May 2025
 
-- **MVP milestone 0.1** in TestFlight ✅  
-- Implementing **local notifications for Insight Bank** (logic done, UX polishing)  
-- Next focus → add basic “Progress” page + unit tests
+- Restructured project into `HorizonFrame_Workspace` and established integrated Obsidian-based documentation.
 
 *(update this section whenever the milestone shifts)*
 

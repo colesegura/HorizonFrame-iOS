@@ -104,6 +104,7 @@ Rationale: schema evolution + CloudKit sync for multi-device.
 |Notification scheduling|UserNotifications|Background refresh tasks (overkill)|
 |State management|**Combine** + @Observable (when we bump toolchain)|Redux-style (overhead)|
 |Testing|XCTest (unit)|Quick/Nimble later|
+|Documentation Management|**Obsidian** with local vault (`HorizonFrame_Workspace`)|Direct GitHub repo sync for notes (previously considered/used)|
 
 ---
 
