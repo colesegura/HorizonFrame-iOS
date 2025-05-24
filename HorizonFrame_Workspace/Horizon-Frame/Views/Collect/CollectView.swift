@@ -4,6 +4,7 @@ public struct CollectView: View {
     @EnvironmentObject private var data: AppData
     @State private var newInsight = ""
     @State private var hasOnboarded = UserDefaults.standard.bool(forKey: "collectOnboarded")
+    @State private var newPersonalCodeStatementCollectView: String = ""
 
     public var body: some View {
         ZStack {
@@ -13,9 +14,40 @@ public struct CollectView: View {
                     // Personal code editable
                     Text("Personal Code")
                         .font(.title2).bold().foregroundColor(.white)
-                    EditableList(title: "Tap to iterate ›",
-                                 items: $data.personalCode,
-                                 placeholder: "Add new line")
+                    
+                    // Display Personal Code items like in AlignView
+                    ForEach(data.personalCode, id: \.self) { statement in
+                        Text(statement)
+                            .font(.title2)
+                            .foregroundColor(Color.white.opacity(0.8)) // Consistent with AlignView non-focused items
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.vertical, 2) // Adjust padding as needed for spacing
+                    }
+
+                    // Add new Personal Code statement - styled like AlignView but darker
+                    HStack {
+                        TextField("Add new personal code...", text: $newPersonalCodeStatementCollectView, axis: .vertical)
+                            .textFieldStyle(.plain)
+                            .foregroundColor(.white)
+                            .padding(EdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12))
+                            .background(Color.white.opacity(0.05)) // Darker than AlignView's 0.1
+                            .cornerRadius(8)
+                            .lineLimit(1...3)
+                        
+                        Button {
+                            let trimmedStatement = newPersonalCodeStatementCollectView.trimmingCharacters(in: .whitespacesAndNewlines)
+                            if !trimmedStatement.isEmpty {
+                                data.personalCode.append(trimmedStatement)
+                                newPersonalCodeStatementCollectView = "" // Clear the field
+                            }
+                        } label: {
+                            Image(systemName: "plus.circle.fill")
+                                .foregroundColor(newPersonalCodeStatementCollectView.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? .gray.opacity(0.5) : .white)
+                                .imageScale(.large)
+                        }
+                        .disabled(newPersonalCodeStatementCollectView.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+                    }
+                    .padding(.top, 5) // Add some space above the add field
 
                     // Insight collection
                     Text("Insight Collection")
@@ -53,42 +85,6 @@ public struct CollectView: View {
                 cta: "Get Started") {
                     hasOnboarded = true
                     UserDefaults.standard.set(true, forKey: "collectOnboarded")
-                }
-            }
-        }
-    }
-}
-
-private struct EditableList: View {
-    let title: String
-    @Binding var items: [String]
-    let placeholder: String
-    @State private var newLine = ""
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            ForEach(items.indices, id: \.self) { idx in
-                TextField("Line \(idx + 1)", text: $items[idx])
-                    .padding(EdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12))
-                    .background(Color.clear) // Make background transparent
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color.white.opacity(0.5), lineWidth: 1) // Add a subtle border
-                    )
-                    .foregroundColor(.white)
-            }
-            HStack {
-                TextField(placeholder, text: $newLine)
-                    .padding(EdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12))
-                    .background(Color.clear) // Make background transparent
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color.white.opacity(0.5), lineWidth: 1) // Add a subtle border
-                    )
-                    .foregroundColor(.white)
-                Button("+") {
-                    guard newLine.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == false else { return }
-                    items.append(newLine); newLine = ""
                 }
             }
         }

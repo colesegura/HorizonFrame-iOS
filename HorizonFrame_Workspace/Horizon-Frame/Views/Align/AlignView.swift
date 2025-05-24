@@ -40,7 +40,8 @@ public struct AlignView: View {
                 }
                 .padding(.bottom, 5) // Add a little space below the add field
 
-                ForEach(Array(data.personalCode.enumerated()), id: \.offset) { idx, line in
+                ScrollView {
+                    ForEach(Array(data.personalCode.enumerated()), id: \.offset) { idx, line in
                     Text(line)
                         .font(.title2)
                         .fontWeight(idx == index ? .bold : .regular)
@@ -65,7 +66,8 @@ public struct AlignView: View {
                             }
                             .tint(.blue) // Example color for Edit
                         }
-                }
+                    }
+                } // End ScrollView
                 
                 Spacer()
                 ProgressButton(progress: Double(index + 1) / Double(data.personalCode.count)) {
