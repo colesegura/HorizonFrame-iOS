@@ -7,7 +7,7 @@
 ## 1. Overall Project Goal & Current Focus
 
 *   **Project Goal:** To build a daily alignment journal that helps users live more intentionally by reflecting on their personal code and insights.
-*   **Current Sprint/Phase Goal:** With the enhanced documentation and handoff system in place, the current focus is to resume active development on HorizonFrame features, starting with [Next chosen feature/task - TBD at start of 05-25 session].
+*   **Current Sprint/Phase Goal:** With the enhanced documentation and handoff system in place, the current focus is to implement UI refinements on the Align, Collect, and Settings pages.
 
 ---
 
@@ -30,19 +30,27 @@
 
 ## 3. 🔥 Key Tasks for This Session (2025-05-25 09:00) (for LLM/Programmer) 🔥
 
-*   **Primary Objective:** Confirm all documentation work is committed and pushed to remote, then select and begin the next development task.
-*   **Task 1 (Git Workflow):**
-    *   Verify with Cole that all recent documentation changes are committed. This includes:
-        1.  Initial handoff system files (README.md, DailyBriefing.md v1, DailyStart_LLMPrompt.md, DailyFinish_LLMPrompt.md v1).
-        2.  Multi-session adaptation files (DailyBriefing.md v2, DailyFinish_LLMPrompt.md v2 - committed with message `"docs: adapt handoff system for multi-session days"`).
+*   **Primary Objective:** Verify all prior documentation work is committed and pushed, then implement UI refinements for the Align, Collect, and Settings pages.
+*   **Task 1 (Git Workflow Verification - Carried Over):**
+    *   Verify with Cole that all recent documentation changes (as listed in the previous briefing and session logs) are committed. This includes:
+        1.  Initial handoff system files (`README.md`, `DailyBriefing.md` v1, `DailyStart_LLMPrompt.md`, `DailyFinish_LLMPrompt.md` v1).
+        2.  Multi-session adaptation files (`DailyBriefing.md` v2, `DailyFinish_LLMPrompt.md` v2 - ideally committed with message `"docs: adapt handoff system for multi-session days"`).
         3.  The `Docs/DevLog.md` entry for 2025-05-24 Session 2.
         4.  This `Docs/DailyBriefing.md` file (as prepared for 2025-05-25).
-    *   If all committed, guide Cole to push all changes to the `origin/main` branch on GitHub.
-*   **Task 2 (Development Planning):**
-    *   Discuss and select the next UI feature or other development task for HorizonFrame.
-    *   Update Section 1's "Current Sprint/Phase Goal" above with the chosen feature/task.
-*   **Task 3 (Briefing Update for Development):**
-    *   Update this `DailyBriefing.md` (Section 3) with specific sub-tasks for the chosen development work. Remove these current planning tasks and replace them with development tasks.
+    *   If all are confirmed as committed, ensure they have been pushed to `origin/main` using GitHub Desktop.
+*   **Task 2 (UI - Align Page):**
+    *   Implement functionality for the 3-dots menu to allow editing of personal code statements.
+*   **Task 3 (UI - Collect Page Styling):**
+    *   Ensure the background of personal code line boxes is black, matching the screen background.
+    *   Apply the same black background styling to insight collection elements if the issue is present there.
+    *   Change the "Deposit" button color from blue to white.
+*   **Task 4 (UI - Settings Page Styling):**
+    *   Ensure the page background is consistently black.
+*   **Task 5 (Session Wrap-up):**
+    *   Commit all new code and documentation changes made during this session using GitHub Desktop.
+    *   Push these changes to `origin/main` using GitHub Desktop.
+    *   Update `Docs/DevLog.md` to summarize this session's accomplishments, decisions, and any issues.
+    *   Prepare `Docs/DailyBriefing.md` for the next session.
 
 ---
 

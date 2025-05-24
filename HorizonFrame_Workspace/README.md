@@ -20,8 +20,8 @@ The app assists you in:
 
 | Step | Action                                                                 |
 | :--- | :--------------------------------------------------------------------- |
-| 1    | Clone the repository: `git clone https://github.com/<your-username>/HorizonFrame-iOS.git` |
-| 2    | Navigate to the project directory and open it: `cd HorizonFrame-iOS && open Horizon-Frame.xcodeproj` |
+| 1    | Clone the repository. You can use the command line: `git clone https://github.com/<your-username>/HorizonFrame-iOS.git`, or use GitHub Desktop: File > Clone Repository. |
+| 2    | Navigate to the project directory. You can open it via command line: `cd HorizonFrame-iOS && open Horizon-Frame.xcodeproj`, or locate and open `Horizon-Frame.xcodeproj` through your file explorer or GitHub Desktop (Repository > Open in Finder, then open the .xcodeproj). |
 | 3    | In Xcode's toolbar, select the **Scheme** named *Horizon-Frame*.       |
 | 4    | Run the app on an iOS 18 (or newer) simulator or a physical device (`⌘R`). |
 | 5    | On first launch, the app will request permission for notifications; please accept. |
@@ -42,13 +42,16 @@ The app assists you in:
 ## Repository Structure (High-Level Overview)
 
 ```
-HorizonFrame-iOS/
-├── Horizon-Frame.xcodeproj/  – The main Xcode project file
-├── Models/                   – Simple Swift data structures (blueprints for data)
-├── ViewModels/               – Manages data for views (part of the MVVM design pattern)
-├── Views/                    – SwiftUI files for the user interface (organized by feature)
-├── Services/                 – Handles tasks like notifications and data storage
-├── Docs/                     – Contains all project documentation (Architecture, Developer Log, Tasks, etc.)
+HorizonFrame-iOS/ (Workspace Root)
+├── Horizon-Frame/            – Main application source code and resources
+│   ├── Horizon-Frame.xcodeproj/  – The main Xcode project file
+│   ├── Models/               – Simple Swift data structures
+│   ├── ViewModels/           – Manages data for views (MVVM)
+│   ├── Views/                – SwiftUI files for UI (organized by feature)
+│   ├── Services/             – Handles tasks like notifications, data storage
+│   └── ... (other app-specific files like App.swift, Assets.xcassets)
+├── Docs/                     – Project documentation (Architecture, DevLog, etc.)
+├── Specs/                    – Specifications and requirements documents
 └── README.md                 – This file, providing a project overview
 ```
 

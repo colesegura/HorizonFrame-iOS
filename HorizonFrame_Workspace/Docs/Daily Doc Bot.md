@@ -57,10 +57,11 @@ any new AI session (or human intern) can ramp-up instantly.
 ▓▓ OUTPUT & GIT
 13.  Show a diff-style preview of every Markdown file you changed
      (```diff fenced block).
-14.  Stage and commit in **vault repo** with message:
+14. Ensure changes are committed to the **vault repo** with a message like:
      ```
      docs: daily refresh YYYY-MM-DD – DevLog, TASKS, Arch, README
      ```
-15.  Git-push to `main`.
+     *(For GitHub Desktop users, this involves committing changes through the application interface.)*
+15. Ensure the changes are pushed to the `main` branch (e.g., using `git push origin main` or the "Push origin" button in GitHub Desktop).
 
 END OF INSTRUCTIONS
