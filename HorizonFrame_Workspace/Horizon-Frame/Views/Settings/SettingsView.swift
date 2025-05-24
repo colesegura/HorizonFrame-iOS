@@ -10,6 +10,7 @@ public struct SettingsView: View {
             Form {
             Section(header: Text("Notifications")) {
                 Toggle("Enable daily insights", isOn: $notifsEnabled)
+                    .listRowBackground(Color.black)
                     .onChange(of: notifsEnabled) { oldValue, newValue in
                         if newValue {
                             NotificationService.schedule(insights: data.insights)
@@ -21,14 +22,17 @@ public struct SettingsView: View {
 
             Section(header: Text("Data")) {
                 Button("Export JSON (Coming soon)") { }
+                    .listRowBackground(Color.black)
                 Button("Clear all data", role: .destructive) {
+                    .listRowBackground(Color.black)
                     data.personalCode.removeAll()
                     data.insights.removeAll()
                 }
             }
 
             Section {
-                Text("Version 0.1 MVP")
+                Text("Version 0.1.1")
+                    .listRowBackground(Color.black)
                     .font(.footnote).foregroundColor(.secondary)
             }
             }
