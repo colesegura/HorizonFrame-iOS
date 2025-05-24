@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "HorizonFrame_Workspace/Docs/TASKS.md",
+                "file": "HorizonFrame_Workspace/Docs/DailyBriefing.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "TASKS"
+              "title": "DailyBriefing"
             }
           }
         ]
@@ -171,6 +171,7 @@
   },
   "active": "6fe13d4674c18625",
   "lastOpenFiles": [
+    "HorizonFrame_Workspace/Docs/TASKS.md",
     "HorizonFrame_Workspace/Docs/WorkflowGuide.md",
     "HorizonFrame_Workspace/Horizon-Frame/Views/Align/PersonalCodeEditView.swift",
     "HorizonFrame_Workspace/Docs/Roadmap.md",
@@ -190,7 +191,6 @@
     "HorizonFrame_Workspace/Docs/MetaPrompts/DailyFinish_LLMPrompt.md",
     "HorizonFrame_Workspace/README.md",
     "HorizonFrame_Workspace/Docs/Architecture.md",
-    "HorizonFrame_Workspace/Docs/TASKS.md",
     "HorizonFrame_Workspace/Docs/Main.md",
     "HorizonFrame_Workspace/Docs/Marketing.md",
     "00-09 Meta & System/06 Periodic/06.10 Daily/2025-05-23.md",
