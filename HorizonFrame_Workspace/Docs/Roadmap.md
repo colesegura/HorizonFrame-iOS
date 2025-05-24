@@ -16,6 +16,10 @@ _(This version will be achieved upon completion of Sprints 0.1.3, 0.1.4, etc. be
     *   **User Vision:** (Placeholder for USER to detail the exact requirements/vision for this task).
 - [ ] **AlignView Accessibility:** Ensure new swipe interactions are accessible. (From old v0.2.1)
     *   **User Vision:** (Placeholder for USER to detail the exact requirements/vision for this task).
+- [ ] **AlignView: Implement drag-to-rearrange for personal code statements.**
+    *   **User Vision:** (Placeholder for USER to detail the exact requirements/vision for this task).
+- [ ] **SettingsView: Enhance 'Clear All Data' button safety.**
+    *   **User Vision:** (Placeholder for USER to detail the exact requirements/vision for this task).
 
 ### Sprint 0.1.4 (Target: Next Development Cycle)
 
