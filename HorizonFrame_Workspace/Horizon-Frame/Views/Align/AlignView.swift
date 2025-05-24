@@ -28,7 +28,7 @@ public struct AlignView: View {
                     
                     Button {
                         if !newCodeStatement.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-                            data.personalCode.insert(newCodeStatement.trimmingCharacters(in: .whitespacesAndNewlines), at: 0)
+                            data.personalCode.append(newCodeStatement.trimmingCharacters(in: .whitespacesAndNewlines))
                             newCodeStatement = "" // Clear the field
                         }
                     } label: {
