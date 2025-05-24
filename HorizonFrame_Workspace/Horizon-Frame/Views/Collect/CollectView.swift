@@ -29,14 +29,19 @@ public struct CollectView: View {
                             data.insights.insert(Insight(text: newInsight), at: 0)
                             newInsight = ""
                         }
-                        .buttonStyle(.borderedProminent)
+                        .tint(.white) // Change button color to white
+                        .buttonStyle(.borderedProminent) // Keep prominent style, tint handles color
                     }
 
                     ForEach(data.insights) { insight in
                         Text("“\(insight.text)”")
                             .padding().frame(maxWidth: .infinity, alignment: .leading)
-                            .background(RoundedRectangle(cornerRadius: 12)
-                                            .stroke(Color.white.opacity(0.3)))
+                            .background(
+                                RoundedRectangle(cornerRadius: 12)
+                                    .fill(Color.black) // Ensure black background
+                                    .stroke(Color.white.opacity(0.3)) // Keep the border
+                            )
+                            .foregroundColor(.white) // Ensure text is visible
                     }
                 }
                 .padding()
@@ -64,11 +69,23 @@ private struct EditableList: View {
         VStack(alignment: .leading, spacing: 8) {
             ForEach(items.indices, id: \.self) { idx in
                 TextField("Line \(idx + 1)", text: $items[idx])
-                    .textFieldStyle(.roundedBorder)
+                    .padding(EdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12))
+                    .background(Color.clear) // Make background transparent
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(Color.white.opacity(0.5), lineWidth: 1) // Add a subtle border
+                    )
+                    .foregroundColor(.white)
             }
             HStack {
                 TextField(placeholder, text: $newLine)
-                    .textFieldStyle(.roundedBorder)
+                    .padding(EdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12))
+                    .background(Color.clear) // Make background transparent
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(Color.white.opacity(0.5), lineWidth: 1) // Add a subtle border
+                    )
+                    .foregroundColor(.white)
                 Button("+") {
                     guard newLine.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == false else { return }
                     items.append(newLine); newLine = ""

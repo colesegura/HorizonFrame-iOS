@@ -5,7 +5,9 @@ public struct SettingsView: View {
     @State private var notifsEnabled = true
 
     public var body: some View {
-        Form {
+        ZStack {
+            Color.black.ignoresSafeArea() // Set black background for the whole view
+            Form {
             Section(header: Text("Notifications")) {
                 Toggle("Enable daily insights", isOn: $notifsEnabled)
                     .onChange(of: notifsEnabled) { oldValue, newValue in
@@ -29,7 +31,8 @@ public struct SettingsView: View {
                 Text("Version 0.1 MVP")
                     .font(.footnote).foregroundColor(.secondary)
             }
+            }
+            .scrollContentBackground(.hidden) // Ensure form background is transparent
         }
-        .scrollContentBackground(.hidden)
     }
 }

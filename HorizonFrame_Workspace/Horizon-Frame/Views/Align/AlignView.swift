@@ -4,6 +4,7 @@ public struct AlignView: View {
     @EnvironmentObject private var data: AppData
     @State private var index = 0
     @State private var hasOnboarded = UserDefaults.standard.bool(forKey: "alignOnboarded")
+    @State private var isShowingEditSheet = false // Added for future edit sheet presentation
 
     public var body: some View {
         ZStack {
@@ -12,7 +13,15 @@ public struct AlignView: View {
                     Text(Date.now.formatted(date: .long, time: .omitted))
                         .font(.footnote).foregroundColor(.white.opacity(0.6))
                     Spacer()
-                    Image(systemName: "ellipsis").foregroundColor(.white)
+                    Menu {
+                        Button("Edit Personal Code") {
+                            // Action to show editing interface - placeholder for now
+                            print("Edit Personal Code tapped")
+                            // self.isShowingEditSheet = true // Uncomment when edit sheet is ready
+                        }
+                    } label: {
+                        Image(systemName: "ellipsis").foregroundColor(.white)
+                    }
                 }
                 Spacer().frame(height: 20)
                 ForEach(Array(data.personalCode.enumerated()), id: \.offset) { idx, line in
