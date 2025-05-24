@@ -23,9 +23,12 @@ Welcome to the HorizonFrame project! This guide outlines our collaborative devel
 
 2.  **`Docs/Roadmap.md` (Long-Term Vision & Sprint-Based Feature Tracking)**
     *   **Purpose:** Tracks larger features, epics, and version goals for the HorizonFrame project. It is organized into major version milestones (e.g., `## Version 0.2.0`), which are further broken down into sequential minor sprint versions (e.g., `### Sprint 0.1.3`).
-    *   **Format:** All items **MUST** use Markdown task list syntax (`- [ ]` for pending, `- [x]` for completed) under their respective sprint headings.
+    *   **Format:** All items **MUST** use Markdown task list syntax. 
+        *   Pending tasks start with `- [ ] **Task Title:** Description.`
+        *   Each task should have a sub-bullet: `    *   **User Vision:** (Detailed prompt from USER outlining specific requirements and goals for the task).`
+        *   Completed tasks are marked `- [x]` and include a timestamp: `- [x] **Task Title:** Description. (Completed: YYYY-MM-DD HH:MM)`.
     *   **Workflow:** Updated collaboratively. When a task within a sprint is completed, it's marked `- [x]`. When all tasks in a sprint are complete, the sprint can be considered closed. Completion of all sprints under a major version signifies the readiness of that major version.
-    *   **Adding New Tasks:** New features, bugs, or significant improvements identified during a session are added as `- [ ]` items to the *current active sprint* or the *next planned sprint* by the USER with AI assistance. The AI can help determine the most appropriate sprint.
+    *   **Adding New Tasks:** New features, bugs, or significant improvements identified are added by the AI (with USER confirmation) to the *current active sprint* or the *next planned sprint*. They will include a `- [ ]` marker and a placeholder for the `User Vision:` which the USER should then detail.
 
 3.  **`Docs/DevLog.md` (The Detailed Project Diary)**
     *   **Purpose:** A chronological, detailed log of each development session. This is where the nitty-gritty details are recorded: specific decisions, problems encountered, solutions, rationale, code snippets discussed, memories created, etc.
@@ -63,7 +66,7 @@ Beyond the end-of-session `DevLog.md` updates, Cascade plays a role in maintaini
 ## Task Management
 
 *   **Daily Tasks:** Managed within `Docs/DailyBriefing.md` using `- [ ]` / `- [x]`.
-*   **Long-Term Features/Epics/Bugs:** Managed within `Docs/Roadmap.md` under specific sprint versions (e.g., `Sprint 0.1.3`) using `- [ ]` / `- [x]`. New tasks are added to the current or next available sprint.
+*   **Long-Term Features/Epics/Bugs:** Managed within `Docs/Roadmap.md` under specific sprint versions (e.g., `Sprint 0.1.3`). Each task uses `- [ ]` / `- [x]` (with completion timestamp) and includes a `User Vision:` sub-bullet detailing requirements. New tasks are added by the AI to the current or next available sprint with a placeholder `User Vision:`.
 *   Cascade will assist in updating the status of these tasks as work progresses.
 
 This workflow is designed to be adaptive. We can review and refine it as needed.

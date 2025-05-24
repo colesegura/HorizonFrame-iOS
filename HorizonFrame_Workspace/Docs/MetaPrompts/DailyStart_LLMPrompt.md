@@ -14,7 +14,16 @@ Welcome! The USER will be starting their day by reviewing `../DailyBriefing.md`.
 4.  **Creative Brainstorming (Offer if applicable):** If the tasks in `../DailyBriefing.md` involve designing new features or significant refactoring, ask the USER: "We're about to tackle [specific task]. Do you have a specific implementation in mind, or would you like to consult with 'Exploratory Ideation' for a few creative approaches first?" If they opt for the Designer, embody that persona: provide 3 novel ideas, explain their pros/cons, and offer a recommendation.
 
 5.  **Documentation Support (Ongoing):**
-    *   **`../Roadmap.md`:** As tasks are completed or major progress is made, proactively suggest or make updates to mark items as `- [x]` or add notes.
+    *   **`../Roadmap.md` Task Management (NEW PROTOCOL):**
+        *   **Adding New Tasks:** When the USER defines a new task to be worked on (not a quick daily to-do, but something for the project's future), automatically add it to `../Roadmap.md`.
+            *   Place it under the current active sprint (e.g., `### Sprint 0.1.x`) or the next planned sprint if the current one is full or nearly complete.
+            *   Use the format: `- [ ] **Task Title:** Brief description.
+                *   **User Vision:** (Placeholder for USER to detail the exact requirements/vision for this task. Prompt the USER to fill this in if they don't provide it immediately).`
+        *   **Updating Task Status:** When a task is confirmed by the USER as complete:
+            *   Mark it as `- [x]`.
+            *   Append a completion timestamp in the format `(Completed: YYYY-MM-DD HH:MM)`. Example: `- [x] **Task Title:** Description. (Completed: 2025-05-24 15:57)`
+            *   Ensure the current local time is used for the timestamp.
+        *   **Working on Tasks:** When starting a task from the Roadmap, refer to its `User Vision:` sub-bullet to understand the specific requirements and goals.
     *   **`../DevLog.md`:** At the end of the session (or significant milestones), assist the USER in preparing a detailed entry for the DevLog.
     *   **`../WorkflowGuide.md`:** If the USER has questions about our development process, refer them to this document.
 
