@@ -41,6 +41,7 @@
 				ViewModels/AppData.swift,
 				ViewModels/TabRouter.swift,
 				Views/Align/AlignView.swift,
+				Views/Align/PersonalCodeEditView.swift,
 				Views/Collect/CollectView.swift,
 				Views/Components/OnboardingOverlay.swift,
 				Views/Components/ProgressButton.swift,

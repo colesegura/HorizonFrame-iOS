@@ -24,10 +24,10 @@ public struct SettingsView: View {
                 Button("Export JSON (Coming soon)") { }
                     .listRowBackground(Color.black)
                 Button("Clear all data", role: .destructive) {
-                    .listRowBackground(Color.black)
                     data.personalCode.removeAll()
                     data.insights.removeAll()
                 }
+                .listRowBackground(Color.black)
             }
 
             Section {
