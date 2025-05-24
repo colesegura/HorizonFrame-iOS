@@ -1,113 +1,98 @@
-Below are **ready-to-paste first drafts** of your two key onboarding docs.
-
-Copy each block into the appropriate file in your repo.
-
----
-
-### **1.** 
-
-### **README.md**
-
-###  **— project overview & quick-start**
-
-```
 # HorizonFrame – iOS
 
-> *A daily “alignment” journal that surfaces your personal code and life insights, nudging you toward intentional living.*
+> *A daily “alignment” journal that helps you review your personal goals and insights, guiding you toward living more intentionally.*
 
 ---
 
-## ✨ Why HorizonFrame?
+## Why HorizonFrame?
 
-Most habit apps track what you *do*. HorizonFrame focuses on *who you want to be*.  
-The app helps you:
+Most habit-tracking apps focus on what you *do*. HorizonFrame centers on *who you aspire to be*.
+The app assists you in:
 
-1. **Craft a Personal Code** – short, powerful statements that capture the life you intend to live.  
-2. **Reflect Daily** – a one-minute “alignment” session every morning cycles through those statements and logs completion.  
-3. **Collect Insights** – drop quotes, revelations, or lessons into an “Insight Bank”; the app sends them back via spaced notifications.  
-4. **Track Progress** – view your streak and mindset alignment statistics (coming soon).
-
----
-
-## 🚀 Quick Start (local build)
-
-| Step | Command / Click |
-|------|-----------------|
-| 1 | Clone: `git clone https://github.com/<you>/HorizonFrame-iOS.git` |
-| 2 | `cd HorizonFrame-iOS && open Horizon-Frame.xcodeproj` |
-| 3 | Xcode toolbar ▸ **Scheme** ➜ *Horizon-Frame* |
-| 4 | Run on iOS 18+ simulator or device (`⌘R`) |
-| 5 | First launch requests notification permission → accept |
-
-> **Minimum:** Xcode 16.2 • iOS 18.0 SDK  
-> **Bundle ID:** `com.colesegura.HorizonFrame`
+1.  **Crafting a Personal Code:** Define short, impactful statements that capture your intended way of living.
+2.  **Daily Reflection:** Engage in a quick, one-minute "alignment" session each morning, cycling through your personal code statements and logging your engagement.
+3.  **Collecting Insights:** Store meaningful quotes, personal revelations, or lessons learned in an "Insight Bank." The app will then send these back to you as reminders through spaced notifications.
+4.  **Tracking Progress:** (Coming soon) View your consistency and statistics related to your mindset alignment.
 
 ---
 
-## 🗺 Current Status — May 2025
+## Quick Start (Local Build Instructions)
 
-- Restructured project into `HorizonFrame_Workspace` and established integrated Obsidian-based documentation.
+| Step | Action                                                                 |
+| :--- | :--------------------------------------------------------------------- |
+| 1    | Clone the repository: `git clone https://github.com/<your-username>/HorizonFrame-iOS.git` |
+| 2    | Navigate to the project directory and open it: `cd HorizonFrame-iOS && open Horizon-Frame.xcodeproj` |
+| 3    | In Xcode's toolbar, select the **Scheme** named *Horizon-Frame*.       |
+| 4    | Run the app on an iOS 18 (or newer) simulator or a physical device (`⌘R`). |
+| 5    | On first launch, the app will request permission for notifications; please accept. |
 
-*(update this section whenever the milestone shifts)*
+> **Minimum Requirements:** Xcode 16.2 • iOS 18.0 Software Development Kit (SDK)
+> **Bundle Identifier:** `com.colesegura.HorizonFrame` (This is the unique ID for the app)
 
 ---
 
-## 🏗 Repo Structure (high-level)
+## Current Status — May 2025
+
+-   The project structure has been reorganized into `HorizonFrame_Workspace`, and documentation is now managed using an integrated Obsidian-based system.
+
+*(This section is updated when major project milestones change)*
+
+---
+
+## Repository Structure (High-Level Overview)
+
 ```
-
 HorizonFrame-iOS/
-
-├── Horizon-Frame.xcodeproj/   – Xcode project
-
-├── Models/                    – Plain Swift data structs
-
-├── ViewModels/                – ObservableObjects (MVVM)
-
-├── Views/                     – SwiftUI files (sub-folders per feature)
-
-├── Services/                  – NotificationService, persistence wrappers
-
-├── Docs/                      – Architecture.md, DevLog.md, TASKS.md, …
-
-└── README.md                  – you are here
-
-```
-A detailed breakdown of layers, classes, and future modules lives in **Docs/Architecture.md**.
-
----
-
-## 🧩 Main Dependencies
-
-| Framework         | Purpose                         |
-|-------------------|---------------------------------|
-| **SwiftUI**       | Declarative UI (iOS 18)         |
-| **Combine**       | State & publisher bridges       |
-| **UserNotifications** | Local daily Insight pings      |
-| **SwiftData** *(road-map)* | Replace UserDefaults for persistence |
-
-No third-party packages yet – pure Apple stack for easier onboarding.  
-We use **Swift Package Manager** (SPM) for future libs.
-
----
-
-## 🛠 Contributing (internal)
-
-1. Read `Docs/Onboarding.md` (20-min setup guide).  
-2. Pick the top open card in **Todoist ▸ Current Sprint**, self-assign.  
-3. Commit often (`feat: …`, `fix: …`, `docs: …`).  
-4. Append a bullet to `Docs/DevLog.md` under today’s date.  
-5. Open a PR → another dev (or the LLM) reviews, squash-merge.
-
-Style guide & branch naming rules live in `Docs/CodeStyle.md`.
-
----
-
-## 📄 License
-
-_Proprietary © Cole Segura 2025 – contact for permitted uses._
+├── Horizon-Frame.xcodeproj/  – The main Xcode project file
+├── Models/                   – Simple Swift data structures (blueprints for data)
+├── ViewModels/               – Manages data for views (part of the MVVM design pattern)
+├── Views/                    – SwiftUI files for the user interface (organized by feature)
+├── Services/                 – Handles tasks like notifications and data storage
+├── Docs/                     – Contains all project documentation (Architecture, Developer Log, Tasks, etc.)
+└── README.md                 – This file, providing a project overview
 ```
 
-  
+A detailed explanation of the app's layers, components, and future plans can be found in `Docs/Architecture.md`.
 
 ---
 
+## Main Technologies Used
+
+| Technology          | Purpose                                                                 |
+| :------------------ | :---------------------------------------------------------------------- |
+| **SwiftUI**         | Apple's modern framework for building user interfaces (for iOS 18+).    |
+| **Combine**         | Apple's framework to manage how data changes and flows within the app.  |
+| **UserNotifications** | Handles sending local daily reminders from your Insight Bank.           |
+| **SwiftData** (planned) | A future replacement for `UserDefaults` for a more robust way to save app data. |
+
+Currently, the project uses only Apple's native frameworks, making it easier for new contributors to get started. We plan to use **Swift Package Manager (SPM)** for any future third-party libraries.
+
+---
+
+## Contributing to HorizonFrame
+
+Welcome to the team! Here’s how you can contribute:
+
+1.  **Get Set Up:** Start by reading the `Docs/Onboarding.md` guide. It will walk you through setting up your development environment (this should take about 20 minutes).
+2.  **Find a Task:**
+    *   Check our **Todoist board (look for the "Current Sprint" section)** for available tasks. Pick one that interests you and assign it to yourself.
+    *   If you're addressing a bug or adding a small improvement not listed in Todoist, you can note it in `Docs/TASKS.md` under the "Current Sprint" heading.
+3.  **Coding and Committing Your Work:**
+    *   Always create a new branch for your changes. This keeps the main codebase stable.
+    *   Save your work frequently by making commits. Use clear and descriptive commit messages (e.g., `feat: implement user profile screen`, `fix: resolve issue with data saving`, `docs: clarify setup instructions`).
+4.  **Reporting Your Progress:**
+    *   Each day you contribute, please add a brief note to `Docs/DevLog.md` under the current date. Describe what you accomplished, any significant decisions you made, or any problems you encountered. This helps keep everyone informed.
+5.  **Keeping Documentation Up-to-Date (Automated Doc Refresher):**
+    *   We use an "Automated Doc Refresher" process. This system helps keep our main documentation files (`DevLog.md`, `TASKS.md`, `Architecture.md`, `README.md`) consistent with the latest code changes.
+    *   If you make significant changes to the code (like adding a major new feature or altering how a core part of the app works), please also update `Docs/Architecture.md` as needed. The Automated Doc Refresher will assist in incorporating daily progress into the `DevLog.md`.
+6.  **Submitting Your Changes (Pull Requests):**
+    *   When your feature or bug fix is complete and you've tested it, submit a Pull Request (PR) on GitHub.
+    *   Another developer (or an AI assistant like me) will review your code. Once it's approved, your changes will be merged into the main project.
+
+Our detailed coding style guide and rules for naming branches are located in `Docs/CodeStyle.md`. (If this file doesn't exist yet, these guidelines will be added there soon.)
+
+---
+
+## License
+
+_Proprietary © Cole Segura 2025 – please contact for permitted uses._
