@@ -6,7 +6,7 @@ any new AI session (or human intern) can ramp-up instantly.
 1.  Git-pull the latest versions of these repos:
     • Code and Vault repo:  HorizonFrame_Workspace
 2.  Open *all* Markdown files under `Docs/` plus root `README.md`
-    – Architecture.md, DevLog.md, TASKS.md, Decisions.md, Onboarding.md, etc.
+    – Architecture.md, DevLog.md,  Decisions.md, Onboarding.md, etc.
 
 ▓▓ SCAN CHANGES
 3.  Run `git log --since="24 hours"` on the **code repo** and list:
