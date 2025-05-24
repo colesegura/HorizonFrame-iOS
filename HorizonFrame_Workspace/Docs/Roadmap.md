@@ -37,6 +37,8 @@ This document outlines planned features and improvements for HorizonFrame. It is
 
 ### Workflow & Tooling Refinements
 - [ ] **Review Todoist Usage:** Evaluate the current Todoist board and decide on its role (if any) within the new development workflow, ensuring task sources are clear (Daily Briefing, Roadmap).
+- [ ] **Review Obsidian Usage:** Evaluate the current Obsidian setup and decide on its role (if any) within the new development workflow, ensuring task sources are clear (Daily Briefing, Roadmap).
+- [ ] **Review MetaPrompts:** Evaluate existing LLM prompts in MetaPrompts folder and identify any that need updating to align with current project goals and workflow. Additionally, identify any additional prompts that may be needed for the upkeep of this meta-system.
 
 - [ ] **Settings Page UI Revision:** A comprehensive UI overhaul for the Settings page to improve organization and user experience as more options are added.
 - [ ] **Advanced Statistics & Trends:** More detailed analytics in the Progress Tab.
