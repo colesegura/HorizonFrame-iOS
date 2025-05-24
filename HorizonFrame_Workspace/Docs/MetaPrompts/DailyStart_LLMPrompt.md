@@ -8,10 +8,12 @@ Welcome! To get started on today's tasks for the HorizonFrame iOS project, pleas
     *   Critically, the **"Key Tasks for Today's Session"** which outlines what we need to achieve.
     *   Pointers to other important documents and user preferences.
 
-2.  **Review Core Architecture (If needed for today's tasks):** Familiarize yourself with the project structure by reviewing `../Architecture.md`.
+2.  **Review Project Roadmap:** Consult `../Roadmap.md` to understand the features and goals planned for upcoming versions. This provides broader context for the current session's tasks.
 
-3.  **Clarify Tasks:** Once you have reviewed `../DailyBriefing.md`, please confirm your understanding of today's primary objectives and tasks. Ask any clarifying questions you have before we begin.
+3.  **Review Core Architecture (If needed for today's tasks):** Familiarize yourself with the project structure by reviewing `../Architecture.md`.
 
-4.  **Recall User Preferences:** Be mindful of the user's documentation preferences (emoji-free, accessible language, "Automated Doc Refresher" - Memory ID: 5de9c30b-ac36-48df-ba4c-13a7f5034109).
+4.  **Clarify Tasks:** Once you have reviewed `../DailyBriefing.md` and `../Roadmap.md`, please confirm your understanding of today's primary objectives and how they fit into the larger project goals. Ask any clarifying questions you have before we begin.
 
-Let's begin!
+5.  **Recall User Preferences:** Be mindful of the user's documentation preferences (emoji-free, accessible language, "Automated Doc Refresher" - Memory ID: 5de9c30b-ac36-48df-ba4c-13a7f5034109).
+
+Let's align and build!

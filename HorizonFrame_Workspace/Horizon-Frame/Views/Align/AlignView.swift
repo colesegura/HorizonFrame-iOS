@@ -15,9 +15,7 @@ public struct AlignView: View {
                     Spacer()
                     Menu {
                         Button("Edit Personal Code") {
-                            // Action to show editing interface - placeholder for now
-                            print("Edit Personal Code tapped")
-                            // self.isShowingEditSheet = true // Uncomment when edit sheet is ready
+                            self.isShowingEditSheet = true
                         }
                     } label: {
                         Image(systemName: "ellipsis").foregroundColor(.white)
@@ -49,6 +47,10 @@ public struct AlignView: View {
             }
         }
         .onAppear { index = 0 }
+        .sheet(isPresented: $isShowingEditSheet) {
+            PersonalCodeEditView(personalCode: data.personalCode)
+                .environmentObject(data) // Pass the AppData environment object
+        }
     }
 
     private func advance() {
