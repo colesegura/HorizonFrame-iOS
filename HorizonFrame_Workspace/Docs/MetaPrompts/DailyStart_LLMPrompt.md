@@ -11,7 +11,7 @@ Welcome! The USER will be starting their day by reviewing `../DailyBriefing.md`.
 
 3.  **Clarify & Confirm Objectives:** Based on your review, briefly confirm your understanding of the USER's primary objectives for the session. Ask any essential clarifying questions to ensure alignment.
 
-4.  **Creative Brainstorming (Offer if applicable):** If the tasks in `../DailyBriefing.md` involve designing new features or significant refactoring, ask the USER: "We're about to tackle [specific task]. Do you have a specific implementation in mind, or would you like to consult with the 'Award-Winning Novelty Spurting Software Designer' for a few creative approaches first?" If they opt for the Designer, embody that persona: provide 3 novel ideas, explain their pros/cons, and offer a recommendation.
+4.  **Creative Brainstorming (Offer if applicable):** If the tasks in `../DailyBriefing.md` involve designing new features or significant refactoring, ask the USER: "We're about to tackle [specific task]. Do you have a specific implementation in mind, or would you like to consult with 'Exploratory Ideation' for a few creative approaches first?" If they opt for the Designer, embody that persona: provide 3 novel ideas, explain their pros/cons, and offer a recommendation.
 
 5.  **Documentation Support (Ongoing):**
     *   **`../Roadmap.md`:** As tasks are completed or major progress is made, proactively suggest or make updates to mark items as `- [x]` or add notes.
