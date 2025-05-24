@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "HorizonFrame_Workspace/Docs/DevLog.md",
+                "file": "HorizonFrame_Workspace/Specs/Organization.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "DevLog"
+              "title": "Organization"
             }
           }
         ]
@@ -78,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 469.5,
-    "collapsed": true
+    "width": 234.5
   },
   "right": {
     "id": "65c15737aa1b58ac",
@@ -170,9 +169,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "6fe13d4674c18625",
+  "active": "0eae2e2847eb3eab",
   "lastOpenFiles": [
-    "HorizonFrame_Workspace/Docs/Details.md",
+    "HorizonFrame_Workspace/Specs",
+    "HorizonFrame_Workspace/Docs/DevLog.md",
+    "HorizonFrame_Workspace/Specs/Organization.md",
     "HorizonFrame_Workspace/Docs/Architecture.md",
     "Horizon-Frame/Horizon-Frame.xcodeproj/project.pbxproj",
     "Horizon-Frame/Horizon-Frame.xcodeproj/project.xcworkspace/xcuserdata/colesegura.xcuserdatad/UserInterfaceState.xcuserstate",
@@ -185,7 +186,6 @@
     "Horizon-Frame/Docs/DevLog.md",
     "HorizonFrame_Workspace/Horizon-Frame.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/configuration",
     "HorizonFrame_Workspace/Horizon-Frame.xcodeproj/xcuserdata/colesegura.xcuserdatad/xcschemes/xcschememanagement.plist",
-    "HorizonFrame_Workspace/Docs/DevLog.md",
     "HorizonFrame_Workspace/Docs/Decisions.md",
     "HorizonFrame_Workspace/Docs/TASKS.md",
     "HorizonFrame_Workspace/README.md",
