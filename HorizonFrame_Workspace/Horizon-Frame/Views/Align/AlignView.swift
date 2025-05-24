@@ -41,19 +41,21 @@ public struct AlignView: View {
                 .padding(.bottom, 5) // Add a little space below the add field
 
                 ScrollView {
-                    ForEach(Array(data.personalCode.enumerated()), id: \.offset) { idx, line in
-                    Text(line)
-                        .font(.title2)
-                        .fontWeight(idx == index ? .bold : .regular)
-                        .foregroundColor(idx == index ? .white : Color.white.opacity(0.6))
-                        // .onTapGesture { advance() } // Temporarily removed for swipe debugging
-                        // .animation(.easeInOut, value: index) // Temporarily removed for swipe debugging
-                        .frame(maxWidth: .infinity, alignment: .leading) // Ensure text takes full width
-                        .padding(.vertical, 2) // Added for consistent spacing with CollectView
-                        .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                    LazyVStack(spacing: 0) { // Added LazyVStack, spacing can be adjusted
+                        ForEach(data.personalCode, id: \.self) { statement in
+                            Text(statement)
+                                .font(.title2)
+                                .foregroundColor(Color.white.opacity(0.8)) // Consistent color for now
+                                // .onTapGesture { advance() } // Keep commented for swipe debugging
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(.vertical, 2) // Consistent spacing
+                                // It's often better to apply swipeActions to the view inside ForEach directly
+                                .swipeActions(edge: .trailing, allowsFullSwipe: false) {
                             Button(role: .destructive) {
-                                itemIndexToDelete = idx
-                                showingDeleteConfirmAlert = true
+                                if let idxToDelete = data.personalCode.firstIndex(of: statement) { // Find index
+                                    itemIndexToDelete = idxToDelete
+                                    showingDeleteConfirmAlert = true
+                                }
                             } label: {
                                 Label("Delete", systemImage: "trash.fill")
                             }
@@ -61,14 +63,16 @@ public struct AlignView: View {
 
                             Button {
                                 // Placeholder for Edit Action
-                                print("Edit tapped for: \(data.personalCode[idx])")
+                                print("Edit tapped for: \(statement)")
                             } label: {
                                 Label("Edit", systemImage: "pencil")
                             }
                             .tint(.blue) // Example color for Edit
                         }
-                    }
-                } // End ScrollView
+                        // Removed redundant closing brace for ForEach if it was here by mistake
+                    } // End ForEach
+                } // End LazyVStack
+            } // End ScrollView
                 
                 Spacer()
                 ProgressButton(progress: Double(index + 1) / Double(data.personalCode.count)) {
@@ -87,19 +91,30 @@ public struct AlignView: View {
             }
         }
         .onAppear { index = 0 }
-        .alert("Confirm Delete", isPresented: $showingDeleteConfirmAlert, presenting: itemIndexToDelete) { indexToDelete in
+        .alert("Confirm Delete", isPresented: $showingDeleteConfirmAlert, presenting: itemIndexToDelete) { indexToDeleteInAlert in // Renamed to avoid conflict
             Button("Delete", role: .destructive) {
-                data.personalCode.remove(at: indexToDelete)
-                // Adjust current index if necessary
-                if self.index >= data.personalCode.count && !data.personalCode.isEmpty {
-                    self.index = data.personalCode.count - 1
-                } else if data.personalCode.isEmpty {
-                    self.index = 0 // Reset or handle empty state
+                if data.personalCode.indices.contains(indexToDeleteInAlert) { // Check if index is valid
+                    let statementToDelete = data.personalCode[indexToDeleteInAlert]
+                    data.personalCode.remove(at: indexToDeleteInAlert)
+                    // Adjust current index if necessary - this logic might need to be removed or rethought
+                    // if self.index >= data.personalCode.count && !data.personalCode.isEmpty {
+                    //     self.index = data.personalCode.count - 1
+                    // } else if data.personalCode.isEmpty {
+                    //     self.index = 0 // Reset or handle empty state
+                    // }
+                    print("Deleted: \(statementToDelete)")
+                } else {
+                    print("Error: Index out of bounds or item already deleted.")
                 }
             }
             Button("Cancel", role: .cancel) { }
-        } message: { indexToDelete in
-            Text("Are you sure you want to delete this statement: \"\(data.personalCode[indexToDelete])\"?")
+        } message: { indexToDeleteInAlertMessage in // Renamed to avoid conflict
+            // Ensure index is valid before trying to access the element for the message
+            if data.personalCode.indices.contains(indexToDeleteInAlertMessage) {
+                Text("Are you sure you want to delete this statement: \"\(data.personalCode[indexToDeleteInAlertMessage])\"?")
+            } else {
+                Text("Are you sure you want to delete this statement?") // Fallback message
+            }
         }
     }
 
