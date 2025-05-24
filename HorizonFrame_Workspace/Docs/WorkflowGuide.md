@@ -30,16 +30,27 @@ Welcome to the HorizonFrame project! This guide outlines our collaborative devel
     *   **Purpose:** A chronological, detailed log of each development session. This is where the nitty-gritty details are recorded: specific decisions, problems encountered, solutions, rationale, code snippets discussed, memories created, etc.
     *   **Workflow:** Cascade will help append a summary to this file at the end of each session. This log can be referenced from `DailyBriefing.md` for context on past work.
 
-4.  **`Docs/MetaPrompts/DailyStart_LLMPrompt.md` (AI's Morning Instructions)**
+4.  **`Docs/Architecture.md` (System Blueprint)**
+    *   **Purpose:** Describes the high-level architecture of the HorizonFrame application, its layers, components, and data flow.
+    *   **Workflow:** This document should be updated whenever significant architectural changes are made (e.g., adding a new major component, changing data flow significantly, adopting a new core technology). Cascade will prompt the USER to consider updating this document if such changes are detected or discussed during a session.
+
+5.  **`Docs/MetaPrompts/DailyStart_LLMPrompt.md` (AI's Morning Instructions)**
     *   **Purpose:** Contains the initial instructions for Cascade at the beginning of each new session.
     *   **Workflow:** The USER will provide this prompt to Cascade. It guides Cascade to review `DailyBriefing.md` and `Roadmap.md`, offer brainstorming, and understand the day's objectives. It also includes instructions for Cascade to help maintain the documentation system (e.g., updating `Roadmap.md` task statuses).
 
-5.  **`README.md` (Project Overview)**
+6.  **`README.md` (Project Overview)**
     *   **Purpose:** Provides a high-level introduction to the HorizonFrame project.
     *   **Content:** Includes a link to this `WorkflowGuide.md` for easy access to our process documentation.
 
-6.  **This Document (`Docs/WorkflowGuide.md`)**
+7.  **This Document (`Docs/WorkflowGuide.md`)**
     *   **Purpose:** Your central reference for understanding how our collaborative meta-process works. If you're unsure about the workflow, start here.
+
+## AI-Assisted Documentation During Sessions
+
+Beyond the end-of-session `DevLog.md` updates, Cascade plays a role in maintaining documentation *during* the session:
+
+*   **`Docs/Roadmap.md` Updates:** As tasks from the roadmap are completed or their status changes, Cascade will assist in marking them accordingly (e.g., `- [ ]` to `- [x]`).
+*   **`Docs/Architecture.md` Updates:** If discussions or code changes imply a significant shift in the application's architecture, Cascade will remind the USER to update `Docs/Architecture.md` and can assist in drafting the changes.
 
 ## Daily Startup Procedure for the USER
 

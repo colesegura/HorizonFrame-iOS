@@ -16,21 +16,6 @@ The app assists you in:
 
 ---
 
-## Quick Start (Local Build Instructions)
-
-| Step | Action                                                                 |
-| :--- | :--------------------------------------------------------------------- |
-| 1    | Clone the repository. You can use the command line: `git clone https://github.com/<your-username>/HorizonFrame-iOS.git`, or use GitHub Desktop: File > Clone Repository. |
-| 2    | Navigate to the project directory. You can open it via command line: `cd HorizonFrame-iOS && open Horizon-Frame.xcodeproj`, or locate and open `Horizon-Frame.xcodeproj` through your file explorer or GitHub Desktop (Repository > Open in Finder, then open the .xcodeproj). |
-| 3    | In Xcode's toolbar, select the **Scheme** named *Horizon-Frame*.       |
-| 4    | Run the app on an iOS 18 (or newer) simulator or a physical device (`⌘R`). |
-| 5    | On first launch, the app will request permission for notifications; please accept. |
-
-> **Minimum Requirements:** Xcode 16.2 • iOS 18.0 Software Development Kit (SDK)
-> **Bundle Identifier:** `com.colesegura.HorizonFrame` (This is the unique ID for the app)
-
----
-
 ## Current Status — May 2025
 
 -   The project structure has been reorganized into `HorizonFrame_Workspace`, and documentation is now managed using an integrated Obsidian-based system.
@@ -86,7 +71,10 @@ Welcome to the team! Here’s how you can contribute:
 
 1.  **Get Set Up:** Start by reading the `Docs/Onboarding.md` guide. It will walk you through setting up your development environment (this should take about 20 minutes).
 2.  **Find a Task:**
-    *   Check our **Todoist board (look for the "Current Sprint" section)** for available tasks. Pick one that interests you and assign it to yourself. (Note: The role of Todoist in our workflow is currently under review; please also consult `Docs/DailyBriefing.md` for immediate tasks and `Docs/Roadmap.md` for longer-term goals.)
+    *   **Primary Task Sources:**
+        *   For **immediate daily tasks**, refer to the "Key Tasks for This Session" section in `Docs/DailyBriefing.md`.
+        *   For **longer-term features, epics, and planned improvements**, consult `Docs/Roadmap.md`.
+    *   (Todoist may be used as a personal scratchpad, but `DailyBriefing.md` and `Roadmap.md` are the official sources for project tasks.)
 3.  **Coding and Committing Your Work:**
     *   Always create a new branch for your changes. This keeps the main codebase stable.
     *   Save your work frequently by making commits. Use clear and descriptive commit messages (e.g., `feat: implement user profile screen`, `fix: resolve issue with data saving`, `docs: clarify setup instructions`).
@@ -99,7 +87,7 @@ Welcome to the team! Here’s how you can contribute:
     *   When your feature or bug fix is complete and you've tested it, submit a Pull Request (PR) on GitHub.
     *   Another developer (or an AI assistant like me) will review your code. Once it's approved, your changes will be merged into the main project.
 
-Our detailed coding style guide and rules for naming branches are located in `Docs/CodeStyle.md`. (If this file doesn't exist yet, these guidelines will be added there soon.)
+Our detailed coding style guide and rules for naming branches are located in `Docs/CodeStyle.md`.
 
 ---
 

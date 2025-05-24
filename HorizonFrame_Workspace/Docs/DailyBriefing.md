@@ -61,7 +61,7 @@
 
 *   **Key Architectural Overview:** [Docs/Architecture.md](./Architecture.md)
 *   **Detailed Daily Log:** [Docs/DevLog.md](./DevLog.md)
-*   **Task Management (if used):** `Docs/TASKS.md` (currently not formalized but mentioned in README)
+*   **Task Management:** Primary task tracking is done in this document (`DailyBriefing.md` for daily tasks) and in `Docs/Roadmap.md` (for long-term goals).
 *   **Code Style & Contribution:** See `README.md` and `Docs/CodeStyle.md` (if it exists).
 *   **User Preferences:** Documentation should be emoji-free, accessible, use "Automated Doc Refresher." (Memory ID: 5de9c30b-ac36-48df-ba4c-13a7f5034109)
 
