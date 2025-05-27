@@ -7,57 +7,84 @@ struct FrameConfig: Identifiable {
     var cornerSize: CGFloat
     var lineWidth: CGFloat
     var delay: Double
-    var initialScale: CGFloat = 0.3 // Start smaller
-    var initialOpacity: Double = 0.0 // Start invisible
+    var initialScale: CGFloat = 0.3
+    var initialOpacity: Double = 0.0
+}
+
+// Placeholder for your main content view - replace with your actual AlignPage
+struct AlignPageViewPlaceholder: View {
+    var body: some View {
+        ZStack {
+            Color.purple.opacity(0.7).edgesIgnoringSafeArea(.all) // Example background
+            Text("Align Page Content")
+                .font(.system(size: 30, weight: .bold))
+                .foregroundColor(.white)
+        }
+    }
 }
 
 struct KineticFramesLaunchView: View {
-    // Define configurations for each frame
-    // These are examples, adjust as needed for your design
     let frameConfigs: [FrameConfig] = [
-        FrameConfig(initialOffset: CGSize(width: -UIScreen.main.bounds.width / 2, height: 0), finalSize: 300, cornerSize: 75, lineWidth: 8, delay: 0.1),
-        FrameConfig(initialOffset: CGSize(width: UIScreen.main.bounds.width / 2, height: 0), finalSize: 220, cornerSize: 55, lineWidth: 7, delay: 0.2),
-        FrameConfig(initialOffset: CGSize(width: 0, height: -UIScreen.main.bounds.height / 2), finalSize: 150, cornerSize: 37, lineWidth: 6, delay: 0.3),
-        FrameConfig(initialOffset: CGSize(width: 0, height: UIScreen.main.bounds.height / 2), finalSize: 90, cornerSize: 22, lineWidth: 5, delay: 0.4),
-        FrameConfig(initialOffset: .zero, finalSize: 50, cornerSize: 12, lineWidth: 4, delay: 0.5, initialScale: 0.1) // Innermost starts very small
+        FrameConfig(initialOffset: CGSize(width: -UIScreen.main.bounds.width / 1.5, height: 0), finalSize: 320, cornerSize: 80, lineWidth: 9, delay: 0.0, initialScale: 0.2, initialOpacity: 0),
+        FrameConfig(initialOffset: CGSize(width: UIScreen.main.bounds.width / 1.5, height: 0), finalSize: 240, cornerSize: 60, lineWidth: 8, delay: 0.1, initialScale: 0.2, initialOpacity: 0),
+        FrameConfig(initialOffset: CGSize(width: 0, height: -UIScreen.main.bounds.height / 1.5), finalSize: 170, cornerSize: 42, lineWidth: 7, delay: 0.2, initialScale: 0.2, initialOpacity: 0),
+        FrameConfig(initialOffset: CGSize(width: 0, height: UIScreen.main.bounds.height / 1.5), finalSize: 110, cornerSize: 27, lineWidth: 6, delay: 0.3, initialScale: 0.2, initialOpacity: 0),
+        FrameConfig(initialOffset: .zero, finalSize: 60, cornerSize: 15, lineWidth: 5, delay: 0.4, initialScale: 0.1, initialOpacity: 0)
     ]
 
-    @State private var hasAnimated = false
-    @State private var showMainContent = false // To transition after animation
+    @State private var framesHaveAnimatedIn = false
+    @State private var overallZoomScale: CGFloat = 1.0
+    @State private var framesGroupOpacity: Double = 1.0
+    @State private var showMainContent = false
+
+    // Durations and timing
+    let individualFrameAnimationDuration: Double = 0.8 // Spring response for each frame
+    let timeUntilLastFrameSettles: Double
+    let zoomAnimationDuration: Double = 0.7
+    let finalTransitionDuration: Double = 0.5
+
+    init() {
+        let maxDelay = frameConfigs.max(by: { $0.delay < $1.delay })?.delay ?? 0.0
+        self.timeUntilLastFrameSettles = maxDelay + individualFrameAnimationDuration
+    }
 
     var body: some View {
         ZStack {
             Color.black.edgesIgnoringSafeArea(.all)
 
+            // Group for all kinetic frames, this group will be scaled and faded
             ZStack {
                 ForEach(frameConfigs) { config in
-                    AnimatedFrameView(config: config, hasAnimated: $hasAnimated)
+                    AnimatedFrameView(config: config, 
+                                      triggerAnimation: $framesHaveAnimatedIn, 
+                                      animationDuration: individualFrameAnimationDuration)
                 }
             }
-            .onAppear {
-                if !hasAnimated {
-                    // Stagger the overall animation start slightly if needed, then trigger individual frames
-                    // For this setup, individual delays handle staggering.
-                    hasAnimated = true
-                    
-                    // After animation, transition to main content
-                    // Adjust timing based on longest animation + delay
-                    DispatchQueue.main.asyncAfter(deadline: .now() + (frameConfigs.last?.delay ?? 0.5) + 1.0) { // 1.0s is animation duration
-                        withAnimation {
-                            // This is where you'd transition to your main app view
-                            // For now, we'll just toggle a flag for demonstration
-                            showMainContent = true 
-                        }
+            .scaleEffect(overallZoomScale)
+            .opacity(framesGroupOpacity)
+
+            if showMainContent {
+                AlignPageViewPlaceholder() // Replace with your actual AlignPage view
+                    .transition(.opacity.animation(.easeInOut(duration: finalTransitionDuration)))
+            }
+        }
+        .onAppear {
+            if !framesHaveAnimatedIn {
+                // 1. Trigger individual frame animations
+                framesHaveAnimatedIn = true
+
+                // 2. Schedule the zoom animation after frames are in place
+                DispatchQueue.main.asyncAfter(deadline: .now() + timeUntilLastFrameSettles) {
+                    withAnimation(.easeInOut(duration: zoomAnimationDuration)) {
+                        overallZoomScale = 15.0 // Zoom in significantly
+                        framesGroupOpacity = 0.0  // Fade out frames as we zoom past
+                    }
+
+                    // 3. Schedule showing main content after zoom completes
+                    DispatchQueue.main.asyncAfter(deadline: .now() + zoomAnimationDuration - (finalTransitionDuration * 0.7) ) { // Start transition slightly before zoom fully ends
+                        showMainContent = true
                     }
                 }
-            }
-            
-            // Placeholder for main content after animation
-            if showMainContent {
-                Text("Main App Content")
-                    .font(.largeTitle)
-                    .foregroundColor(.white)
-                    .transition(.opacity.animation(.easeInOut(duration: 0.5)))
             }
         }
     }
@@ -65,16 +92,17 @@ struct KineticFramesLaunchView: View {
 
 struct AnimatedFrameView: View {
     let config: FrameConfig
-    @Binding var hasAnimated: Bool
+    @Binding var triggerAnimation: Bool
+    let animationDuration: Double
 
     @State private var currentOffset: CGSize
     @State private var currentScale: CGFloat
     @State private var currentOpacity: Double
 
-    init(config: FrameConfig, hasAnimated: Binding<Bool>) {
+    init(config: FrameConfig, triggerAnimation: Binding<Bool>, animationDuration: Double) {
         self.config = config
-        self._hasAnimated = hasAnimated
-        // Initialize state based on whether animation has run or initial values
+        self._triggerAnimation = triggerAnimation
+        self.animationDuration = animationDuration
         _currentOffset = State(initialValue: config.initialOffset)
         _currentScale = State(initialValue: config.initialScale)
         _currentOpacity = State(initialValue: config.initialOpacity)
@@ -90,9 +118,9 @@ struct AnimatedFrameView: View {
         .scaleEffect(currentScale)
         .offset(currentOffset)
         .opacity(currentOpacity)
-        .onChange(of: hasAnimated) { newValue in
+        .onChange(of: triggerAnimation) { newValue in
             if newValue {
-                withAnimation(.spring(response: 0.8, dampingFraction: 0.7).delay(config.delay)) {
+                withAnimation(.spring(response: animationDuration, dampingFraction: 0.7).delay(config.delay)) {
                     currentOffset = .zero
                     currentScale = 1.0
                     currentOpacity = 1.0
