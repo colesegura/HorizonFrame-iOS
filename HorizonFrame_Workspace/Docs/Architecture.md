@@ -1,6 +1,68 @@
+# NeuroPaths Architecture (Version 0.1 - Initial Concept)
+
+_Last updated: 2025-05-27_
+
+---
+
+**Core Concept:**
+NeuroPaths guides users through a process of identifying, acknowledging, and reframing emotions to "complete an emotional circuit." Progress is visualized as a personal "Neural Constellation" that grows and evolves with each completed circuit and reflection.
+
+**1. High-Level Diagram (Conceptual - To Be Detailed)**
+
+```
+┌─────────────────────────────── App Layer (SwiftUI) ────────────────────────────────┐
+│  EmotionInputView   CircuitGuidanceView   ConstellationView   JournalView  SettingsView │
+│                                           ▼                                         │
+│                     ViewModels (Manage Data for Views)                              │
+│   EmotionInputVM   CircuitGuidanceVM   ConstellationVM   JournalVM   SettingsVM     │
+└─────────────────────────────────────────────▲──────────────────────────────────────┘
+                                              │
+                               ———————————————––
+                               |    Shared Services Layer    |
+                               |–––––––––––––––––––––––|
+                               | • AppData (Stores app data: emotions, circuits, constellation nodes, user settings) |
+                               | • ConstellationEngine (Manages logic for constellation generation & evolution) |
+                               | • PersistenceService (Defines how data will be saved - likely SwiftData) |
+                               ———————————————––
+                                              │
+┌─────────────────────────────┴─────────────────────────────┐
+│                             System Frameworks                                     │
+│   Foundation · Combine · SwiftUI · SwiftData (once adopted) · (Potentially graphics frameworks for constellation) │
+└───────────────────────────────────────────────────────────┘
+```
+
+**2. Key Modules and Their Responsibilities (Initial Thoughts)**
+
+| Module / Class          | Directory (Tentative)                      | Responsibility                                                                                                                               |
+| :---------------------- | :----------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------- |
+| **AppData**             | `ViewModels/AppData.swift`                 | Stores user's emotional entries, completed circuits, constellation data (nodes, connections), and user preferences. Will sync with PersistenceService. |
+| **ConstellationEngine** | `Services/ConstellationEngine.swift`       | Contains the logic for generating and updating the visual representation of the user's Neural Constellation based on their logged data.        |
+| **EmotionInputView**    | `Views/EmotionInput/EmotionInputView.swift`| Allows users to select or input current emotions and initial thoughts/sensations.                                                            |
+| **CircuitGuidanceView** | `Views/CircuitGuidance/CircuitGuidanceView.swift`| Guides the user through the steps of acknowledging, processing, and reframing the selected emotion to complete the circuit.                   |
+| **ConstellationView**   | `Views/Constellation/ConstellationView.swift`| Displays the user's personal Neural Constellation. This will be a dynamic and evolving visualization.                                       |
+| **JournalView**         | `Views/Journal/JournalView.swift`          | Allows users to review past entries, completed circuits, and reflections, perhaps with insights into patterns.                               |
+
+**3. Core Data Model (Conceptual)**
+
+*   **EmotionalEntry:** `id`, `timestamp`, `initialEmotion`, `intensity`, `situationDescription`, `physicalSensations`, `initialThoughts`.
+*   **CompletedCircuit:** `id`, `emotionalEntryID`, `reframedEmotion`, `newPerspective`, `affirmation`, `timestamp`.
+*   **ConstellationNode:** `id`, `type (e.g., emotion, insight, completed_circuit)`, `timestamp`, `associatedDataID`, `visualProperties (position, color, size)`.
+*   **ConstellationConnection:** `id`, `fromNodeID`, `toNodeID`, `strength`, `type`.
+
+**Persistence:**
+*   Will use **SwiftData** for robust local storage.
+
+---
+<br>
+
+---
+**ARCHIVED DOCUMENTATION BELOW**
+_The following architecture details pertain to the previous "HorizonFrame" app concept. It is preserved here for reference in case a reversion is needed. The project has pivoted to "NeuroPaths" as of 2025-05-27._
+---
+<br>
 ### Living Technical Specification
 
-# HorizonFrame Architecture (Version 0.1)
+# ARCHIVED: HorizonFrame Architecture (Version 0.1 - Pre-NeuroPaths Pivot)
 
 _Last updated: 2025-05-24_
 
@@ -18,13 +80,13 @@ This diagram shows the main parts of the application and how they connect.
 │         AlignVM         CollectVM         SettingsVM                                │
 └─────────────────────────────────────────────▲──────────────────────────────────────┘
                                               │
-                               ———————————————––
-                               |    Shared Services Layer    |
-                               |–––––––––––––––––––––––|
-                               | • AppData (Stores app data temporarily and saves some to disk) |
-                               | • NotificationService (Handles app notifications) |
-                               | • Persistence protocol (Defines how data will be saved permanently - future SwiftData) |
-                               ———————————————––
+                                ———————————————––
+                                |    Shared Services Layer    |
+                                |–––––––––––––––––––––––|
+                                | • AppData (Stores app data temporarily and saves some to disk) |
+                                | • NotificationService (Handles app notifications) |
+                                | • Persistence protocol (Defines how data will be saved permanently - future SwiftData) |
+                                ———————————————––
                                               │
 ┌─────────────────────────────┴─────────────────────────────┐
 │                             System Frameworks                                     │
