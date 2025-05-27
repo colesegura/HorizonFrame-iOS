@@ -1,24 +1,26 @@
-# HorizonFrame – iOS
+# NeuroPaths – Chart Your Inner Cosmos
 
-> *A daily “alignment” journal that helps you review your personal goals and insights, guiding you toward living more intentionally.*
+> *Rewire your emotional responses and visualize your journey of transformation as a unique Neural Constellation.*
 
 ---
 
-## Why HorizonFrame?
+## Why NeuroPaths?
 
-Most habit-tracking apps focus on what you *do*. HorizonFrame centers on *who you aspire to be*.
-The app assists you in:
+Traditional well-being apps often focus on tracking habits or moods. NeuroPaths takes a deeper approach, guiding you through the science-backed process of **rewiring your brain's emotional circuits.**
 
-1.  **Crafting a Personal Code:** Define short, impactful statements that capture your intended way of living.
-2.  **Daily Reflection:** Engage in a quick, one-minute "alignment" session each morning, cycling through your personal code statements and logging your engagement.
-3.  **Collecting Insights:** Store meaningful quotes, personal revelations, or lessons learned in an "Insight Bank." The app will then send these back to you as reminders through spaced notifications.
-4.  **Tracking Progress:** (Coming soon) View your consistency and statistics related to your mindset alignment.
+The app empowers you to:
+
+1.  **Identify & Acknowledge Emotions:** Recognize and name the emotions you're experiencing without judgment.
+2.  **Complete the Emotional Circuit:** Engage in a guided practice to process and reframe these emotions, effectively neutralizing unhelpful patterns and fostering new, positive neural pathways. This is based on the principles of neuroplasticity.
+3.  **Visualize Your Growth:** As you log your completed emotional circuits and reflections, watch your personal **Neural Constellation** grow and evolve. Each completed circuit adds a new "star" or connection, creating a beautiful and dynamic map of your inner transformation.
+4.  **Cultivate Emotional Intelligence:** Develop a deeper understanding of your emotional landscape and build resilience.
 
 ---
 
 ## Current Status — May 2025
 
--   The project structure has been reorganized into `HorizonFrame_Workspace`, and documentation is now managed using an integrated Obsidian-based system.
+*   **Major Pivot:** The project has pivoted to **NeuroPaths**, focusing on emotional circuit reframing and neural constellation visualization.
+*   The project structure remains `HorizonFrame_Workspace` (pending rename to reflect NeuroPaths), and documentation is managed using an integrated Obsidian-based system.
 
 *(This section is updated when major project milestones change)*
 
@@ -65,7 +67,7 @@ Currently, the project uses only Apple's native frameworks, making it easier for
 
 ---
 
-## Contributing to HorizonFrame
+## Contributing to NeuroPaths
 
 Welcome to the team! Here’s how you can contribute:
 

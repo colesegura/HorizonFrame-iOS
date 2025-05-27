@@ -1,3 +1,27 @@
+### 2025-05-27
+
+**Session Focus: Major App Concept Pivot & Documentation Overhaul**
+
+**Key Activities & Decisions:**
+*   **Major Pivot:** Shifted the core concept of the HorizonFrame app. The new direction is an app tentatively named **NeuroPaths**, with the theme **"Neural Constellation."**
+    *   **Purpose:** Guide users through a neurological reframing practice to acknowledge, neutralize, and transform emotional states by "completing an emotional circuit."
+    *   **Visualization:** User progress and neural changes will be visualized as a growing, personal cosmic constellation.
+*   **Documentation Overhaul (to reflect pivot while preserving old content for potential reversion):**
+    *   **`Docs/UI_Theme_Exploration.md`:** Archived previous themes and added "NeuroPaths: Neural Constellation" as the primary theme, detailing its concept, color palette, iconography, and page-specific ideas.
+    *   **`Docs/Roadmap.md`:** Archived the previous roadmap and created a new one for NeuroPaths, outlining initial MVP sprints (v0.1.0) focusing on core logging and basic constellation visualization, and future versions (v0.2.0, v0.3.0) for immersive features, tracking, and personalization.
+    *   **`Docs/MarketingStrategy.md`:** Archived the previous strategy and developed a new one for NeuroPaths, focusing on its unique value proposition (rewiring reality, charting inner cosmos), target audience (mental wellness, neuroplasticity focus), content pillars (constellation growth, science of rewiring), and relevant hashtags.
+*   **User Request:** Ensure all documentation changes allow for easy reversion to the previous "HorizonFrame" concept if this new direction is not pursued long-term. This was achieved by clearly marking new sections and archiving old content within the same documents.
+
+**Problems or Questions (Issues):**
+*   None directly related to the pivot itself. The main challenge will be the significant shift in development focus and feature set.
+
+**What's Next (Next Steps):**
+*   Begin implementation of the NeuroPaths MVP (v0.1.0) as outlined in the new roadmap, starting with Sprint 0.1.1 (Project Setup, Core Data Model, Emotion Selection UI, Guided Circuit Completion UI, Basic Data Logging).
+*   Update `README.md` to reflect the new app name, concept, and high-level goals.
+*   Review and update other relevant documentation (e.g., `Docs/Architecture.md`, `Docs/Decisions.md`) as the new concept solidifies.
+
+---
+
 ### 2025-05-24
 
 **What We Did (Completed):**

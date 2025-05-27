@@ -1,10 +1,56 @@
-# HorizonFrame UI Theme Exploration Report
+# HorizonFrame UI Theme and Concept Exploration
 
-This document explores potential UI themes for the HorizonFrame application, considering aesthetics, user experience, and marketability on short-form video platforms.
+This document outlines the UI theme and core concept for the HorizonFrame application, now envisioned as **NeuroPaths**. The primary focus is on guiding users through a neurological reframing practice, visualized through the "Neural Constellation" theme.
 
-## Introduction
+Previous UI theme explorations for a different app concept are archived below for reference.
 
-The current theme is minimalist (black on grey). This exploration aims to provide diverse alternatives.
+## Current Core Concept & Theme: NeuroPaths - "Neural Constellation"
+
+*   **App Purpose:** Guide users through a specific practice to acknowledge, reframe, and neutralize challenging emotions (and reinforce positive ones) by "completing the circuit." The app aims to help users understand they can make neurological changes and visualize this progress.
+*   **Core Practice:**
+    1.  Acknowledge a feeling (e.g., cynicism, fear, joy).
+    2.  State aloud: "I am feeling [Emotion] because I choose to believe I need to/must."
+    3.  This process helps neutralize negative vibrations and strengthen positive ones by completing an emotional/neurological circuit.
+*   **Theme Concept & Vibe: "Neural Constellation"**
+    *   The brain's neural network and the user's emotional processing journey are visualized as a beautiful, personal cosmic constellation.
+    *   Evokes wonder, interconnectedness, growth, and the vast potential within the user's mind.
+    *   Aims for a serene, inspiring, and slightly mystical yet grounded feel.
+*   **Color Palette & Typography:**
+    *   **Palette:** Deep cosmic blues, purples, and blacks for backgrounds. Glowing, vibrant accent colors (e.g., electric cyan, ethereal magenta, starlight gold, aurora green) for neural pathways, nodes (emotions), and interactive elements. Emphasis on light and luminosity against darkness.
+    *   **Typography:** Clean, modern, and slightly humanist sans-serif fonts. Headings might have a subtle glow or a lighter weight to feel airy. Body text must be highly legible (e.g., SF Pro, Inter, Nunito Sans).
+*   **Iconography & Visual Elements:**
+    *   **Neural Pathways:** Animated, glowing lines representing connections. These form and strengthen with each completed circuit.
+    *   **Emotion Nodes:** Each logged emotion/circuit could be a star or a small nebula in the constellation. Different categories of emotions could have different colors or subtle shapes.
+    *   **Constellation Growth:** The user's personal constellation becomes more intricate and vibrant over time, reflecting their progress.
+    *   **Animations:** Smooth, flowing animations for circuit completion, node highlighting, and navigating the constellation. Particle effects for stardust or energy flows.
+    *   Icons should be minimalist, perhaps slightly abstract or geometric, with a gentle glow.
+*   **Page-Specific Mockup Ideas:**
+    *   **Launch/Home:** Opens directly to the user's personal Neural Constellation, perhaps with a prompt to "Log an Experience" or "Tend to a Feeling."
+    *   **Logging Flow (Circuit Completion Guide):**
+        1.  User selects/inputs a feeling (from a preset list or custom entry).
+        2.  App guides them through the verbal affirmation process with clear, calm prompts.
+        3.  Upon completion, a beautiful animation shows a new neural pathway lighting up or an existing one strengthening within their constellation.
+    *   **Neural Map (Progress Page - could be named "My Inner Cosmos", "Constellation View", "Neural Atlas"):**
+        *   An interactive, navigable 3D or 2.5D view of their personal constellation.
+        *   Users can tap on nodes/pathways to see details (date, emotion, reflections).
+        *   Filters to view patterns (e.g., most worked-on emotions, recent activity).
+        *   Shows overall growth and complexity.
+    *   **Encouragement/Insights:** After logging, provide encouraging messages related to neuroplasticity and the positive impact of their practice. Perhaps unlock new visual elements or brighter glows for their constellation as they progress.
+*   **Feature/Layout Changes (New App Direction):**
+    *   Core feature is the guided circuit completion practice.
+    *   Progress is visualized through the evolving constellation.
+    *   Emphasis on logging both challenging and positive emotions.
+*   **Short-Form Video Appeal:**
+    *   The evolving, glowing constellation is highly visual and shareable – perfect for satisfying progress videos.
+    *   Animations of neural pathways forming would be captivating.
+    *   Themes of mental wellness, personal growth, and "rewiring your brain" are popular.
+
+---
+## PREVIOUS THEME EXPLORATION (Archived 2025-05-27)
+
+*(The following themes were explored for a previous app concept focused on personal code and insight collection.)*
+
+## Theme 1: "Zenith Serenity"
 
 ## Theme 1: "Zenith Serenity"
 

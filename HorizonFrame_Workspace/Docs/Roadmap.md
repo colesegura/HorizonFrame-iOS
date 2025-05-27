@@ -1,6 +1,98 @@
-# HorizonFrame Project Roadmap
+# NeuroPaths Project Roadmap (Concept: Neural Constellation)
 
-This document outlines planned features and improvements for HorizonFrame. It is a living document and will be updated as priorities evolve.
+This document outlines planned features and improvements for the **NeuroPaths** application. It is a living document and will be updated as priorities evolve. The app's core purpose is to guide users through a neurological reframing practice, visualizing progress as a personal "Neural Constellation."
+
+## Version 0.1.0: Minimum Viable Product (MVP) - Neural Constellation Core
+
+*Goal: Implement the core circuit completion practice and initial constellation visualization.* 
+
+### Sprint 0.1.1: Foundation & Logging
+
+- [ ] **Project Setup & Renaming:**
+    - [ ] Rename project/target from "HorizonFrame" to "NeuroPaths" (or chosen final name).
+    - [ ] Update bundle identifiers, display names, etc.
+- [ ] **Core Data Model:**
+    - [ ] Define data structures for storing logged emotional experiences (emotion type, custom text, timestamp, affirmation used, completion status).
+    - [ ] Choose and implement a local data storage solution (e.g., SwiftData, Core Data, Realm).
+- [ ] **Emotion Selection UI:**
+    - [ ] Design and implement a UI for users to select or input the emotion they are experiencing (e.g., categorized list, wheel, text input with suggestions).
+    - [ ] Include a predefined list of common positive and negative emotions.
+- [ ] **Guided Circuit Completion UI:**
+    - [ ] Create a view sequence that guides the user through the verbal affirmation process: "I am feeling [Emotion] because I choose to believe I need to/must."
+    - [ ] Allow users to mark the circuit as complete.
+- [ ] **Basic Data Logging:**
+    - [ ] Save the logged experience (emotion, timestamp, completion) to local storage.
+
+### Sprint 0.1.2: Initial Constellation Visualization
+
+- [ ] **Basic Constellation View:**
+    - [ ] Create a 2D view that represents logged experiences as simple nodes (stars/dots) on a dark background.
+    - [ ] Each completed circuit adds a new node.
+    - [ ] Basic animation for a new node appearing.
+- [ ] **Launch Screen & App Icon:**
+    - [ ] Design and implement a new launch screen reflecting the "Neural Constellation" theme.
+    - [ ] Design and implement a new app icon.
+- [ ] **Basic Navigation:**
+    - [ ] Simple navigation between the logging flow and the constellation view.
+
+### Sprint 0.1.3: Enhancing the Constellation & Feedback
+
+- [ ] **Visual Differentiation of Nodes:**
+    - [ ] Vary color/size/glow of nodes based on emotion type (positive/negative) or category.
+- [ ] **Basic Neural Pathway Animation:**
+    - [ ] When a circuit is completed, animate a simple line connecting the new node to a central point or a previous related node (rudimentary pathway).
+- [ ] **Encouragement Messages:**
+    - [ ] Display a positive, encouraging message after a circuit is completed.
+- [ ] **Settings:**
+    - [ ] Basic settings page (e.g., option to clear all data with confirmation).
+
+## Version 0.2.0: Immersive Constellation & Tracking
+
+*Goal: Make the constellation more interactive and visually rich, introduce progress tracking.* 
+
+- [ ] **Interactive Constellation:**
+    - [ ] Allow users to pan/zoom the constellation view.
+    - [ ] Tap on a node to see details (date, emotion).
+- [ ] **Advanced Neural Pathway Visualization:**
+    - [ ] More sophisticated animations for pathway formation (e.g., glowing energy flow).
+    - [ ] Pathways strengthen or brighten with repeated engagement with similar emotions.
+- [ ] **"My Inner Cosmos" / Progress Page:**
+    - [ ] Dedicated page showing statistics (e.g., total circuits completed, streaks of daily practice, breakdown by emotion type).
+    - [ ] Visual representation of overall constellation growth/complexity.
+- [ ] **Custom Emotion Input:**
+    - [ ] Allow users to add custom emotion labels if not in the predefined list.
+- [ ] **Refined UI/UX:**
+    - [ ] Polish animations, transitions, and overall visual appeal based on the "Neural Constellation" theme.
+    - [ ] Haptic feedback for key interactions.
+
+## Version 0.3.0: Personalization & Deeper Insights
+
+*Goal: Allow more user customization and provide deeper insights into their patterns.*
+
+- [ ] **Constellation Themes/Customization:**
+    - [ ] Offer different color palettes or visual styles for the constellation (e.g., different nebula backgrounds, pathway styles).
+- [ ] **Reflection/Journaling:**
+    - [ ] Option to add a brief note or reflection to each logged experience.
+- [ ] **Pattern Recognition & Insights:**
+    - [ ] Simple analytics to highlight patterns (e.g., "You've focused on reframing 'anxiety' 5 times this week. Great job!").
+- [ ] **Reminder Notifications:**
+    - [ ] Option to set gentle reminders to engage with the practice.
+
+## Future Considerations (Post 0.3.0)
+
+- [ ] **Advanced 3D Constellation:** Explore a fully 3D interactive environment.
+- [ ] **Guided Meditations/Sessions:** Integrate audio guides for the practice.
+- [ ] **Community/Sharing (Optional & Privacy-Focused):** Allow users to share anonymized constellation images or progress.
+- [ ] **iCloud Sync & Backup.**
+- [ ] **Wearable Integration (e.g., Apple Watch prompts/logging).**
+- [ ] **Accessibility Enhancements (VoiceOver, dynamic type, etc.).**
+
+---
+## PREVIOUS ROADMAP (Archived 2025-05-27)
+
+*(The following roadmap was for a previous app concept: HorizonFrame, focused on personal code and insight collection.)*
+
+## Version 0.2.0: Core Feature Enhancements
 
 ## Version 0.2.0: Core Feature Enhancements
 
