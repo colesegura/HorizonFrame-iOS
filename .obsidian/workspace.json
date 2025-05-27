@@ -172,6 +172,9 @@
   },
   "active": "6fe13d4674c18625",
   "lastOpenFiles": [
+    "HorizonFrame_Workspace/Horizon-Frame/KineticFramesLaunchView.swift",
+    "HorizonFrame_Workspace/Horizon-Frame/KineticFrameView.swift",
+    "HorizonFrame_Workspace/Horizon-Frame/FrameCornerView.swift",
     "HorizonFrame_Workspace/HF_Logo.png",
     "HorizonFrame_Workspace/Screenshot 2025-05-27 at 10.11.30 AM.png",
     "HorizonFrame_Workspace/Docs/MarketingStrategy.md",
@@ -198,8 +201,6 @@
     "10-19 Academics/18 S25/18.301 CS 301/Assignments/Assignment 2",
     "10-19 Academics/18 S25/18.300 CS 300/13.300.1 Exams/Exam 4",
     "10-19 Academics/18 S25/18.301 CS 301/Writing Assignment 2",
-    "10-19 Academics/18 S25/18.301 CS 301/Writing Assignment 1",
-    "10-19 Academics/18 S25/18.301 CS 301/Miscellaneous Files",
     "HorizonFrame_Workspace/Docs/MetaPrompts/DailyStart_LLMPrompt.md",
     "HorizonFrame_Workspace/Docs/MetaPrompts/DailyFinish_LLMPrompt.md",
     "HorizonFrame_Workspace/Docs/Architecture.md",
@@ -226,7 +227,6 @@
     "00-09 Meta & System/00 Active Files/Crimson Entrepreneurship Academy/62 - HorizonFrame/63 SolSync/61.8 Charts/50k_Budget/50k_budget_chart5.png",
     "00-09 Meta & System/00 Active Files/Crimson Entrepreneurship Academy/62 - HorizonFrame/63 SolSync/61.8 Charts/50k_Budget/50k_budget_chart4.png",
     "00-09 Meta & System/00 Active Files/Crimson Entrepreneurship Academy/62 - HorizonFrame/63 SolSync/61.8 Charts/50k_Budget/50k_budget_chart6.png",
-    "00-09 Meta & System/00 Active Files/Crimson Entrepreneurship Academy/62 - HorizonFrame/SpendingBreakdown.png",
-    "00-09 Meta & System/00 Active Files/Crimson Entrepreneurship Academy/62 - HorizonFrame/MonthlyExpenseChart.png"
+    "00-09 Meta & System/00 Active Files/Crimson Entrepreneurship Academy/62 - HorizonFrame/SpendingBreakdown.png"
   ]
 }

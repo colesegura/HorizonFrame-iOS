@@ -119,13 +119,76 @@ Reasoning: SwiftData will make it easier to change our data structure over time 
 
 ## **8. Technical Contributing Workflow (How Developers Add Code)**
 1.  Create a **feature branch** from the `main` branch for your work.
-2.  Write your code. If your changes affect the app's architecture, **update this document**.
 3.  Run tests using `⌘U` in Xcode.
 4.  Submit a Pull Request (PR) on GitHub. Your PR should be "squash merged" (combining all your commits into one) once approved.
 
 ---
 
-_Keep this document up-to-date:_ Whenever you introduce a new service, change how a module works, or add a new library, please update the relevant sections here. This document will help new team members (and AI assistants!) quickly understand how HorizonFrame is built.
+_Keep this document up-to-date:_ Whenever you introduce a new service, change how a module works, or add a new library, please update the relevant sections here. *(This document will evolve as the project grows.)*
+
+## Core UI Animations
+
+### Kinetic Frames Launch Animation
+
+This animation is envisioned as the initial visual experience when the app launches, directly tying into the "HorizonFrame" branding.
+
+**Concept:**
+
+A series of 4-5 concentric, hollow square frames animate into place on a black background. Each frame is composed of four L-shaped white corner brackets, giving the appearance of a square with the middle section of each side missing. The frames slide in from off-screen (or scale/fade in) to create a satisfying "tunnel forming" or "framing" effect.
+
+**Implementation Approach (SwiftUI):**
+
+1.  **Frame Bracket View (`FrameCornerView.swift` - Suggestion):**
+    *   Create a reusable SwiftUI `View` that draws a single L-shaped corner bracket.
+    *   This could be done using a `Path` or by combining two `Rectangle` views.
+    *   Parameters: `size` (for the length of the arms), `lineWidth`, `color`.
+
+2.  **Single Kinetic Frame View (`KineticFrameView.swift` - Suggestion):**
+    *   This view will compose one complete frame from four `FrameCornerView` instances.
+    *   Parameters: `frameSize` (overall size of the square), `cornerSize` (size of the L-bracket arms), `lineWidth`, `color`.
+    *   Use a `ZStack` or absolute positioning to place the four corners correctly.
+    *   Add state variables for animation properties: `offset`, `scale`, `opacity`.
+
+3.  **Launch Animation Container View (`KineticFramesLaunchView.swift`):**
+    *   This view will manage and animate multiple `KineticFrameView` instances.
+    *   Use a `ZStack` to layer the frames.
+    *   Create an array of structs/objects to define the properties of each frame (e.g., final size, animation delay, initial off-screen position).
+    *   **Animation Trigger:** Use `.onAppear` to trigger the animations.
+    *   **Animation Logic:**
+        *   For each `KineticFrameView`:
+            *   **Initial State:** Positioned off-screen (e.g., `offset(x: -geometry.size.width)`) or scaled down (`scaleEffect(0.1)`) and transparent (`opacity(0)`).
+            *   **Animation:** Use `withAnimation` to animate changes to `offset`, `scale`, and `opacity`.
+            *   Apply different `delay()` modifiers to each frame to stagger their entrance.
+            *   Use `easeInOut` or a custom spring animation for a smooth, satisfying feel.
+        *   Example for one frame sliding from left:
+            ```swift
+            @State private var frameOffset: CGSize = CGSize(width: -UIScreen.main.bounds.width, height: 0)
+            // ...
+            KineticFrameView(...)
+                .offset(frameOffset)
+                .onAppear {
+                    withAnimation(.easeInOut(duration: 0.8).delay(0.2)) {
+                        frameOffset = .zero
+                    }
+                }
+            ```
+    *   **Completion:** After the animation completes, this view could transition to the main app content.
+
+**Key SwiftUI Concepts:**
+
+*   `@State` variables to drive animations.
+*   `ZStack` for layering.
+*   `.offset()`, `.scaleEffect()`, `.opacity()` modifiers.
+*   `withAnimation { ... }` block.
+*   `.delay()` animation modifier.
+*   `Path` for custom shapes (for the L-brackets).
+*   `GeometryReader` if precise positioning relative to screen size is needed for initial off-screen placement.
+
+**Considerations:**
+
+*   **Performance:** For a small number of frames (4-5), performance should be good. If many more were added, consider drawing optimizations.
+*   **Customization:** The animation can be varied by changing initial positions (e.g., corners slide in diagonally, frames scale up from the center), durations, and delays.
+*   **Haptics:** Consider adding subtle haptic feedback as frames "lock" into place.
 
 ---
 

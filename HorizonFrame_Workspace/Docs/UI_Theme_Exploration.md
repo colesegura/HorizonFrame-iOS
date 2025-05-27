@@ -140,4 +140,27 @@ The current theme is minimalist (black on grey). This exploration aims to provid
     *   Could create a "synesthetic" experience (visuals responding to implied sound/interaction).
     *   "Tune into your thoughts" or "Amplify your intentions" themes.
 
+## Theme 7: "Kinetic Frames"
+
+*   **Concept & Vibe:** Directly inspired by the "HorizonFrame" name and the user's vision. A minimalist, modern, and slightly abstract theme focusing on the visual motif of concentric, hollow square frames creating a tunnel or perspective effect. The core is a black background with white frame elements. Each frame corner is a distinct L-bracket shape, with the middle of each side of the square being open (matching the background). Animations, especially an initial launch sequence, are key to bringing this to life.
+*   **Color Palette & Typography:**
+    *   **Palette:** Primarily monochrome: black background (#000000), white (#FFFFFF) for the frame elements and primary text/icons. A single, subtle accent color could be introduced later if needed for specific interactive states, but the core is black and white.
+    *   **Typography:** Extremely clean, geometric sans-serif fonts (e.g., SF Pro, Inter, Montserrat) to match the minimalist and modern aesthetic.
+*   **Iconography & Visual Elements:**
+    *   Icons should be minimalist, line-based, and white to match the frames.
+    *   The primary visual elements are the frames themselves, constructed from L-bracket shapes at each corner. No other textures or complex imagery.
+*   **Page-Specific Mockup Ideas:**
+    *   **Opening Screen:** The signature animation: multiple (e.g., 4-5) concentric frames, each composed of four L-bracket shapes, animate from off-screen (or from a scaled-down/transparent state) to their final positions, creating a satisfying 'tunnel forming' effect.
+    *   **AlignView:** Personal code statements could be presented within a subtle, static version of the outermost frame, or the frames could subtly animate or pulse in the background. Text input fields and buttons would be clean white elements.
+    *   **CollectView:** Insights might be represented as simple white text entries, perhaps with a subtle pulse animation when newly added. The "Deposit Insight" button would be a clear, white interactive element.
+    *   **SettingsView:** Clean white text and simple white toggle switches against the black background.
+*   **Feature/Layout Changes:**
+    *   The opening animation is a distinct new feature.
+    *   The UI across other views would be very sparse and focused, letting the content (text) be the primary focus within the "frame" concept.
+    *   Consider subtle parallax effects with the frame layers on scroll in list views.
+*   **Short-Form Video Appeal:**
+    *   The opening animation itself is perfect for a captivating hook in Reels/TikToks – very satisfying and visually unique.
+    *   The stark black and white contrast is visually striking and modern.
+    *   Content could focus on "satisfying animation," "minimalist app aesthetic," or "framing your thoughts."
+
 *(More themes to be added based on discussion)*
