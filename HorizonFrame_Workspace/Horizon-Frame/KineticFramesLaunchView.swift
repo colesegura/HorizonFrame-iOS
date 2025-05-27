@@ -11,18 +11,6 @@ struct FrameConfig: Identifiable {
     var initialOpacity: Double = 0.0
 }
 
-// Placeholder for your main content view - replace with your actual AlignPage
-struct AlignPageViewPlaceholder: View {
-    var body: some View {
-        ZStack {
-            Color.purple.opacity(0.7).edgesIgnoringSafeArea(.all) // Example background
-            Text("Align Page Content")
-                .font(.system(size: 30, weight: .bold))
-                .foregroundColor(.white)
-        }
-    }
-}
-
 struct KineticFramesLaunchView: View {
     let frameConfigs: [FrameConfig] = [
         FrameConfig(initialOffset: CGSize(width: -UIScreen.main.bounds.width / 1.5, height: 0), finalSize: 320, cornerSize: 80, lineWidth: 9, delay: 0.0, initialScale: 0.2, initialOpacity: 0),
@@ -64,7 +52,7 @@ struct KineticFramesLaunchView: View {
             .opacity(framesGroupOpacity)
 
             if showMainContent {
-                AlignPageViewPlaceholder() // Replace with your actual AlignPage view
+                ContentView() // Transition to the main app content
                     .transition(.opacity.animation(.easeInOut(duration: finalTransitionDuration)))
             }
         }
