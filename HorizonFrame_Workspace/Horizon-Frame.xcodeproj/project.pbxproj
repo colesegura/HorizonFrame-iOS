@@ -38,6 +38,7 @@
 				HorizonFrameApp.swift,
 				KineticFramesLaunchView.swift,
 				KineticFrameView.swift,
+				LaunchScreen.storyboard,
 				Models/Insights.swift,
 				"Preview Content/Preview Assets.xcassets",
 				Services/NotificationService.swift,
