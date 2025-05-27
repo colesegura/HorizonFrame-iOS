@@ -64,12 +64,12 @@ struct KineticFramesLaunchView: View {
                 // 2. Schedule the zoom animation after frames are in place
                 DispatchQueue.main.asyncAfter(deadline: .now() + timeUntilLastFrameSettles) {
                     withAnimation(.easeInOut(duration: zoomAnimationDuration)) {
-                        overallZoomScale = 15.0 // Zoom in significantly
+                        overallZoomScale = 25.0 // Zoom in significantly more
                         framesGroupOpacity = 0.0  // Fade out frames as we zoom past
                     }
 
                     // 3. Schedule showing main content after zoom completes
-                    DispatchQueue.main.asyncAfter(deadline: .now() + zoomAnimationDuration - (finalTransitionDuration * 0.7) ) { // Start transition slightly before zoom fully ends
+                    DispatchQueue.main.asyncAfter(deadline: .now() + zoomAnimationDuration - (finalTransitionDuration * 0.5) ) { // Start transition a bit later, closer to zoom end
                         showMainContent = true
                     }
                 }
