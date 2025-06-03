@@ -4,7 +4,7 @@ public struct AlignView: View {
     @EnvironmentObject private var data: AppData
     @State private var index = 0
     @State private var hasOnboarded = UserDefaults.standard.bool(forKey: "alignOnboarded")
-    @State private var newCodeStatement: String = ""
+    // @State private var newCodeStatement: String = "" // Removed as the input field is removed
     @State private var showingDeleteConfirmAlert: Bool = false
     @State private var itemIndexToDelete: Int? = nil
 
@@ -16,29 +16,12 @@ public struct AlignView: View {
                         .font(.footnote).foregroundColor(.white.opacity(0.6))
                     Spacer() // Keep spacer to push date to the left
                 }
-                Spacer().frame(height: 20)
-                HStack {
-                    TextField("Craft a new intention...", text: $newCodeStatement, axis: .vertical)
-                        .textFieldStyle(.plain)
-                        .foregroundColor(.white)
-                        .padding(EdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12))
-                        .background(Color.white.opacity(0.1))
-                        .cornerRadius(8)
-                        .lineLimit(1...3) // Allow a few lines for the text field
-                    
-                    Button {
-                        if !newCodeStatement.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-                            data.personalCode.append(newCodeStatement.trimmingCharacters(in: .whitespacesAndNewlines))
-                            newCodeStatement = "" // Clear the field
-                        }
-                    } label: {
-                        Image(systemName: "plus.circle.fill")
-                            .foregroundColor(newCodeStatement.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? .gray.opacity(0.5) : .white)
-                            .imageScale(.large)
-                    }
-                    .disabled(newCodeStatement.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
-                }
-                .padding(.bottom, 5) // Add a little space below the add field
+                Text("Good morning.")
+                    .font(.title)
+                    .foregroundColor(.white)
+                    .padding(.bottom, 5)
+                // Spacer().frame(height: 20) // Adjusted spacing
+                // The section for adding new intentions has been removed.
 
                 ScrollView {
                     LazyVStack(spacing: 0) { // Added LazyVStack, spacing can be adjusted
