@@ -63,7 +63,7 @@ The app empowers you to:
 
 We follow a structured, collaborative workflow designed for clarity and efficiency, especially when working with AI assistants. This process helps us manage tasks, track progress, and maintain clear communication.
 
-**For a detailed explanation of our day-to-day process, roles of key documents (`DailyBriefing.md`, `Roadmap.md`, `DevLog.md`), and how to get started each day, please see our [Development Workflow Guide](Docs/WorkflowGuide.md).**
+**For a detailed explanation of our day-to-day process, roles of key documents (`DailyBriefing.md`, `Roadmap.md`, `DevLog.md`), and how to get started each day, please see our [Development Workflow Guide](WorkflowGuide.md).**
 
 ---
 

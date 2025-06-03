@@ -32,7 +32,7 @@ The unique identifier for this application is `com.colesegura.HorizonFrame`.
 
 Once you have the project running:
 
-1.  Familiarize yourself with our **[Development Workflow Guide](../Docs/WorkflowGuide.md)** to understand our day-to-day processes.
+1.  Familiarize yourself with our **[Development Workflow Guide](WorkflowGuide.md)** to understand our day-to-day processes.
 2.  Check `Docs/DailyBriefing.md` for current tasks or `Docs/Roadmap.md` for longer-term goals.
 
 Happy coding!

@@ -7,7 +7,7 @@
 ## 1. Overall Project Goal & Current Focus
 
 *   **Project Goal:** To develop "NeuroPaths," an app that helps users understand and rewire their emotional responses by guiding them through an "emotional circuit completion" practice, visualized as a growing "Neural Constellation."
-*   **Current Sprint/Phase Goal:** Begin development of the NeuroPaths MVP (v0.1.0) as outlined in the [Docs/Roadmap.md#neuropaths---neural-constellation-roadmap-v01---initial-concept](./Roadmap.md#neuropaths---neural-constellation-roadmap-v01---initial-concept). The immediate focus is on Sprint 1: Core Emotion Logging & Basic Circuit.
+*   **Current Sprint/Phase Goal:** Begin development of the NeuroPaths MVP (v0.1.0) as outlined in the [Docs/Roadmap.md#neuropaths---neural-constellation-roadmap-v01---initial-concept](Roadmap.md#neuropaths---neural-constellation-roadmap-v01---initial-concept). The immediate focus is on Sprint 1: Core Emotion Logging & Basic Circuit.
 
 ---
 
@@ -59,10 +59,10 @@
 
 ## 4. Important Pointers & Reminders
 
-*   **Key Architectural Overview (NeuroPaths):** [Docs/Architecture.md#neuropaths-architecture-version-01---initial-concept](./Architecture.md#neuropaths-architecture-version-01---initial-concept)
-*   **NeuroPaths Roadmap:** [Docs/Roadmap.md#neuropaths---neural-constellation-roadmap-v01---initial-concept](./Roadmap.md#neuropaths---neural-constellation-roadmap-v01---initial-concept)
+*   **Key Architectural Overview (NeuroPaths):** [Docs/Architecture.md#neuropaths-architecture-version-01---initial-concept](Architecture.md#neuropaths-architecture-version-01---initial-concept)
+*   **NeuroPaths Roadmap:** [Docs/Roadmap.md#neuropaths---neural-constellation-roadmap-v01---initial-concept](Roadmap.md#neuropaths---neural-constellation-roadmap-v01---initial-concept)
 *   **UI Theme Guide:** [Docs/UI_Theme_Exploration.md](./UI_Theme_Exploration.md)
-*   **Detailed Daily Log:** [Docs/DevLog.md](./DevLog.md)
+*   **Detailed Daily Log:** [Docs/DevLog.md](DevLog.md)
 *   **User Preferences (from previous project context - VERIFY RELEVANCE):** Documentation should be emoji-free, accessible, use "Automated Doc Refresher." (Memory ID: 5de9c30b-ac36-48df-ba4c-13a7f5034109) - *Consider if a new memory for NeuroPaths context is needed.*
 
 ---
