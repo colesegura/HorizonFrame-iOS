@@ -23,23 +23,23 @@ public struct SettingsView: View {
                     }
             }
 
-            Section(header: Text("Data").font(.headline).foregroundColor(.cyan)) { // Style header
+            Section {
                 Button("Export JSON (Coming soon)") { /* Action placeholder */ }
                     .foregroundColor(.white) // Style button text
                     .listRowBackground(Color.black.opacity(0.6))
+
                 Button("Clear all data", role: .destructive) {
                     data.personalCode.removeAll()
                     data.insights.removeAll()
                 }
-                .foregroundColor(.magenta) // Style destructive button text with Tron accent
+                .foregroundColor(Color(UIColor.magenta)) // Style destructive button text with Tron accent
                 .listRowBackground(Color.black.opacity(0.6))
-            }
+            } header: { Text("Data").font(.headline).foregroundColor(.cyan) }
 
             Section {
                 Text("Version 0.1.1")
                     .listRowBackground(Color.black.opacity(0.6))
                     .font(.footnote).foregroundColor(.white.opacity(0.7))
-            }
             }
             .scrollContentBackground(.hidden) // Ensure form background is transparent
         }
