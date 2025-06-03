@@ -57,6 +57,7 @@ public struct CollectView: View {
                         .background(Color.white.opacity(0.05))
                         .cornerRadius(8)
                     }
+                    .animation(.default, value: data.personalCode) // Applied to ForEach
 
                     // Add new Personal Code statement - styled like AlignView but darker
                     HStack {
@@ -93,8 +94,11 @@ public struct CollectView: View {
                             .onSubmit {
                                 submitInsight()
                             }
-                        Button("Deposit") {
+                        Button(action: {
                             submitInsight()
+                        }) {
+                            Text("Deposit")
+                                .foregroundColor(.black) // Ensure label is visible on white button
                         }
                         .tint(.white)
                         .buttonStyle(.borderedProminent)
@@ -103,9 +107,10 @@ public struct CollectView: View {
 
                     ForEach(data.insights) { insight in
                         HStack {
-                            Text("“\(insight.text)”")
+                            Text(insight.text)
                                 .padding()
                                 .frame(maxWidth: .infinity, alignment: .leading)
+                                .foregroundColor(.white) // Ensure text is visible
                             
                             Button(action: {
                                 if let index = data.insights.firstIndex(where: { $0.id == insight.id }) {
@@ -118,13 +123,9 @@ public struct CollectView: View {
                                     .padding(.trailing)
                             }
                         }
-                        .background(
-                            RoundedRectangle(cornerRadius: 12)
-                                .fill(Color.black)
-                                .stroke(Color.white.opacity(0.3))
-                        )
-                        .foregroundColor(.white)
+                        // Removed background bubble for insights
                     }
+                    .animation(.default, value: data.insights) // Applied to ForEach
                 }
                 .padding()
             }
