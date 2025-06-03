@@ -1,3 +1,26 @@
+### 2025-05-27
+
+**Session Focus: Major App Concept Pivot & Documentation Overhaul**
+
+**Key Activities & Decisions:**
+*   **Major Pivot:** Shifted the core concept of the HorizonFrame app. The new direction is an app tentatively named **NeuroPaths**, with the theme **"Neural Constellation."**
+    *   **Purpose:** Guide users through a neurological reframing practice to acknowledge, neutralize, and transform emotional states by "completing an emotional circuit."
+    *   **Visualization:** User progress and neural changes will be visualized as a growing, personal cosmic constellation.
+*   **Documentation Overhaul (to reflect pivot while preserving old content for potential reversion):**
+    *   **`Docs/UI_Theme_Exploration.md`:** Archived previous themes and added "NeuroPaths: Neural Constellation" as the primary theme, detailing its concept, color palette, iconography, and page-specific ideas.
+    *   **`Docs/Roadmap.md`:** Archived the previous roadmap and created a new one for NeuroPaths, outlining initial MVP sprints (v0.1.0) focusing on core logging and basic constellation visualization, and future versions (v0.2.0, v0.3.0) for immersive features, tracking, and personalization.
+    *   **`Docs/MarketingStrategy.md`:** Archived the previous strategy and developed a new one for NeuroPaths, focusing on its unique value proposition (rewiring reality, charting inner cosmos), target audience (mental wellness, neuroplasticity focus), content pillars (constellation growth, science of rewiring), and relevant hashtags.
+*   **User Request:** Ensure all documentation changes allow for easy reversion to the previous "HorizonFrame" concept if this new direction is not pursued long-term. This was achieved by clearly marking new sections and archiving old content within the same documents.
+
+**Problems or Questions (Issues):**
+*   None directly related to the pivot itself. The main challenge will be the significant shift in development focus and feature set.
+
+**What's Next (Next Steps):**
+*   Begin implementation of the NeuroPaths MVP (v0.1.0) as outlined in the new roadmap, starting with Sprint 0.1.1 (Project Setup, Core Data Model, Emotion Selection UI, Guided Circuit Completion UI, Basic Data Logging).
+*   Update `README.md` to reflect the new app name, concept, and high-level goals.
+*   Review and update other relevant documentation (e.g., `Docs/Architecture.md`, `Docs/Decisions.md`) as the new concept solidifies.
+
+---
 # NeuroPaths Marketing Strategy (Concept: Neural Constellation)
 
 This document outlines a preliminary marketing strategy for **NeuroPaths**, an app designed to help users rewire their brains through a guided emotional circuit completion practice, visualized as a personal "Neural Constellation." The strategy focuses on leveraging short-form video platforms like Instagram Reels and TikTok.
@@ -63,67 +86,3 @@ This document outlines a preliminary marketing strategy for **NeuroPaths**, an a
 *   Session Length & Frequency of Use (engagement with the core practice).
 *   Social Media Engagement & Reach.
 *   User Reviews & Ratings.
-
----
-## PREVIOUS STRATEGY (Archived 2025-05-27)
-
-*(The following marketing strategy was for a previous app concept: HorizonFrame.)*
-
-## 1. Target Audience
-
-## 1. Target Audience
-
-*   **Primary:** Young adults (18-35) interested in personal growth, mindfulness, productivity, journaling, and self-reflection. Active on Instagram and TikTok. Value aesthetics and authentic content.
-*   **Secondary:** Individuals of any age seeking tools for intentional living, goal setting, and mental clarity. May discover the app through broader wellness communities.
-
-## 2. Core App Messaging & Value Proposition
-
-*   **Tagline (Example):** "HorizonFrame: Align Your Day, Design Your Life."
-*   **Value Proposition:** HorizonFrame helps you live more intentionally by providing a simple yet powerful space to connect with your personal principles (Personal Code) and capture meaningful insights. It's your daily partner for clarity and purposeful action.
-*   **Key Themes:** Intentionality, Mindfulness, Personal Growth, Clarity, Focus, Self-Discovery.
-
-## 3. Content Pillars for Instagram Reels & TikTok
-
-*   **A. "Intentional Living Snippets":**
-    *   Short, aesthetically pleasing videos showcasing the app in use (e.g., crafting a personal code statement, depositing an insight).
-    *   Focus on the calming/satisfying user experience.
-    *   Use trending audio or calming background music.
-*   **B. "Mindfulness Prompts & Tips":**
-    *   Text-based videos or voiceovers offering prompts for reflection (e.g., "What's one small step you can take today towards your biggest goal?").
-    *   Connect these prompts back to how HorizonFrame can help capture those thoughts.
-*   **C. "Behind the Frame" (Founder/Dev Journey - Optional but Authentic):
-    *   Sharing the 'why' behind the app.
-    *   Quick updates on new features (if done engagingly).
-    *   Builds community and trust.
-*   **D. "User Stories & Transformations" (Future - once users exist):
-    *   Showcasing (with permission) how users benefit from the app.
-*   **E. "Aesthetic App Tours":**
-    *   Visually driven tours of the app's different themes (once developed) and key features, set to engaging music.
-
-## 4. Key Hashtag Strategy
-
-*   **Core App Hashtags:** #HorizonFrameApp #AlignYourDay #IntentionalLiving
-*   **Topic-Based Hashtags:** #Mindfulness #Journaling #PersonalGrowth #SelfReflection #ProductivityHacks #GoalSetting #MentalWellness #TechForGood
-*   **Platform-Specific:** #TikTokMadeMeTryIt #InstagramReels #AppLaunch
-
-## 5. Call to Actions (CTAs)
-
-*   "Download HorizonFrame today! (Link in bio)"
-*   "Start your journey to intentional living with HorizonFrame."
-*   "What's your Personal Code? Discover it with HorizonFrame."
-*   "Join our community of intentional thinkers!"
-
-## 6. Potential Influencer Collaboration Ideas
-
-*   Partner with micro-influencers in the wellness, productivity, or mindfulness niches.
-*   Focus on authentic reviews and integrations rather than just paid posts.
-*   Seek creators whose audience aligns with the target demographic and who value aesthetic content.
-
-## 7. Metrics for Success (Initial Thoughts)
-
-*   App Store Downloads
-*   Social Media Engagement (likes, comments, shares, saves)
-*   Website Traffic (if applicable)
-*   User Retention Rate (longer-term)
-
-*(This strategy is a starting point and should be iterated upon based on performance and feedback.)*
