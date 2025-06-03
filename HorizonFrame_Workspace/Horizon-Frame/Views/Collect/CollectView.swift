@@ -2,6 +2,7 @@ import SwiftUI
 import UniformTypeIdentifiers
 
 public struct CollectView: View {
+    // TODO: Consider if onAppear is needed to reset focus or keyboard state for TextFields
     @EnvironmentObject private var data: AppData
     @State private var newInsight = ""
     @State private var hasOnboarded = UserDefaults.standard.bool(forKey: "collectOnboarded")
@@ -28,12 +29,14 @@ public struct CollectView: View {
 
     public var body: some View {
         ZStack {
+            TronGridBackground().ignoresSafeArea()
+
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
 
                     // Personal code editable
                     Text("Personal Code")
-                        .font(.title2).bold().foregroundColor(.white)
+                        .font(.title2).bold().foregroundColor(.cyan)
                     
                     // Display Personal Code items like in AlignView
                     ForEach(data.personalCode.indices, id: \.self) { index in
@@ -54,56 +57,109 @@ public struct CollectView: View {
                             }
                         }
                         .padding(.horizontal)
-                        .background(Color.white.opacity(0.05))
-                        .cornerRadius(8)
+                        .padding(.vertical, 8) // Added vertical padding for consistency
+                        .background(
+                            RoundedRectangle(cornerRadius: 12)
+                                .fill(Color.black.opacity(0.5))
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 12)
+                                        .stroke(Color.cyan, lineWidth: 1)
+                                )
+                        )
                     }
                     .animation(.default, value: data.personalCode) // Applied to ForEach
 
-                    // Add new Personal Code statement - styled like AlignView but darker
-                    HStack {
-                        TextField("Add new personal code...", text: $newPersonalCodeStatementCollectView, axis: .vertical)
-                            .textFieldStyle(.plain)
+                    // Add new Personal Code statement
+                    VStack(alignment: .leading, spacing: 8) { // Changed to VStack for label and field
+                        Text("Craft New Code Statement")
+                            .font(.caption.weight(.semibold))
+                            .foregroundColor(.cyan.opacity(0.8))
+                        TextField("Type your new personal code here...", text: $newPersonalCodeStatementCollectView, axis: .vertical)
+                            .font(.system(size: 16, weight: .medium, design: .rounded))
                             .foregroundColor(.white)
-                            .padding(EdgeInsets(top: 8, leading: 12, bottom: 8, trailing: 12))
-                            .background(Color.white.opacity(0.05)) // Darker than AlignView's 0.1
-                            .cornerRadius(8)
-                            .lineLimit(1...3)
-                        
-                        Button {
+                            .textFieldStyle(.plain)
+                            .lineLimit(1...5) // Increased line limit
+                            .padding(EdgeInsets(top: 10, leading: 12, bottom: 10, trailing: 12))
+                            .background(
+                                RoundedRectangle(cornerRadius: 12)
+                                    .fill(Color.black.opacity(0.5))
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 12)
+                                            .stroke(Color.cyan, lineWidth: 1)
+                                    )
+                            )
+                    }
+                    Button {
                             let trimmedStatement = newPersonalCodeStatementCollectView.trimmingCharacters(in: .whitespacesAndNewlines)
                             if !trimmedStatement.isEmpty {
                                 data.personalCode.append(trimmedStatement)
                                 newPersonalCodeStatementCollectView = "" // Clear the field
                             }
                         } label: {
-                            Image(systemName: "plus.circle.fill")
-                                .foregroundColor(newPersonalCodeStatementCollectView.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? .gray.opacity(0.5) : .white)
-                                .imageScale(.large)
+                            Label("Deposit Code", systemImage: "arrow.down.to.line.compact")
+                                .font(.headline)
+                                .foregroundColor(.white)
+                                .padding(.horizontal, 18)
+                                .padding(.vertical, 10)
+                                .frame(maxWidth: .infinity)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 12)
+                                        .fill(Color.cyan.opacity(newPersonalCodeStatementCollectView.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? 0.1 : 0.25))
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 12)
+                                                .stroke(Color.cyan, lineWidth: 1.5)
+                                        )
+                                )
                         }
                         .disabled(newPersonalCodeStatementCollectView.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
-                    }
-                    .padding(.top, 5) // Add some space above the add field
+                        .padding(.top, 10) // Add some space above the add field
 
                     // Insight collection
                     Text("Insight Collection")
-                        .font(.title2).bold().foregroundColor(.white)
-                    VStack(spacing: 12) {
-                        TextField("Deposit your next insight…", text: $newInsight)
-                            .textFieldStyle(.roundedBorder)
+                        .font(.title2).bold().foregroundColor(.cyan)
+                    VStack(alignment: .leading, spacing: 8) { // Changed to VStack for label and field
+                        Text("Capture New Insight")
+                            .font(.caption.weight(.semibold))
+                            .foregroundColor(.cyan.opacity(0.8))
+                        TextField("Type your new insight here...", text: $newInsight, axis: .vertical)
+                            .font(.system(size: 16, weight: .medium, design: .rounded))
+                            .foregroundColor(.white)
+                            .textFieldStyle(.plain)
+                            .lineLimit(1...5) // Increased line limit
+                            .padding(EdgeInsets(top: 10, leading: 12, bottom: 10, trailing: 12))
+                            .background(
+                                RoundedRectangle(cornerRadius: 12)
+                                    .fill(Color.black.opacity(0.5))
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 12)
+                                            .stroke(Color.cyan, lineWidth: 1)
+                                    )
+                            )
                             .submitLabel(.done)
                             .onSubmit {
                                 submitInsight()
                             }
-                        Button(action: {
+                    }
+                    Button(action: {
                             submitInsight()
                         }) {
-                            Text("Deposit")
-                                .foregroundColor(.black) // Ensure label is visible on white button
+                            Label("Deposit Insight", systemImage: "arrow.down.to.line.compact")
+                                .font(.headline)
+                                .foregroundColor(.white)
+                                .padding(.horizontal, 18)
+                                .padding(.vertical, 10)
+                                .frame(maxWidth: .infinity)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 12)
+                                        .fill(Color.cyan.opacity(newInsight.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? 0.1 : 0.25))
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 12)
+                                                .stroke(Color.cyan, lineWidth: 1.5)
+                                        )
+                                )
                         }
-                        .tint(.white)
-                        .buttonStyle(.borderedProminent)
                         .disabled(newInsight.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
-                    }
+                        .padding(.top, 10)
 
                     ForEach(data.insights) { insight in
                         HStack {
@@ -123,7 +179,16 @@ public struct CollectView: View {
                                     .padding(.trailing)
                             }
                         }
-                        // Removed background bubble for insights
+                        .padding(.horizontal)
+                        .padding(.vertical, 8) // Added vertical padding for consistency
+                        .background(
+                            RoundedRectangle(cornerRadius: 12)
+                                .fill(Color.black.opacity(0.5))
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 12)
+                                        .stroke(Color.cyan, lineWidth: 1)
+                                )
+                        )
                     }
                     .animation(.default, value: data.insights) // Applied to ForEach
                 }
@@ -154,5 +219,6 @@ public struct CollectView: View {
                 .padding(.bottom, 20)
             }
         }
+        .preferredColorScheme(.dark)
     }
 }
