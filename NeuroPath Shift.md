@@ -1,3 +1,198 @@
+
+---
+
+## 2025-05-27: Pivot to "NeuroPaths - Neural Constellation" Concept
+
+**Decision:**
+The project will pivot from the "HorizonFrame" concept (a daily alignment journal) to a new concept named "NeuroPaths." The core theme will be "Neural Constellation."
+
+**Context & Problem:**
+The HorizonFrame concept, while sound, was perceived to have limited market differentiation and potential for viral engagement. A more compelling and visually unique direction was sought to align with current trends in mental wellness, neuroplasticity, and personalized digital experiences.
+
+**Alternatives Considered:**
+1.  **Continue with HorizonFrame:** Refine existing features and marketing.
+2.  **Minor Theme Adjustment for HorizonFrame:** Keep core functionality but explore different UI themes (e.g., "Zen Garden," "Mindful Explorer").
+3.  **Radical Pivot (Selected):** Develop a new core mechanic and theme (NeuroPaths).
+
+**Reasoning for Decision:**
+*   **Stronger Unique Value Proposition:** "NeuroPaths" offers a distinct approach by focusing on actively "rewiring" emotional responses and visualizing this internal journey as a personal "Neural Constellation." This is more tangible and engaging than a general alignment journal.
+*   **Visual Appeal & Marketability:** The "Neural Constellation" theme lends itself to stunning, shareable visuals, which is advantageous for marketing on platforms like Instagram and TikTok.
+*   **Alignment with Scientific Interest:** The concept taps into growing public interest in neuroplasticity and emotional intelligence.
+*   **User Engagement Potential:** The idea of building and evolving a personal constellation offers a compelling long-term engagement loop.
+
+**Consequences & Impact:**
+*   **Documentation Overhaul:** Significant updates required for `Roadmap.md`, `UI_Theme_Exploration.md`, `MarketingStrategy.md`, `README.md`, `Architecture.md`, and this `Decisions.md`. All previous documentation related to HorizonFrame will be archived within these documents for potential future reference.
+*   **Development Shift:** The development roadmap will be entirely revised to focus on NeuroPaths MVP features (emotion logging, guided circuit completion, basic constellation visualization).
+*   **Potential for Reversion:** The pivot is undertaken with the understanding that if the NeuroPaths concept does not prove viable, the team can revert to the archived HorizonFrame documentation and plans.
+
+**Stakeholders Notified:**
+*   N/A (Currently a solo project with AI assistance).
+
+---
+
+
+# NeuroPaths – Chart Your Inner Cosmos
+
+> *Rewire your emotional responses and visualize your journey of transformation as a unique Neural Constellation.*
+
+---
+
+## Why NeuroPaths?
+
+Traditional well-being apps often focus on tracking habits or moods. NeuroPaths takes a deeper approach, guiding you through the science-backed process of **rewiring your brain's emotional circuits.**
+
+The app empowers you to:
+
+1.  **Identify & Acknowledge Emotions:** Recognize and name the emotions you're experiencing without judgment.
+2.  **Complete the Emotional Circuit:** Engage in a guided practice to process and reframe these emotions, effectively neutralizing unhelpful patterns and fostering new, positive neural pathways. This is based on the principles of neuroplasticity.
+3.  **Visualize Your Growth:** As you log your completed emotional circuits and reflections, watch your personal **Neural Constellation** grow and evolve. Each completed circuit adds a new "star" or connection, creating a beautiful and dynamic map of your inner transformation.
+4.  **Cultivate Emotional Intelligence:** Develop a deeper understanding of your emotional landscape and build resilience.
+
+---
+
+## Current Status — May 2025
+
+*   **Major Pivot:** The project has pivoted to **NeuroPaths**, focusing on emotional circuit reframing and neural constellation visualization.
+*   The project structure remains `HorizonFrame_Workspace` (pending rename to reflect NeuroPaths), and documentation is managed using an integrated Obsidian-based system.
+
+*(This section is updated when major project milestones change)*
+
+---
+
+## Our Development Workflow
+
+We follow a structured, collaborative workflow designed for clarity and efficiency, especially when working with AI assistants. This process helps us manage tasks, track progress, and maintain clear communication.
+
+**For a detailed explanation of our day-to-day process, roles of key documents (`DailyBriefing.md`, `Roadmap.md`, `DevLog.md`), and how to get started each day, please see our [Development Workflow Guide](Docs/WorkflowGuide.md).**
+
+---
+
+## Repository Structure (High-Level Overview)
+
+```
+HorizonFrame-iOS/ (Workspace Root)
+├── Horizon-Frame/            – Main application source code and resources
+│   ├── Horizon-Frame.xcodeproj/  – The main Xcode project file
+│   ├── Models/               – Simple Swift data structures
+│   ├── ViewModels/           – Manages data for views (MVVM)
+│   ├── Views/                – SwiftUI files for UI (organized by feature)
+│   ├── Services/             – Handles tasks like notifications, data storage
+│   └── ... (other app-specific files like App.swift, Assets.xcassets)
+├── Docs/                     – Project documentation (Architecture, DevLog, etc.)
+├── Specs/                    – Specifications and requirements documents
+└── README.md                 – This file, providing a project overview
+```
+
+A detailed explanation of the app's layers, components, and future plans can be found in `Docs/Architecture.md`.
+
+---
+
+## Main Technologies Used
+
+| Technology          | Purpose                                                                 |
+| :------------------ | :---------------------------------------------------------------------- |
+| **SwiftUI**         | Apple's modern framework for building user interfaces (for iOS 18+).    |
+| **Combine**         | Apple's framework to manage how data changes and flows within the app.  |
+| **UserNotifications** | Handles sending local daily reminders from your Insight Bank.           |
+| **SwiftData** (planned) | A future replacement for `UserDefaults` for a more robust way to save app data. |
+
+Currently, the project uses only Apple's native frameworks, making it easier for new contributors to get started. We plan to use **Swift Package Manager (SPM)** for any future third-party libraries.
+
+---
+
+## Contributing to NeuroPaths
+
+Welcome to the team! Here’s how you can contribute:
+
+1.  **Get Set Up:** Start by reading the `Docs/Onboarding.md` guide. It will walk you through setting up your development environment (this should take about 20 minutes).
+2.  **Find a Task:**
+    *   **Primary Task Sources:**
+        *   For **immediate daily tasks**, refer to the "Key Tasks for This Session" section in `Docs/DailyBriefing.md`.
+        *   For **longer-term features, epics, and planned improvements**, consult `Docs/Roadmap.md`.
+    *   (Todoist may be used as a personal scratchpad, but `DailyBriefing.md` and `Roadmap.md` are the official sources for project tasks.)
+3.  **Coding and Committing Your Work:**
+    *   Always create a new branch for your changes. This keeps the main codebase stable.
+    *   Save your work frequently by making commits. Use clear and descriptive commit messages (e.g., `feat: implement user profile screen`, `fix: resolve issue with data saving`, `docs: clarify setup instructions`).
+4.  **Reporting Your Progress:**
+    *   Each day you contribute, please add a brief note to `Docs/DevLog.md` under the current date. Describe what you accomplished, any significant decisions you made, or any problems you encountered. This helps keep everyone informed.
+5.  **Keeping Documentation Up-to-Date (Automated Doc Refresher):**
+    *   We use an "Automated Doc Refresher" process. This system, often facilitated by an LLM assistant, ensures our key documentation (`DailyBriefing.md`, `DevLog.md`, `Architecture.md`, `README.md`) remains consistent with the latest code changes and project status. This up-to-date documentation is vital for effective daily handoffs and onboarding for all contributors.
+    *   If you make significant changes to the code (like adding a major new feature or altering how a core part of the app works), please also update `Docs/Architecture.md` as needed. The "Automated Doc Refresher" process includes support for incorporating daily progress into `DevLog.md` and preparing `DailyBriefing.md` for the next session.
+6.  **Submitting Your Changes (Pull Requests):**
+    *   When your feature or bug fix is complete and you've tested it, submit a Pull Request (PR) on GitHub.
+    *   Another developer (or an AI assistant like me) will review your code. Once it's approved, your changes will be merged into the main project.
+
+Our detailed coding style guide and rules for naming branches are located in `Docs/CodeStyle.md`.
+
+---
+
+## License
+
+_Proprietary © Cole Segura 2025 – please contact for permitted uses._
+
+# NeuroPaths Architecture (Version 0.1 - Initial Concept)
+
+_Last updated: 2025-05-27_
+
+---
+
+**Core Concept:**
+NeuroPaths guides users through a process of identifying, acknowledging, and reframing emotions to "complete an emotional circuit." Progress is visualized as a personal "Neural Constellation" that grows and evolves with each completed circuit and reflection.
+
+**1. High-Level Diagram (Conceptual - To Be Detailed)**
+
+```
+┌─────────────────────────────── App Layer (SwiftUI) ────────────────────────────────┐
+│  EmotionInputView   CircuitGuidanceView   ConstellationView   JournalView  SettingsView │
+│                                           ▼                                         │
+│                     ViewModels (Manage Data for Views)                              │
+│   EmotionInputVM   CircuitGuidanceVM   ConstellationVM   JournalVM   SettingsVM     │
+└─────────────────────────────────────────────▲──────────────────────────────────────┘
+                                              │
+                               ———————————————––
+                               |    Shared Services Layer    |
+                               |–––––––––––––––––––––––|
+                               | • AppData (Stores app data: emotions, circuits, constellation nodes, user settings) |
+                               | • ConstellationEngine (Manages logic for constellation generation & evolution) |
+                               | • PersistenceService (Defines how data will be saved - likely SwiftData) |
+                               ———————————————––
+                                              │
+┌─────────────────────────────┴─────────────────────────────┐
+│                             System Frameworks                                     │
+│   Foundation · Combine · SwiftUI · SwiftData (once adopted) · (Potentially graphics frameworks for constellation) │
+└───────────────────────────────────────────────────────────┘
+```
+
+**2. Key Modules and Their Responsibilities (Initial Thoughts)**
+
+| Module / Class          | Directory (Tentative)                      | Responsibility                                                                                                                               |
+| :---------------------- | :----------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------- |
+| **AppData**             | `ViewModels/AppData.swift`                 | Stores user's emotional entries, completed circuits, constellation data (nodes, connections), and user preferences. Will sync with PersistenceService. |
+| **ConstellationEngine** | `Services/ConstellationEngine.swift`       | Contains the logic for generating and updating the visual representation of the user's Neural Constellation based on their logged data.        |
+| **EmotionInputView**    | `Views/EmotionInput/EmotionInputView.swift`| Allows users to select or input current emotions and initial thoughts/sensations.                                                            |
+| **CircuitGuidanceView** | `Views/CircuitGuidance/CircuitGuidanceView.swift`| Guides the user through the steps of acknowledging, processing, and reframing the selected emotion to complete the circuit.                   |
+| **ConstellationView**   | `Views/Constellation/ConstellationView.swift`| Displays the user's personal Neural Constellation. This will be a dynamic and evolving visualization.                                       |
+| **JournalView**         | `Views/Journal/JournalView.swift`          | Allows users to review past entries, completed circuits, and reflections, perhaps with insights into patterns.                               |
+
+**3. Core Data Model (Conceptual)**
+
+*   **EmotionalEntry:** `id`, `timestamp`, `initialEmotion`, `intensity`, `situationDescription`, `physicalSensations`, `initialThoughts`.
+*   **CompletedCircuit:** `id`, `emotionalEntryID`, `reframedEmotion`, `newPerspective`, `affirmation`, `timestamp`.
+*   **ConstellationNode:** `id`, `type (e.g., emotion, insight, completed_circuit)`, `timestamp`, `associatedDataID`, `visualProperties (position, color, size)`.
+*   **ConstellationConnection:** `id`, `fromNodeID`, `toNodeID`, `strength`, `type`.
+
+**Persistence:**
+*   Will use **SwiftData** for robust local storage.
+
+---
+<br>
+
+---
+**ARCHIVED DOCUMENTATION BELOW**
+_The following architecture details pertain to the previous "HorizonFrame" app concept. It is preserved here for reference in case a reversion is needed. The project has pivoted to "NeuroPaths" as of 2025-05-27._
+---
+<br>
+### Living Technical Specification
 ### 2025-05-27
 
 **Session Focus: Major App Concept Pivot & Documentation Overhaul**
