@@ -1,10 +1,21 @@
 import SwiftUI
+import UniformTypeIdentifiers
 
 public struct CollectView: View {
     @EnvironmentObject private var data: AppData
     @State private var newInsight = ""
     @State private var hasOnboarded = UserDefaults.standard.bool(forKey: "collectOnboarded")
     @State private var newPersonalCodeStatementCollectView: String = ""
+    @State private var showingFeedback = false
+    @State private var feedbackMessage = ""
+    
+    private func showFeedback(_ message: String) {
+        feedbackMessage = message
+        showingFeedback = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            showingFeedback = false
+        }
+    }
 
     public var body: some View {
         ZStack {
@@ -16,12 +27,26 @@ public struct CollectView: View {
                         .font(.title2).bold().foregroundColor(.white)
                     
                     // Display Personal Code items like in AlignView
-                    ForEach(data.personalCode, id: \.self) { statement in
-                        Text(statement)
-                            .font(.title2)
-                            .foregroundColor(Color.white.opacity(0.8)) // Consistent with AlignView non-focused items
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(.vertical, 2) // Adjust padding as needed for spacing
+                    ForEach(data.personalCode.indices, id: \.self) { index in
+                        let statement = data.personalCode[index]
+                        HStack {
+                            Text(statement)
+                                .font(.title2)
+                                .foregroundColor(Color.white.opacity(0.8))
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(.vertical, 2)
+                            
+                            Button(action: {
+                                data.personalCode.remove(at: index)
+                                showFeedback("Personal code removed")
+                            }) {
+                                Image(systemName: "minus.circle.fill")
+                                    .foregroundColor(.red.opacity(0.8))
+                            }
+                        }
+                        .padding(.horizontal)
+                        .background(Color.white.opacity(0.05))
+                        .cornerRadius(8)
                     }
 
                     // Add new Personal Code statement - styled like AlignView but darker

@@ -39,7 +39,6 @@
 				KineticFramesLaunchView.swift,
 				KineticFrameView.swift,
 				LaunchScreen.storyboard,
-				Models/Insights.swift,
 				"Preview Content/Preview Assets.xcassets",
 				Services/NotificationService.swift,
 				ViewModels/AppData.swift,
