@@ -196,3 +196,4 @@ A series of 4-5 concentric, hollow square frames animate into place on a black b
 2.  Commit any changes to this document: `docs: update architecture for [your feature/change]`.
 3.  If you change a folder structure, class name, or technology choice, open `Docs/Architecture.md`, adjust the relevant line(s), and commit this change along with your code changes.
 4.  Update the **Current Status** line in the main `README.md` file whenever you complete a major milestone or start a new one.
+- [ ] Update bundle identifiers, display names, etc.

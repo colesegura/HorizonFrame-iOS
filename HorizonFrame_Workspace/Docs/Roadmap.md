@@ -1,15 +1,15 @@
-# NeuroPaths Project Roadmap (Concept: Neural Constellation)
+# HorizonFrame Project Roadmap
 
-This document outlines planned features and improvements for the **NeuroPaths** application. It is a living document and will be updated as priorities evolve. The app's core purpose is to guide users through a neurological reframing practice, visualizing progress as a personal "Neural Constellation."
+This document outlines planned features and improvements for the HorizonFrame application. It is a living document and will be updated as priorities evolve. The app's core purpose is to help users maintain and reflect on their personal code and insights.
 
-## Version 0.1.0: Minimum Viable Product (MVP) - Neural Constellation Core
+## Version 0.1.0: Core Feature Implementation
 
-*Goal: Implement the core circuit completion practice and initial constellation visualization.* 
+*Goal: Complete core functionality for personal code and insight management.*
 
 ### Sprint 0.1.1: Foundation & Logging
 
 - [ ] **Project Setup & Renaming:**
-    - [ ] Rename project/target from "HorizonFrame" to "NeuroPaths" (or chosen final name).
+    - [ ] Rename project/target from "HorizonFrame" to "HorizonFrame" (or chosen final name).
     - [ ] Update bundle identifiers, display names, etc.
 - [ ] **Core Data Model:**
     - [ ] Define data structures for storing logged emotional experiences (emotion type, custom text, timestamp, affirmation used, completion status).

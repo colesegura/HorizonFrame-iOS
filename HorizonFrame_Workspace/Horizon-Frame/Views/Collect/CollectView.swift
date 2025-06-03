@@ -16,6 +16,15 @@ public struct CollectView: View {
             showingFeedback = false
         }
     }
+    
+    private func submitInsight() {
+        let trimmedInsight = newInsight.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmedInsight.isEmpty else { return }
+        
+        data.insights.insert(Insight(text: trimmedInsight), at: 0)
+        newInsight = ""
+        showFeedback("Insight added")
+    }
 
     public var body: some View {
         ZStack {
@@ -81,36 +90,67 @@ public struct CollectView: View {
                         TextField("Deposit your next insight…", text: $newInsight)
                             .textFieldStyle(.roundedBorder)
                             .submitLabel(.done)
+                            .onSubmit {
+                                submitInsight()
+                            }
                         Button("Deposit") {
-                            guard newInsight.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty == false else { return }
-                            data.insights.insert(Insight(text: newInsight), at: 0)
-                            newInsight = ""
+                            submitInsight()
                         }
-                        .tint(.white) // Change button color to white
-                        .buttonStyle(.borderedProminent) // Keep prominent style, tint handles color
+                        .tint(.white)
+                        .buttonStyle(.borderedProminent)
+                        .disabled(newInsight.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
                     }
 
                     ForEach(data.insights) { insight in
-                        Text("“\(insight.text)”")
-                            .padding().frame(maxWidth: .infinity, alignment: .leading)
-                            .background(
-                                RoundedRectangle(cornerRadius: 12)
-                                    .fill(Color.black) // Ensure black background
-                                    .stroke(Color.white.opacity(0.3)) // Keep the border
-                            )
-                            .foregroundColor(.white) // Ensure text is visible
+                        HStack {
+                            Text("“\(insight.text)”")
+                                .padding()
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            
+                            Button(action: {
+                                if let index = data.insights.firstIndex(where: { $0.id == insight.id }) {
+                                    data.insights.remove(at: index)
+                                    showFeedback("Insight removed")
+                                }
+                            }) {
+                                Image(systemName: "minus.circle.fill")
+                                    .foregroundColor(.red.opacity(0.8))
+                                    .padding(.trailing)
+                            }
+                        }
+                        .background(
+                            RoundedRectangle(cornerRadius: 12)
+                                .fill(Color.black)
+                                .stroke(Color.white.opacity(0.3))
+                        )
+                        .foregroundColor(.white)
                     }
                 }
                 .padding()
             }
-            if !hasOnboarded { OnboardingOverlay(text:
-                """
-                This is where you collect insights.\n\nAdd anything you want to remember. HorizonFrame will reflect them back to you during the day.
-                """,
-                cta: "Get Started") {
-                    hasOnboarded = true
-                    UserDefaults.standard.set(true, forKey: "collectOnboarded")
+            if !hasOnboarded { 
+                OnboardingOverlay(text:
+                    """
+                    This is where you collect insights.\n\nAdd anything you want to remember. HorizonFrame will reflect them back to you during the day.
+                    """,
+                    cta: "Get Started") {
+                        hasOnboarded = true
+                        UserDefaults.standard.set(true, forKey: "collectOnboarded")
+                    }
+            }
+            
+            if showingFeedback {
+                VStack {
+                    Spacer()
+                    Text(feedbackMessage)
+                        .foregroundColor(.white)
+                        .padding()
+                        .background(Color.black.opacity(0.8))
+                        .cornerRadius(10)
+                        .transition(.move(edge: .bottom).combined(with: .opacity))
+                        .animation(.easeInOut, value: showingFeedback)
                 }
+                .padding(.bottom, 20)
             }
         }
     }
