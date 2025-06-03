@@ -197,3 +197,12 @@ A series of 4-5 concentric, hollow square frames animate into place on a black b
 3.  If you change a folder structure, class name, or technology choice, open `Docs/Architecture.md`, adjust the relevant line(s), and commit this change along with your code changes.
 4.  Update the **Current Status** line in the main `README.md` file whenever you complete a major milestone or start a new one.
 - [ ] Update bundle identifiers, display names, etc.
+
+- [ ] Notifications
+
+- [ ] Daily Notification at 8am to that brings the user to the align page
+- [ ] ability to turn this feature on or off, and edit what time, and how many times per day they want to be notified to do this.
+- [ ] set a goal for how many times per day they want to align, and show a progress bar for how many times they have aligned that week. Default should be twice a day, once in the morning, once in the evening.
+- [ ] similar thing for insight notifications. default setting to once an hour, a different insight in the push notification each hour.
+- [ ] create an onboarding process that is used at the beginning of using the app, allowing the user to define these settings before hand. 
+- [ ] onboarding should also include logging in, or creating a new account. The onboarding have different parts. the first part should be at the beginning of using the app. this part allows the user to define everything, and learn how this app will benefit them. I want it to gently let the user know that they'll be able to use all the features for free at first, and then the notifications will only be able to send one insight, rather than many different ones throughout the day.
