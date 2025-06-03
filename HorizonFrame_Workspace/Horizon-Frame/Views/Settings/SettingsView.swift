@@ -42,7 +42,8 @@ public struct SettingsView: View {
                     .font(.footnote).foregroundColor(.white.opacity(0.7))
             }
             .scrollContentBackground(.hidden) // Ensure form background is transparent
-        }
-        .preferredColorScheme(.dark) // Ensure dark color scheme for navigation elements if this view is in a NavStack
+        } // Closes Form
+    } // Closes ZStack
+    .preferredColorScheme(.dark) // Ensure dark color scheme for navigation elements if this view is in a NavStack
     }
 }
