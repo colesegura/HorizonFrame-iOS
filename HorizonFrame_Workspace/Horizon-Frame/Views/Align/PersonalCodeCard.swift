@@ -1,54 +1,47 @@
-//
-//  PersonalCodeCard.swift
-//
-
 import SwiftUI
 
-/// Single card with 3D flip on long-press.
+/// Tron-styled neon card with long-press flip.
 struct PersonalCodeCard: View {
     var text: String
     @Binding var flipped: Bool
-    
-    @GestureState private var isPressed = false
+    @GestureState private var pressed = false
     
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 24, style: .continuous)
-                .fill(Color.white.opacity(0.05))
-                .shadow(color: .white.opacity(0.12), radius: 8, y: 4)
+            // Card shell
+            RoundedRectangle(cornerRadius: 22, style: .continuous)
+                .strokeBorder(Color.cyan, lineWidth: 2)
+                .background(
+                    RoundedRectangle(cornerRadius: 22)
+                        .fill(Color.black.opacity(0.6))
+                        .blur(radius: 6)
+                )
+                .shadow(color: .cyan.opacity(0.25), radius: 18)
             
-            if flipped {
-                // Back side placeholder
-                VStack(spacing: 12) {
-                    Text("Why this matters")
-                        .font(.subheadline.weight(.semibold))
-                        .opacity(0.7)
-                    Text("← Add a note in CollectView")
-                        .font(.footnote)
-                        .opacity(0.6)
+            // Front / back faces
+            Group {
+                if flipped {
+                    Text("✨ Add context in CollectView ✨")
+                        .font(.footnote.weight(.semibold))
+                        .foregroundColor(.cyan)
+                } else {
+                    Text(text)
+                        .font(.title3.weight(.regular))
+                        .foregroundColor(.white)
                 }
-                .multilineTextAlignment(.center)
-                .padding()
-                .transition(.opacity)
-            } else {
-                Text(text)
-                    .font(.title3.weight(.regular))
-                    .multilineTextAlignment(.center)
-                    .padding(24)
-                    .transition(.opacity)
             }
+            .multilineTextAlignment(.center)
+            .padding(26)
+            .transition(.opacity)
         }
         .frame(height: 260)
-        .rotation3DEffect(
-            .degrees(flipped ? 180 : 0),
-            axis: (x: 0, y: 1, z: 0)
-        )
+        .rotation3DEffect(.degrees(flipped ? 180 : 0), axis: (0,1,0))
+        .scaleEffect(pressed ? 0.96 : 1)
         .animation(.spring(response: 0.5, dampingFraction: 0.8), value: flipped)
         .gesture(
-            LongPressGesture(minimumDuration: 0.4)
-                .updating($isPressed) { _, s, _ in s = true }
+            LongPressGesture(minimumDuration: 0.35)
+                .updating($pressed) { _, s, _ in s = true }
                 .onEnded { _ in flipped.toggle() }
         )
-        .scaleEffect(isPressed ? 0.97 : 1)
     }
 }
