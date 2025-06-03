@@ -2,7 +2,7 @@
 //  AlignEchoToProgress.swift
 //  HorizonFrame
 //
-//  Neon cyan-to-magenta echo that shoots to the Progress tab.
+//  Tron-themed echo that shoots to the Progress tab.
 //
 import SwiftUI
 
@@ -13,7 +13,7 @@ struct AlignEchoToProgress: View {
         GeometryReader { geo in
             Circle()
                 .fill(
-                    LinearGradient(colors: [.cyan, .magenta],
+                    LinearGradient(colors: [.cyan, Color(UIColor.magenta)],
                                    startPoint: .topLeading,
                                    endPoint: .bottomTrailing)
                 )

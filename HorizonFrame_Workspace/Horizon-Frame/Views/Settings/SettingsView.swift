@@ -32,9 +32,6 @@ public struct SettingsView: View {
                     data.insights.removeAll()
                 }
                 .foregroundColor(.magenta) // Style destructive button text with Tron accent
-                    data.personalCode.removeAll()
-                    data.insights.removeAll()
-                }
                 .listRowBackground(Color.black.opacity(0.6))
             }
 
