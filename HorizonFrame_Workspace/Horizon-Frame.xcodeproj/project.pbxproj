@@ -50,8 +50,6 @@
 				Views/Align/CardPager.swift,
 				Views/Align/ParallaxModifier.swift,
 				Views/Align/PersonalCodeCard.swift,
-				Views/Align/PersonalCodeEditView.swift,
-				Views/Align/TronGridBackground.swift,
 				Views/Collect/CollectView.swift,
 				Views/Components/OnboardingOverlay.swift,
 				Views/Components/ProgressButton.swift,

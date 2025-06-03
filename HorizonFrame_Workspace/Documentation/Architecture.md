@@ -206,3 +206,5 @@ A series of 4-5 concentric, hollow square frames animate into place on a black b
 - [ ] similar thing for insight notifications. default setting to once an hour, a different insight in the push notification each hour.
 - [ ] create an onboarding process that is used at the beginning of using the app, allowing the user to define these settings before hand. 
 - [ ] onboarding should also include logging in, or creating a new account. The onboarding have different parts. the first part should be at the beginning of using the app. this part allows the user to define everything, and learn how this app will benefit them. I want it to gently let the user know that they'll be able to use all the features for free at first, and then the notifications will only be able to send one insight, rather than many different ones throughout the day.
+- [ ] create a live activity widget to be visible during the day on the lock screen. 
+- [ ] The widget will show a stock tracking style view of the user's screen time throughout the day. It will also show one insight, updated each hour.

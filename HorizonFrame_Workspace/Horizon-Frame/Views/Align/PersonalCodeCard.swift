@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// Tron-styled neon card with long-press flip.
+/// Card with long-press flip, showing personal code statements.
 struct PersonalCodeCard: View {
     var text: String
     @Binding var flipped: Bool
@@ -10,24 +10,17 @@ struct PersonalCodeCard: View {
         ZStack {
             // Card shell
             RoundedRectangle(cornerRadius: 22, style: .continuous)
-                .strokeBorder(Color.cyan, lineWidth: 2)
-                .background(
-                    RoundedRectangle(cornerRadius: 22)
-                        .fill(Color.black.opacity(0.6))
-                        .blur(radius: 6)
-                )
-                .shadow(color: .cyan.opacity(0.25), radius: 18)
+                .fill(.thinMaterial) // Use system material
+                .shadow(radius: 5) // Standard shadow
             
             // Front / back faces
             Group {
                 if flipped {
                     Text("✨ Add context in CollectView ✨")
                         .font(.footnote.weight(.semibold))
-                        .foregroundColor(.cyan)
                 } else {
                     Text(text)
                         .font(.title3.weight(.regular))
-                        .foregroundColor(.white)
                 }
             }
             .multilineTextAlignment(.center)

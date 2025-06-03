@@ -11,7 +11,6 @@ import CoreMotion   // For gyroscope-driven parallax
 
 /// Root container shown when the user taps the Align tab.
 public struct AlignView: View {
-    @State private var showPersonalCodeEditView = false
     @EnvironmentObject private var data: AppData
     @State private var showIntro = true
     @State private var didFinish = false      // triggers echo animation
@@ -19,10 +18,7 @@ public struct AlignView: View {
     public init() {}  // Explicit because the file is public.
     
     public var body: some View {
-        NavigationStack {
-            ZStack {
-            TronGridBackground().ignoresSafeArea()
-            Color.black.ignoresSafeArea()
+        ZStack {
             
             if showIntro {
                 BreathIntroView {
@@ -51,19 +47,5 @@ public struct AlignView: View {
                     .transition(.scale.combined(with: .opacity))
             }
         }
-        .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Edit") {
-                        showPersonalCodeEditView = true
-                    }
-                    .foregroundColor(.cyan)
-                }
-            }
-            .sheet(isPresented: $showPersonalCodeEditView) {
-                PersonalCodeEditView(personalCode: data.personalCode)
-                    .environmentObject(data) // Pass AppData if PersonalCodeEditView needs it directly
-            }
-        }
-        .preferredColorScheme(.dark)
     }
 }
