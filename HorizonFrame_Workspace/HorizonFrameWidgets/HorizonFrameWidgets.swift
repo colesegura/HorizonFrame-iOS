@@ -1,84 +1,63 @@
-//
-//  HorizonFrameWidgets.swift
-//  HorizonFrameWidgets
-//
-//  Created by Cole Segura on 6/3/25.
-//
-
+// import ActivityKit
 import WidgetKit
 import SwiftUI
 
-struct Provider: TimelineProvider {
-    func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), emoji: "😀")
-    }
 
-    func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), emoji: "😀")
-        completion(entry)
-    }
-
-    func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        var entries: [SimpleEntry] = []
-
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, emoji: "😀")
-            entries.append(entry)
-        }
-
-        let timeline = Timeline(entries: entries, policy: .atEnd)
-        completion(timeline)
-    }
-
-//    func relevances() async -> WidgetRelevances<Void> {
-//        // Generate a list containing the contexts this widget is relevant in.
-//    }
-}
-
-struct SimpleEntry: TimelineEntry {
-    let date: Date
-    let emoji: String
-}
-
-struct HorizonFrameWidgetsEntryView : View {
-    var entry: Provider.Entry
-
-    var body: some View {
-        VStack {
-            Text("Time:")
-            Text(entry.date, style: .time)
-
-            Text("Emoji:")
-            Text(entry.emoji)
-        }
-    }
-}
-
-struct HorizonFrameWidgets: Widget {
-    let kind: String = "HorizonFrameWidgets"
-
+/*
+struct ScreenTimeLiveActivity: Widget {
     var body: some WidgetConfiguration {
-        StaticConfiguration(kind: kind, provider: Provider()) { entry in
-            if #available(iOS 17.0, *) {
-                HorizonFrameWidgetsEntryView(entry: entry)
-                    .containerBackground(.fill.tertiary, for: .widget)
-            } else {
-                HorizonFrameWidgetsEntryView(entry: entry)
-                    .padding()
-                    .background()
+        ActivityConfiguration(for: ScreenTimeActivityAttributes.self) { context in
+            VStack(alignment: .leading) {
+                Text("Screen Time")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                ProgressView(value: context.state.elapsedHours, total: context.attributes.dailyGoal)
+                    .progressViewStyle(.linear)
+                Text(context.state.insight)
+                    .font(.caption)
+                    .padding(.top, 2)
             }
+            .padding()
+            .background(.black)
+        } dynamicIsland: { context in
+            DynamicIsland {
+                // Expanded regions
+                DynamicIslandExpandedRegion(.leading) {
+                    Text("Screen Time")
+                        .font(.caption)
+                        .foregroundColor(.white)
+                }
+                DynamicIslandExpandedRegion(.trailing) {
+                    Text("\(String(format: "%.1f", context.state.elapsedHours)) / \(Int(context.attributes.dailyGoal))h")
+                        .font(.caption)
+                        .foregroundColor(.white)
+                }
+                DynamicIslandExpandedRegion(.bottom) {
+                    Text(context.state.insight)
+                        .font(.caption2)
+                        .foregroundColor(.white.opacity(0.7))
+                }
+            } compactLeading: {
+                Image(systemName: "timer") // Placeholder icon
+                    .foregroundColor(.cyan)
+            } compactTrailing: { // Corrected from compactLeading to compactTrailing
+                Text("\(String(format: "%.1f", context.state.elapsedHours))h")
+                    .foregroundColor(.cyan)
+            } minimal: {
+                Image(systemName: "timer") // Placeholder icon
+                    .foregroundColor(.cyan)
+            }
+            .widgetURL(URL(string: "horizonframe://screentime")) // Optional: URL to open when tapped
+            .keylineTint(.cyan) // Optional: Tint for lines in Dynamic Island
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
     }
 }
-
-#Preview(as: .systemSmall) {
-    HorizonFrameWidgets()
-} timeline: {
-    SimpleEntry(date: .now, emoji: "😀")
-    SimpleEntry(date: .now, emoji: "🤩")
-}
+*/
+// --- Sample usage from the main app ---
+/*
+let attr = ScreenTimeActivityAttributes(dailyGoal: 4)
+let initState = ScreenTimeActivityAttributes.ContentState(elapsedHours: 0, insight: "Stay mindful")
+let activity = try? Activity<ScreenTimeActivityAttributes>.request(attributes: attr, contentState: initState)
+// Later updates:
+Task { await activity?.update(using: .init(elapsedHours: 1.5, insight: "Breathe")) }
+*/

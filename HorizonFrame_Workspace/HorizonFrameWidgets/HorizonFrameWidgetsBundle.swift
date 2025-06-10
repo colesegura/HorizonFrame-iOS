@@ -8,11 +8,11 @@
 import WidgetKit
 import SwiftUI
 
+/*
 @main
 struct HorizonFrameWidgetsBundle: WidgetBundle {
     var body: some Widget {
-        HorizonFrameWidgets()
-        HorizonFrameWidgetsControl()
-        HorizonFrameWidgetsLiveActivity()
+        // ScreenTimeLiveActivity() // Correctly reference the Live Activity widget
     }
 }
+*/
