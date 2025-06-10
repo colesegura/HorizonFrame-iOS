@@ -25,6 +25,12 @@ struct KineticFramesLaunchView: View {
     @State private var framesGroupOpacity: Double = 1.0
     @State private var showMainContent = false
 
+    // Initialize view models for each feature
+    @StateObject private var exploreVM = ExploreViewModel()
+    @StateObject private var collectVM = CollectViewModel()
+    @StateObject private var alignVM   = AlignViewModel()
+    @StateObject private var settingsVM = SettingsViewModel() // Added SettingsViewModel
+
     // Durations and timing
     let individualFrameAnimationDuration: Double = 0.8 // Spring response for each frame
     let timeUntilLastFrameSettles: Double
@@ -38,7 +44,7 @@ struct KineticFramesLaunchView: View {
 
     var body: some View {
         ZStack {
-            Color.black.edgesIgnoringSafeArea(.all)
+            AnimatedGradientBackground()
 
             // Group for all kinetic frames, this group will be scaled and faded
             ZStack {
@@ -52,7 +58,11 @@ struct KineticFramesLaunchView: View {
             .opacity(framesGroupOpacity)
 
             if showMainContent {
-                ContentView() // Transition to the main app content
+                MainAppView()
+                    .environmentObject(alignVM)
+                    .environmentObject(collectVM)
+                    .environmentObject(exploreVM)
+                    .environmentObject(settingsVM)
                     .transition(.opacity.animation(.easeInOut(duration: finalTransitionDuration)))
             }
         }

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- Bundle identity -->
+    <key>CFBundleIdentifier</key>
+    <string>com.example.HorizonFrame</string>
+    <key>CFBundleName</key>
+    <string>HorizonFrame</string>
+    <key>CFBundleDisplayName</key>
+    <string>HorizonFrame</string>
+    <key>CFBundleVersion</key>
+    <string>1</string>
+    <key>CFBundleShortVersionString</key>
+    <string>1.0</string>
+    <key>CFBundleDevelopmentRegion</key>
+    <string>$(DEVELOPMENT_LANGUAGE)</string>
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+    <key>CFBundleInfoDictionaryVersion</key>
+    <string>6.0</string>
+
+    <!-- Application launch setup -->
+    <key>UILaunchStoryboardName</key>
+    <string>LaunchScreen</string>
+    <key>UIApplicationSceneManifest</key>
+    <dict>
+        <key>UIApplicationSupportsMultipleScenes</key>
+        <false/>
+        <key>UISceneConfigurations</key>
+        <dict>
+            <key>UIWindowSceneSessionRoleApplication</key>
+            <array>
+                <dict>
+                    <key>UISceneConfigurationName</key>
+                    <string>Default Configuration</string>
+                    <key>UISceneClassName</key>
+                    <string>UIWindowScene</string>
+                    <!-- No scene delegate class for SwiftUI lifecycle -->
+                    <key>UISceneDelegateClassName</key>
+                    <string></string>
+                </dict>
+            </array>
+        </dict>
+    </dict>
+
+    <!-- Privacy - Photo Library Additions Usage (for saving shared images) -->
+    <key>NSPhotoLibraryAddUsageDescription</key>
+    <string>Allow saving quote images to your Photo Library.</string>
+</dict>
+</plist>

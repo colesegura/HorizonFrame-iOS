@@ -1,29 +1,19 @@
+// Services/NotificationService.swift
 import UserNotifications
 
-public enum NotificationService {
-    static func requestPermission() {
-        UNUserNotificationCenter.current()
-            .requestAuthorization(options: [.alert, .sound, .badge]) { _, _ in }
-    }
+enum NotificationService {
+    static func schedule(id: String, title: String, body: String, at date: Date) {
+        let content = UNMutableNotificationContent()
+        content.title = title
+        content.body  = body
+        content.sound = .default
 
-    static func schedule(insights: [Insight]) {
-        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        let trigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents(
+            [.year,.month,.day,.hour,.minute], from: date), repeats: false)
 
-        guard !insights.isEmpty else { return }
-        let interval = 24.0 / Double(insights.count) * 3600     // seconds between notifs
-
-        for (idx, insight) in insights.enumerated() {
-            let content = UNMutableNotificationContent()
-            content.title = "Insight"
-            content.body = insight.text
-            content.sound = .default
-
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: interval * Double(idx + 1),
-                                                             repeats: false)
-            let request = UNNotificationRequest(identifier: insight.id.uuidString,
-                                                content: content,
-                                                trigger: trigger)
-            UNUserNotificationCenter.current().add(request)
+        let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request) { err in
+            if let err = err { print("Notif error: \(err)") }
         }
     }
 }
