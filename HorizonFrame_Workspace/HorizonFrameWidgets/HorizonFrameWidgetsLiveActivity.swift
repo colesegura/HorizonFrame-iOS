@@ -5,10 +5,11 @@
 //  Created by Cole Segura on 6/3/25.
 //
 
-import ActivityKit
+// import ActivityKit
 import WidgetKit
 import SwiftUI
 
+/*
 struct HorizonFrameWidgetsAttributes: ActivityAttributes {
     public struct ContentState: Codable, Hashable {
         // Dynamic stateful properties about your activity go here!
@@ -18,7 +19,9 @@ struct HorizonFrameWidgetsAttributes: ActivityAttributes {
     // Fixed non-changing properties about your activity go here!
     var name: String
 }
+*/
 
+/*
 struct HorizonFrameWidgetsLiveActivity: Widget {
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: HorizonFrameWidgetsAttributes.self) { context in
@@ -55,13 +58,17 @@ struct HorizonFrameWidgetsLiveActivity: Widget {
         }
     }
 }
+*/
 
+/*
 extension HorizonFrameWidgetsAttributes {
     fileprivate static var preview: HorizonFrameWidgetsAttributes {
         HorizonFrameWidgetsAttributes(name: "World")
     }
 }
+*/
 
+/*
 extension HorizonFrameWidgetsAttributes.ContentState {
     fileprivate static var smiley: HorizonFrameWidgetsAttributes.ContentState {
         HorizonFrameWidgetsAttributes.ContentState(emoji: "😀")
@@ -71,10 +78,13 @@ extension HorizonFrameWidgetsAttributes.ContentState {
          HorizonFrameWidgetsAttributes.ContentState(emoji: "🤩")
      }
 }
+*/
 
+/*
 #Preview("Notification", as: .content, using: HorizonFrameWidgetsAttributes.preview) {
    HorizonFrameWidgetsLiveActivity()
 } contentStates: {
     HorizonFrameWidgetsAttributes.ContentState.smiley
     HorizonFrameWidgetsAttributes.ContentState.starEyes
 }
+*/

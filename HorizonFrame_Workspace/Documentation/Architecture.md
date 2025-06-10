@@ -1,6 +1,6 @@
 # HorizonFrame Architecture (Version 0.1)
 
-_Last updated: 2025-05-24_
+_Last updated: 2025-06-05_
 
 ---
 
@@ -9,12 +9,15 @@ _Last updated: 2025-05-24_
 This diagram shows the main parts of the application and how they connect.
 
 ```
-┌─────────────────────────────── App Layer (SwiftUI) ────────────────────────────────┐
-│  TopTabBar   AlignView   CollectView   ProgressView   SettingsView                  │
-│                                           ▼                                         │
-│                     ViewModels (Manage Data for Views)                              │
-│         AlignVM         CollectVM         SettingsVM                                │
-└─────────────────────────────────────────────▲──────────────────────────────────────┘
+┌────────────────────────────────── App Layer (SwiftUI) ───────────────────────────────────┐
+│ KineticFramesLaunchView                                                                │
+│  ├─ AnimatedGradientBackground (Global, very dark, slow-moving gradient)                │
+│  └─ MainAppView                                                                        │
+│     ├─ Current Tab's View (e.g., AlignView, CollectView, ExploreView, SettingsView)     │
+│     └─ CustomTabBarView (Animated, text-only, expanding/collapsing frame)               │
+│                                            ▼                                          │
+│       (Views use ViewModels, @State, @AppStorage. AppTab enum defines tabs.)            │
+└─────────────────────────────────────────────▲───────────────────────────────────────────┘
                                               │
                                 ———————————————––
                                 |    Shared Services Layer    |
@@ -38,12 +41,18 @@ This table describes the main code components (modules or classes) and what they
 
 | Module / Class          | Directory                                  | Responsibility                                                                                                                               |
 | :---------------------- | :----------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------- |
-| **AppData**             | `ViewModels/AppData.swift`                 | Stores the user's `personalCode` (list of strings) and `insights` (list of Insight objects). It syncs this data with `UserDefaults` (a simple way to store small amounts of data on the device) and schedules notifications when insights change. |
+| **AppData**             | `ViewModels/AppData.swift`                 | Stores the user's `personalCode` (list of strings) and `insights` (list of Insight objects). It syncs this data with `UserDefaults` (a simple way to store small amounts of data on the device) and schedules notifications when insights change. (Note: Current views use local @State or @AppStorage primarily) |
 | **NotificationService** | `Services/NotificationService.swift`       | A straightforward helper for using `UNUserNotificationCenter` (Apple's system for notifications). It asks for permission when the app first launches and schedules a set number of daily notifications, spaced out evenly. |
-| **TabRouter**           | `ViewModels/TabRouter.swift`               | A simple object that keeps track of which main tab is currently active in the app. It uses `@Published current: Tab` to announce changes.        |
-| **AlignView**           | `Views/Align/AlignView.swift`              | Manages the morning reflection flow. It goes through the `personalCode` items, shows color changes, and handles the progress button.           |
-|                         |                                            |  • `AlignEditSheet` (a new view) – A pop-up screen (modal sheet) started from a menu button in `AlignView` that lets the user edit their `personalCode`. |
-| **CollectView**         | `Views/Collect/CollectView.swift`          | Allows users to create, read, update, and delete `personalCode` lines and `Insight` entries. It can also send new tasks to Todoist through an Obsidian plugin (this happens outside the app). |
+| **MainAppView**         | `Views/MainAppView.swift`                  | Hosts the `CustomTabBarView` and the content view for the currently selected tab. Manages the overall structure for the main application interface post-onboarding. |
+| **CustomTabBarView**    | `Views/CustomTabBarView.swift`             | A custom animated tab bar that expands to show all tab options (text-only) and collapses to show only the selected tab's text, framed. Handles tab selection and navigation. |
+| **AppTab**              | `Models/AppTab.swift`                      | Enum defining the application's main tabs (Align, Collect, Explore, Settings), including their titles and associated views. |
+| **AnimatedGradientBackground** | `Views/AnimatedGradientBackground.swift` | Provides a global, very dark, slowly moving animated gradient background for the entire application, contributing to the immersive UI. |
+| **FramedContentWrapper**| `Views/FramedContentWrapper.swift`         | A helper view that draws kinetic-style frame corners around its content. Used by `CustomTabBarView` for the selected tab item. |
+| **AlignView**           | `Views/Align/AlignView.swift` (Tentative)  | Provides an alignment session interface. Users can start a session to view a series of alignment statements. Includes a simple progress indicator. Placeholder for timer/gesture controls and streak updates. |
+| **CollectView**         | `Views/Collect/CollectView.swift` (Tentative)| Allows users to manage 'Personal Code' and 'Insights' via a segmented picker and lists. Includes placeholders for adding, editing, and deleting items. |
+| **ExploreView**         | `Views/Explore/ExploreView.swift` (Tentative)| Displays curated and user-generated alignment content in scrollable sections (e.g., 'For You', 'Trending'). Items are presented as cards with context menus for actions. |
+| **ProgressViewPage**    | `Views/Progress/ProgressViewPage.swift` (Tentative)| Shows user's alignment streak, a placeholder for a calendar view of completed dates, and summary stat cards for daily, weekly, and monthly progress. |
+| **SettingsView**        | `Views/Settings/SettingsView.swift` (Tentative)| Provides options for managing alignment reminders (enable, time, daily goal), data management (export, clear), appearance (theme), and an 'About' section. |
 | **OnboardingOverlay**   | `Views/Components/OnboardingOverlay.swift` | A semi-transparent guide that appears once for each new feature to help users understand it. Information about whether it has been shown is stored in `UserDefaults`. |
 
 ---
@@ -79,8 +88,10 @@ Reasoning: SwiftData will make it easier to change our data structure over time 
 
 ## **4. Navigation and Routing (How Users Move Through the App)**
 
-*   A single `ContentView` holds the `TopTabBar` (our custom tab bar, not Apple's default `TabView`).
-*   Which view is shown is decided by `router.current`. This approach helps keep the app's memory usage low by not loading all views at once, which `TabView` might do.
+*   The main application interface after onboarding is `KineticFramesLaunchView.swift`, which sets up the `AnimatedGradientBackground` and then presents `MainAppView.swift`.
+*   `MainAppView.swift` contains the `CustomTabBarView` at the bottom and a content area that displays the view corresponding to the selected tab (Align, Collect, Explore, Settings), as defined in the `AppTab` enum.
+*   The `CustomTabBarView` provides an animated, expanding/collapsing interface for tab selection, showing only text labels and a kinetic frame around the selected item.
+*   Navigation within each tab's content view (e.g., `AlignView`) is typically handled by a `NavigationView` or `NavigationStack` embedded within that specific view.
 *   **Future Plan for Deep Links:** We plan to allow users to open specific parts of the app using URLs (e.g., `yourapp://align`). This will use SwiftUI's `.onOpenURL` feature.
 
 ---
@@ -170,7 +181,16 @@ A series of 4-5 concentric, hollow square frames animate into place on a black b
                     }
                 }
             ```
-    *   **Completion:** After the animation completes, this view could transition to the main app content.
+    *   **Completion:** After the animation completes, this view transitions to `MainAppView`, which is displayed on top of the `AnimatedGradientBackground`.
+
+### Animated Gradient Background
+
+Integrated within `KineticFramesLaunchView` as the base layer for the entire application and also used directly by `CustomTabBarView` if its explicit background is made transparent:
+*   **`AnimatedGradientBackground.swift`**:
+    *   Provides a full-screen, very dark (near black), slowly moving linear gradient.
+    *   Uses a `Timer` to cycle through an array of `Color` arrays, animating the gradient stops.
+    *   Designed to be subtle and create an immersive, dynamic backdrop.
+    *   Applied with `.edgesIgnoringSafeArea(.all)` in `KineticFramesLaunchView` to ensure it covers the entire screen, including under status and navigation bars.
 
 **Key SwiftUI Concepts:**
 
@@ -197,14 +217,3 @@ A series of 4-5 concentric, hollow square frames animate into place on a black b
 3.  If you change a folder structure, class name, or technology choice, open `Docs/Architecture.md`, adjust the relevant line(s), and commit this change along with your code changes.
 4.  Update the **Current Status** line in the main `README.md` file whenever you complete a major milestone or start a new one.
 - [ ] Update bundle identifiers, display names, etc.
-
-- [ ] Notifications
-
-- [ ] Daily Notification at 8am to that brings the user to the align page
-- [ ] ability to turn this feature on or off, and edit what time, and how many times per day they want to be notified to do this.
-- [ ] set a goal for how many times per day they want to align, and show a progress bar for how many times they have aligned that week. Default should be twice a day, once in the morning, once in the evening.
-- [ ] similar thing for insight notifications. default setting to once an hour, a different insight in the push notification each hour.
-- [ ] create an onboarding process that is used at the beginning of using the app, allowing the user to define these settings before hand. 
-- [ ] onboarding should also include logging in, or creating a new account. The onboarding have different parts. the first part should be at the beginning of using the app. this part allows the user to define everything, and learn how this app will benefit them. I want it to gently let the user know that they'll be able to use all the features for free at first, and then the notifications will only be able to send one insight, rather than many different ones throughout the day.
-- [ ] create a live activity widget to be visible during the day on the lock screen. 
-- [ ] The widget will show a stock tracking style view of the user's screen time throughout the day. It will also show one insight, updated each hour.

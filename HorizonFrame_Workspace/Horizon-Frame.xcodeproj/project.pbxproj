@@ -6,7 +6,20 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		F408BC7E2DEF7241002A33A8 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F408BC7D2DEF7241002A33A8 /* WidgetKit.framework */; };
+		F408BC802DEF7241002A33A8 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F408BC7F2DEF7241002A33A8 /* SwiftUI.framework */; };
+		F408BC8F2DEF7242002A33A8 /* HorizonFrameWidgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F408BC7B2DEF7241002A33A8 /* HorizonFrameWidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
+		F408BC8D2DEF7242002A33A8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F430CCE12DDF800C0030565D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F408BC7A2DEF7241002A33A8;
+			remoteInfo = HorizonFrameWidgetsExtension;
+		};
 		F430CCFA2DDF800E0030565D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F430CCE12DDF800C0030565D /* Project object */;
@@ -23,40 +36,92 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		F408BC942DEF7242002A33A8 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				F408BC8F2DEF7242002A33A8 /* HorizonFrameWidgetsExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		F408BC7B2DEF7241002A33A8 /* HorizonFrameWidgetsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HorizonFrameWidgetsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		F408BC7D2DEF7241002A33A8 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		F408BC7F2DEF7241002A33A8 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		F430CCE92DDF800C0030565D /* Horizon-Frame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Horizon-Frame.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F430CCF92DDF800E0030565D /* Horizon-FrameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Horizon-FrameTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F430CD032DDF800E0030565D /* Horizon-FrameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Horizon-FrameUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		F408BC932DEF7242002A33A8 /* Exceptions for "HorizonFrameWidgets" folder in "HorizonFrameWidgetsExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = F408BC7A2DEF7241002A33A8 /* HorizonFrameWidgetsExtension */;
+		};
+		F408BCB32DEF83A0002A33A8 /* Exceptions for "HorizonFrameWidgets" folder in "Horizon-Frame" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				ScreenTimeActivityAttributes.swift,
+			);
+			target = F430CCE82DDF800C0030565D /* Horizon-Frame */;
+		};
 		F430CD402DDF80710030565D /* Exceptions for "Horizon-Frame" folder in "Horizon-Frame" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				App/AppDelegate.swift,
+				App/HorizonFrameApp.swift,
 				Assets.xcassets,
 				FrameCornerView.swift,
-				HorizonFrameApp.swift,
 				KineticFramesLaunchView.swift,
 				KineticFrameView.swift,
 				LaunchScreen.storyboard,
-				Models/Insight.swift,
+				Models/AlignmentSession.swift,
+				Models/AppTab.swift,
+				Models/Passage.swift,
+				Models/PassageCollection.swift,
+				Models/UserProfile.swift,
 				"Preview Content/Preview Assets.xcassets",
+				Services/AuthService.swift,
+				Services/FirebaseService.swift,
+				Services/FirestorePassageRepository.swift,
 				Services/NotificationService.swift,
-				ViewModels/AppData.swift,
-				ViewModels/TabRouter.swift,
-				Views/Align/AlignEchoToProgress.swift,
-				Views/Align/AlignView.swift,
-				Views/Align/BreathIntroView.swift,
-				Views/Align/CardPager.swift,
-				Views/Align/ParallaxModifier.swift,
-				Views/Align/PersonalCodeCard.swift,
-				Views/Collect/CollectView.swift,
-				Views/Components/OnboardingOverlay.swift,
-				Views/Components/ProgressButton.swift,
-				Views/Components/TopTabBar.swift,
-				Views/ContentView.swift,
-				Views/Progress/ProgressView_HF.swift,
-				Views/Settings/SettingsView.swift,
+				Services/ShareCardRenderer.swift,
+				Utilities/CardStyle.swift,
+				Utilities/DummyData.swift,
+				Utilities/ExpandingButtonModifier.swift,
+				Utilities/Extensions.swift,
+				Utilities/LineFadeText.swift,
+				Utilities/LineFocusText.swift,
+				Utilities/ShareSheet.swift,
+				Utilities/TypewriterText.swift,
+				ViewModels/AlignViewModel.swift,
+				ViewModels/CollectViewModel.swift,
+				ViewModels/CreatePassageViewModel.swift,
+				ViewModels/ExploreViewModel.swift,
+				ViewModels/PassageDetailViewModel.swift,
+				ViewModels/SettingsViewModel.swift,
+				Views/AlignmentCompleteView.swift,
+				Views/AlignmentPlayerContainer.swift,
+				Views/AlignmentPlayerView.swift,
+				Views/AlignView.swift,
+				Views/AnimatedGradientBackground.swift,
+				Views/CollectionDetailView.swift,
+				Views/CollectView.swift,
+				Views/CreatePassageView.swift,
+				Views/CustomTabBarView.swift,
+				Views/ExploreView.swift,
+				Views/MainAppView.swift,
+				Views/PassageDetailView.swift,
+				Views/SettingsView.swift,
 			);
 			target = F430CCE82DDF800C0030565D /* Horizon-Frame */;
 		};
@@ -64,15 +129,22 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Assets.xcassets,
-				Info.plist,
 				"Preview Content/Preview Assets.xcassets",
-				Services/NotificationService.swift,
 			);
 			target = F430CCF82DDF800E0030565D /* Horizon-FrameTests */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		F408BC812DEF7241002A33A8 /* HorizonFrameWidgets */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				F408BCB32DEF83A0002A33A8 /* Exceptions for "HorizonFrameWidgets" folder in "Horizon-Frame" target */,
+				F408BC932DEF7242002A33A8 /* Exceptions for "HorizonFrameWidgets" folder in "HorizonFrameWidgetsExtension" target */,
+			);
+			path = HorizonFrameWidgets;
+			sourceTree = "<group>";
+		};
 		F430CCFC2DDF800E0030565D /* Horizon-FrameTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = "Horizon-FrameTests";
@@ -95,6 +167,15 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F408BC782DEF7241002A33A8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F408BC802DEF7241002A33A8 /* SwiftUI.framework in Frameworks */,
+				F408BC7E2DEF7241002A33A8 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F430CCE62DDF800C0030565D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -119,12 +200,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F408BC7C2DEF7241002A33A8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F408BC7D2DEF7241002A33A8 /* WidgetKit.framework */,
+				F408BC7F2DEF7241002A33A8 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F430CCE02DDF800C0030565D = {
 			isa = PBXGroup;
 			children = (
 				F430CD3B2DDF80710030565D /* Horizon-Frame */,
 				F430CCFC2DDF800E0030565D /* Horizon-FrameTests */,
 				F430CD062DDF800E0030565D /* Horizon-FrameUITests */,
+				F408BC812DEF7241002A33A8 /* HorizonFrameWidgets */,
+				F408BC7C2DEF7241002A33A8 /* Frameworks */,
 				F430CCEA2DDF800C0030565D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -135,6 +227,7 @@
 				F430CCE92DDF800C0030565D /* Horizon-Frame.app */,
 				F430CCF92DDF800E0030565D /* Horizon-FrameTests.xctest */,
 				F430CD032DDF800E0030565D /* Horizon-FrameUITests.xctest */,
+				F408BC7B2DEF7241002A33A8 /* HorizonFrameWidgetsExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -142,6 +235,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		F408BC7A2DEF7241002A33A8 /* HorizonFrameWidgetsExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F408BC902DEF7242002A33A8 /* Build configuration list for PBXNativeTarget "HorizonFrameWidgetsExtension" */;
+			buildPhases = (
+				F408BC772DEF7241002A33A8 /* Sources */,
+				F408BC782DEF7241002A33A8 /* Frameworks */,
+				F408BC792DEF7241002A33A8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				F408BC812DEF7241002A33A8 /* HorizonFrameWidgets */,
+			);
+			name = HorizonFrameWidgetsExtension;
+			packageProductDependencies = (
+			);
+			productName = HorizonFrameWidgetsExtension;
+			productReference = F408BC7B2DEF7241002A33A8 /* HorizonFrameWidgetsExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		F430CCE82DDF800C0030565D /* Horizon-Frame */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F430CD0D2DDF800E0030565D /* Build configuration list for PBXNativeTarget "Horizon-Frame" */;
@@ -149,10 +264,12 @@
 				F430CCE52DDF800C0030565D /* Sources */,
 				F430CCE62DDF800C0030565D /* Frameworks */,
 				F430CCE72DDF800C0030565D /* Resources */,
+				F408BC942DEF7242002A33A8 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				F408BC8E2DEF7242002A33A8 /* PBXTargetDependency */,
 			);
 			name = "Horizon-Frame";
 			packageProductDependencies = (
@@ -218,6 +335,9 @@
 				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
+					F408BC7A2DEF7241002A33A8 = {
+						CreatedOnToolsVersion = 16.2;
+					};
 					F430CCE82DDF800C0030565D = {
 						CreatedOnToolsVersion = 16.2;
 					};
@@ -240,6 +360,8 @@
 			);
 			mainGroup = F430CCE02DDF800C0030565D;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = F430CCEA2DDF800C0030565D /* Products */;
 			projectDirPath = "";
@@ -248,11 +370,19 @@
 				F430CCE82DDF800C0030565D /* Horizon-Frame */,
 				F430CCF82DDF800E0030565D /* Horizon-FrameTests */,
 				F430CD022DDF800E0030565D /* Horizon-FrameUITests */,
+				F408BC7A2DEF7241002A33A8 /* HorizonFrameWidgetsExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F408BC792DEF7241002A33A8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F430CCE72DDF800C0030565D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -277,6 +407,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		F408BC772DEF7241002A33A8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F430CCE52DDF800C0030565D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -301,6 +438,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		F408BC8E2DEF7242002A33A8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F408BC7A2DEF7241002A33A8 /* HorizonFrameWidgetsExtension */;
+			targetProxy = F408BC8D2DEF7242002A33A8 /* PBXContainerItemProxy */;
+		};
 		F430CCFB2DDF800E0030565D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F430CCE82DDF800C0030565D /* Horizon-Frame */;
@@ -314,6 +456,66 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		F408BC912DEF7242002A33A8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F34CVJH6L3;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HorizonFrameWidgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = HorizonFrameWidgets;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				INFOPLIST_KEY_NSSupportsLiveActivitiesFrequentUpdates = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.colesegura.Horizon-Frame.HorizonFrameWidgets";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F408BC922DEF7242002A33A8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F34CVJH6L3;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HorizonFrameWidgets/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = HorizonFrameWidgets;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				INFOPLIST_KEY_NSSupportsLiveActivitiesFrequentUpdates = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.colesegura.Horizon-Frame.HorizonFrameWidgets";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		F430CD0B2DDF800E0030565D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -366,7 +568,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -423,7 +625,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -438,16 +640,21 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = "Horizon-Frame/Horizon-FrameDebug.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development: cwsegura@protonmail.com (MHU2A2V3FA)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Horizon-Frame/Preview Content\"";
-				DEVELOPMENT_TEAM = F34CVJH6L3;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = F34CVJH6L3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Horizon-Frame/Info.plist";
+				INFOPLIST_FILE = "Horizon-Frame/Resources/Info.plist";
+				INFOPLIST_KEY_NSSupportsLiveActivities = NO;
+				INFOPLIST_KEY_NSSupportsLiveActivitiesFrequentUpdates = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
@@ -461,6 +668,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.colesegura.Horizon-Frame";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "HorizonFrame App Dev Profile";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -472,16 +681,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Development: cwsegura@protonmail.com (MHU2A2V3FA)";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Horizon-Frame/Preview Content\"";
-				DEVELOPMENT_TEAM = F34CVJH6L3;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = F34CVJH6L3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Horizon-Frame/Info.plist";
+				INFOPLIST_FILE = "Horizon-Frame/Resources/Info.plist";
+				INFOPLIST_KEY_NSSupportsLiveActivities = NO;
+				INFOPLIST_KEY_NSSupportsLiveActivitiesFrequentUpdates = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
@@ -495,6 +707,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.colesegura.Horizon-Frame";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "HorizonFrame App Dev Profile";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -509,7 +723,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = F34CVJH6L3;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.colesegura.Horizon-FrameTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -528,7 +742,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = F34CVJH6L3;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.colesegura.Horizon-FrameTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -546,6 +760,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = F34CVJH6L3;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.colesegura.Horizon-FrameUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -563,6 +778,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = F34CVJH6L3;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.colesegura.Horizon-FrameUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -576,6 +792,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F408BC902DEF7242002A33A8 /* Build configuration list for PBXNativeTarget "HorizonFrameWidgetsExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F408BC912DEF7242002A33A8 /* Debug */,
+				F408BC922DEF7242002A33A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F430CCE42DDF800C0030565D /* Build configuration list for PBXProject "Horizon-Frame" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

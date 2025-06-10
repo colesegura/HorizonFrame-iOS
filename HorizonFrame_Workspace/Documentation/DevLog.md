@@ -93,4 +93,78 @@
 *   Proceed with the next development cycle, likely involving the implementation of the "Edit Personal Code" functionality in `AlignView` or other features as prioritized.
 *   Continue to follow the daily handoff procedure.
 
-    
+### 2025-06-04
+
+**Key Tasks Worked On:**
+*   Resolving build errors related to Live Activities.
+*   Restoring and reorganizing onboarding and main app views (`WelcomePage.swift`, `ExplorePage.swift`).
+*   Ensuring the onboarding flow correctly transitions to the main application view.
+
+**Accomplishments:**
+*   **Live Activities Temporarily Disabled:**
+    *   Successfully commented out all `ActivityKit` related code in widget extension files (`HorizonFrameWidgets.swift`, `ScreenTimeActivityAttributes.swift`, `HorizonFrameWidgetsLiveActivity.swift`).
+    *   Commented out the entire widget bundle (`HorizonFrameWidgetsBundle.swift`).
+    *   Commented out the `startLiveActivity()` function definition and its call site within `SettingsView.swift`.
+    *   (User previously handled `Info.plist` and entitlement changes for Live Activities).
+*   **Onboarding & Main App View Restoration:**
+    *   Populated `Horizon-Frame/Views/Onboarding/WelcomePage.swift` with its prior UI content.
+    *   Modified `WelcomePage.swift` to remove a `NavigationLink` to the deleted `BeginAlignmentPage.swift`, replacing it with a button that correctly dismisses the onboarding view.
+    *   Confirmed `Horizon-Frame/Views/Explore/ExplorePage.swift` exists with placeholder content.
+    *   Implemented logic in `WelcomePage.swift` to set the `@AppStorage("hasOnboarded")` variable, enabling the transition to `MainAppView.swift`.
+*   **Build Success:** Resolved all outstanding build errors related to Live Activities and view scoping issues. The application now builds and runs, showing the `WelcomePage` and transitioning to `MainAppView` after onboarding.
+
+**Key Decisions Made:**
+*   Decided to temporarily disable all Live Activity features by commenting out relevant code and entitlements to allow focus on core application functionality and resolve immediate build/provisioning profile errors.
+*   Prioritized restoring the core view files (`WelcomePage.swift`, `ExplorePage.swift`) to their correct locations within the `Horizon-Frame` target to fix scope errors.
+*   Utilized the existing `@AppStorage("hasOnboarded")` mechanism to manage the transition from the `WelcomePage` to the `MainAppView`.
+
+**Issues Encountered:**
+*   Initial build errors due to missing ActivityKit entitlements and unresolved symbols from `ActivityKit`.
+*   Scope errors due to `WelcomePage.swift` and `ExplorePage.swift` not being correctly located or populated within the `Horizon-Frame` target.
+*   The "Let's walk through the daily practice" button on `WelcomePage.swift` initially did not navigate; this was resolved by implementing the `@AppStorage("hasOnboarded")` logic.
+
+**Next Steps (for next session):**
+*   Continue with UI/UX refinement for `WelcomePage` and `ExplorePage`.
+*   Begin implementation of features outlined in `Roadmap.md` for HorizonFrame, such as fleshing out the `ExplorePage` content or other onboarding steps.
+*   Verify target membership for all newly added/moved files in Xcode (if not already done by the user).
+
+---
+
+### 2025-06-05
+
+**Key Tasks Worked On:**
+*   Implemented a custom animated expanding/collapsing tab bar to replace the standard `TabView`.
+*   Refined the global `AnimatedGradientBackground` to be darker and animate more slowly.
+*   Ensured the global animated gradient background is visible across all main tab views (`AlignView`, `CollectView`, `ExploreView`, `SettingsView`) by making their respective backgrounds transparent.
+*   Modified the custom tab bar items to be text-only, removing icons.
+*   Addressed a specific gradient override in `ExploreView`.
+*   Adjusted `CustomTabBarView` background to ensure global gradient visibility.
+
+**Accomplishments:**
+*   Successfully replaced the standard iOS `TabView` with a custom, modern, and interactive tab bar solution (`CustomTabBarView` and `MainAppView`).
+*   Achieved a consistent, slowly moving, very dark animated gradient background across the application's main views.
+*   The tab bar now features a framed label for the selected tab and smoothly transitions between tabs, with expand/collapse functionality.
+
+**Key Decisions Made:**
+*   `MainAppView` now hosts the `CustomTabBarView` and manages the display of tab-specific content views.
+*   `AppTab.swift` created to define tab properties (title, icon (though icons later removed from display), associated view).
+*   `FramedContentWrapper.swift` created as a helper to draw kinetic frames around UI elements.
+*   `CustomTabBarView` uses `@Namespace` and `.matchedGeometryEffect` for smooth animation of the selected tab's frame.
+*   Individual tab views (`AlignView`, `CollectView`, `ExploreView`, `SettingsView`) were modified to have transparent backgrounds (`.scrollContentBackground(.hidden)` for `List`/`Form`, `Color.clear` for others) to allow the global gradient to show through.
+*   Removed the explicit background from `CustomTabBarView`'s main `HStack` to prevent it from obscuring the global gradient.
+
+**Issues Encountered:**
+*   **Build Errors (Potentially Ongoing):** Encountered "Cannot find type 'AppTab' in scope" errors, likely due to `Models/AppTab.swift` not having correct Target Membership in Xcode for the "Horizon-Frame" target. Advised USER to check and fix this. This is critical for the new UI to function.
+*   **Gradient Visibility:** Initially, the global gradient was obscured by:
+    *   Local opaque backgrounds in `ExploreView` (resolved).
+    *   Default opaque backgrounds of `List` and `Form` components in `AlignView`, `CollectView`, and `SettingsView` (resolved by applying `.scrollContentBackground(.hidden)` and `Color.clear`).
+    *   The `CustomTabBarView`'s own background (resolved by removing its explicit `Capsule` background).
+*   **Typo:** A minor typo in `CustomTabBarView.swift` preview section (resolved).
+*   **Animation Logic:** Initial approach to `AnimatedGradientBackground` speed adjustment was incorrect; corrected to modify duration within `withAnimation` block.
+
+**Next Steps (for next session):**
+*   **CRITICAL:** Confirm resolution of any "Cannot find type 'AppTab' in scope" build errors by verifying Target Membership for `AppTab.swift`.
+*   Thoroughly test the new custom tab bar functionality and gradient appearance across all views on a device or simulator.
+*   Address any remaining visual inconsistencies or bugs with the tab bar or gradient.
+*   Proceed with updating other documentation files (`Architecture.md`, `DailyBriefing.md`, `WorkflowGuide.md`).
+*   Continue with feature development as per `Roadmap.md`.

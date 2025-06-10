@@ -4,6 +4,13 @@
 <dict>
 	<key>NSExtension</key>
 	<dict>
+		<key></key>
+		<string></string>
+		<key>NSExtensionAttributes</key>
+		<dict>
+			<key>WidgetBundleName</key>
+			<string>HorizonFrameWidgetsBundle</string>
+		</dict>
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.widgetkit-extension</string>
 	</dict>
