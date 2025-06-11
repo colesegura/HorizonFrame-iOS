@@ -2,7 +2,11 @@
 
 ## Core Documents
 
-This section lists the essential documents that guide the HorizonFrame project. Consistent use and maintenance of these documents are key to effective collaboration and project clarity.
+This section outlines the key documents that define and support the HorizonFrame development process. Understanding and utilizing these documents is crucial for effective collaboration and project success.
+
+0.  **`Docs/GitHubWorkflow.md`**
+    *   **Purpose:** The definitive guide to Git branching, pull requests, code reviews, and merging strategies for the HorizonFrame project. All code contributions must adhere to this workflow.
+    *   **Usage:** Consult this document before starting any coding task and throughout the development lifecycle to ensure proper Git practices.
 
 1.  **`Docs/WorkflowGuide.md` (This Document)**
     *   **Purpose:** The central, canonical guide to the entire development workflow. Explains the role of each key document, the daily startup procedure, documentation standards, and how documents interrelate.

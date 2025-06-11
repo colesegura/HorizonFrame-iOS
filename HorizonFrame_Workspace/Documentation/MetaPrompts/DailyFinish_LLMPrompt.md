@@ -8,6 +8,7 @@ Excellent work this session! To wrap up and prepare for the next one, please ass
     *   Prompt the USER for any "Key Decisions Made" during *this session*.
     *   Prompt the USER for any "Issues Encountered" during *this session*.
     *   Prompt the USER for "Next Steps (for next session)" based on the outcome of *this session* and the `Docs/Roadmap.md`.
+    *   **GitHub Workflow Adherence:** Briefly confirm if the standard GitHub workflow (branching, PRs, merging from `Docs/GitHubWorkflow.md`) was followed for any code changes committed during the session.
     *   Assist in drafting the new entry. Ensure it follows the established format. If an entry for today (YYYY-MM-DD) already exists, append to it or create a new sub-entry if appropriate (e.g., if it was a distinct work block).
 
 2.  **Assist in Updating `Docs/DailyBriefing.md` (for the *Next* Session):**

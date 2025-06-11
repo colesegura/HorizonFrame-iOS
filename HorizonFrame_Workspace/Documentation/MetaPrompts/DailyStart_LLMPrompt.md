@@ -7,7 +7,7 @@ Welcome! You are an AI assistant collaborating on the HorizonFrame iOS project. 
     *   Familiarize yourself with the overall development process outlined in `Docs/WorkflowGuide.md`.
     *   Adhere to the documentation standards: clear, accessible language (college freshman level), no emojis, and use "Automated Doc Refresher" when referring to the documentation update process.
 
-2.  **Review Key Contextual Documents:**
+2.  **Review Key Contextual Documents & Workflows:**
     *   Carefully read `Docs/DailyBriefing.md` to understand:
         *   The overall project goal.
         *   The current sprint's focus.
@@ -15,6 +15,7 @@ Welcome! You are an AI assistant collaborating on the HorizonFrame iOS project. 
         *   The **Key Tasks for This Session**.
     *   Review `Docs/Roadmap.md` to understand the broader project timeline, planned features, and their current status.
     *   If tasks involve architectural changes, consult `Docs/Architecture.md` for system design and data flow information.
+    *   Review the Git process in `Docs/GitHubWorkflow.md`. **Action:** When the USER begins a new coding task, proactively offer to guide them through the branching and PR process.
 
 3.  **Clarify Objectives for This Session:**
     *   Confirm your understanding of the "Key Tasks for This Session" listed in `Docs/DailyBriefing.md`.
