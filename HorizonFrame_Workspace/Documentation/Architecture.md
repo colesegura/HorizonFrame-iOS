@@ -1,4 +1,22 @@
-# HorizonFrame Architecture (Version 0.1)
+# HorizonFrame Architecture
+
+## Media Asset Management
+
+### Directory Structure
+Media assets are organized in the `Resources/Media/` directory:
+- `Media/Thumbnails/`: Contains passage card thumbnail images
+- `Media/Videos/`: Contains background video files
+
+### Asset Loading
+- **Thumbnails**: Loaded via `Passage.loadThumbnail()` which uses `UIImage(named:)` to find images in the bundle
+- **Videos**: Loaded via `Passage.loadVideo()` which returns a URL to the video file in the bundle
+
+### Video Playback
+`VideoPlayerView` is a `UIViewRepresentable` wrapper around `AVPlayerLayer` that provides:
+- Seamless looping video playback
+- Proper memory management with strong references to player objects
+- Flexible asset path resolution for different bundle configurations
+- Automatic fallback to black background if video loading fails (Version 0.1)
 
 _Last updated: 2025-06-05_
 
@@ -43,13 +61,13 @@ This table describes the main code components (modules or classes) and what they
 | :---------------------- | :----------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------- |
 | **AppData**             | `ViewModels/AppData.swift`                 | Stores the user's `personalCode` (list of strings) and `insights` (list of Insight objects). It syncs this data with `UserDefaults` (a simple way to store small amounts of data on the device) and schedules notifications when insights change. (Note: Current views use local @State or @AppStorage primarily) |
 | **NotificationService** | `Services/NotificationService.swift`       | A straightforward helper for using `UNUserNotificationCenter` (Apple's system for notifications). It asks for permission when the app first launches and schedules a set number of daily notifications, spaced out evenly. |
+| **CollectView**         | `Views/CollectView.swift`                  | Displays user-saved passages, organized into "Active" and "Added" sections. It uses a `CollectViewModel` to manage the list of passages. It includes a sheet view (`AddPassageView`) for creating new passages with details like text, author, category, and tags. Passages can be marked as active or deleted directly from this view. |
 | **MainAppView**         | `Views/MainAppView.swift`                  | Hosts the `CustomTabBarView` and the content view for the currently selected tab. Manages the overall structure for the main application interface post-onboarding. |
 | **CustomTabBarView**    | `Views/CustomTabBarView.swift`             | A custom animated tab bar that expands to show all tab options (text-only) and collapses to show only the selected tab's text, framed. Handles tab selection and navigation. |
 | **AppTab**              | `Models/AppTab.swift`                      | Enum defining the application's main tabs (Align, Collect, Explore, Settings), including their titles and associated views. |
 | **AnimatedGradientBackground** | `Views/AnimatedGradientBackground.swift` | Provides a global, very dark, slowly moving animated gradient background for the entire application, contributing to the immersive UI. |
 | **FramedContentWrapper**| `Views/FramedContentWrapper.swift`         | A helper view that draws kinetic-style frame corners around its content. Used by `CustomTabBarView` for the selected tab item. |
 | **AlignView**           | `Views/Align/AlignView.swift` (Tentative)  | Provides an alignment session interface. Users can start a session to view a series of alignment statements. Includes a simple progress indicator. Placeholder for timer/gesture controls and streak updates. |
-| **CollectView**         | `Views/Collect/CollectView.swift` (Tentative)| Allows users to manage 'Personal Code' and 'Insights' via a segmented picker and lists. Includes placeholders for adding, editing, and deleting items. |
 | **ExploreView**         | `Views/Explore/ExploreView.swift` (Tentative)| Displays curated and user-generated alignment content in scrollable sections (e.g., 'For You', 'Trending'). Items are presented as cards with context menus for actions. |
 | **ProgressViewPage**    | `Views/Progress/ProgressViewPage.swift` (Tentative)| Shows user's alignment streak, a placeholder for a calendar view of completed dates, and summary stat cards for daily, weekly, and monthly progress. |
 | **SettingsView**        | `Views/Settings/SettingsView.swift` (Tentative)| Provides options for managing alignment reminders (enable, time, daily goal), data management (export, clear), appearance (theme), and an 'About' section. |

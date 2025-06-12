@@ -1,5 +1,17 @@
 # HorizonFrame Development Workflow
 
+### Adding Media Assets
+1. Place new media files in the appropriate subdirectory:
+   - Thumbnails in `Resources/Media/Thumbnails/`
+   - Videos in `Resources/Media/Videos/`
+2. In Xcode:
+   - Ensure the Media folder is added as a "folder reference" (blue folder)
+   - Verify target membership for the Media folder
+   - Clean and rebuild if assets aren't found at runtime
+3. In code:
+   - Reference thumbnails and videos by filename in `Passage` model
+   - Use `loadThumbnail()` and `loadVideo()` to access assets
+
 ## Core Documents
 
 This section outlines the key documents that define and support the HorizonFrame development process. Understanding and utilizing these documents is crucial for effective collaboration and project success.
