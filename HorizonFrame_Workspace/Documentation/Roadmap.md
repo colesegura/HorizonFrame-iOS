@@ -45,6 +45,7 @@ This document outlines planned features and improvements for the HorizonFrame ap
     *   **User Vision:** Allow users to generate an aesthetic wallpaper from their chosen passage/alignment for their iPhone, reinforcing their meditation.
 
 ### Content Discovery & Management (Explore & Collection)
+- [x] **UI Unification & Video Backgrounds:** Refactored `Explore`, `Collect`, and `Align` views to use a consistent two-column `PassageCardView` grid. Implemented full-screen, looping video backgrounds in `PassageDetailView` for an immersive experience.
 - [ ] **Explore Page - Core Functionality:** Develop the Explore page for users to discover and add new alignments.
     *   **User Vision:** Users can find and add popular alignments to their collection. They can choose to add a found alignment to their daily alignment routine.
 - [ ] **Explore Page - Interaction & Menus:** Implement a 3-dot context menu for alignment items in the Explore page.
@@ -53,8 +54,7 @@ This document outlines planned features and improvements for the HorizonFrame ap
     *   **User Vision:** Display alignments under sections like "For You" (personalized suggestions), "Trending," "Most Added," and "Popular with Friends." Also, allow browsing by "Categories" such as Bible, Psalms, Proverbs, Philosophy, etc.
 - [ ] **Explore Page - Initial Content Population:** Populate the Explore page with a base set of example alignments.
     *   **User Vision:** Provide sufficient initial content to make the Explore page useful until the user base is large enough to contribute a significant amount of shared alignments.
-- [ ] **Collection Page - Alignment Management:** Develop the Collection page for users to manage their saved and active alignments.
-    *   **User Vision:** Users can view all alignments they've added to their collection. They can see which alignments are active for daily practice, rearrange active ones (potentially to influence reminder times or order of practice), and merge multiple alignments/passages into a single, consolidated Daily Alignment practice.
+- [x] **Collect Page - Passage Management (Completed 2025-06-11):** Refactored the `Collect` page to manage individual passages directly instead of collections. The new UI features "Active" and "Added" sections, a form for creating detailed passages (with text, author, category, tags), and swipe-to-delete functionality.
 
 ### Community & Sharing
 - [ ] **Share Page - Social Sharing Functionality:** Implement functionality for users to share passages with friends.
