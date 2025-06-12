@@ -7,22 +7,45 @@ struct PassageDetailView: View {
     @State private var shareImage: UIImage? = nil
 
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 16) {
-                Text(passage.title)
-                    .font(.title2).bold()
-                if let author = passage.author {
-                    Text("By \(author)")
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                }
-                Text(passage.content)
-                    .font(.body)
+        ZStack {
+            // Video background that fills the entire screen
+            // Video background that fills the entire screen
+            if let videoName = passage.videoName {
+                VideoPlayerView(videoName: videoName)
+                    .ignoresSafeArea()
             }
-            .padding()
+
+            // Scrollable content on top
+            ScrollView {
+                VStack(alignment: .leading, spacing: 16) {
+                    Text(passage.title)
+                        .font(.largeTitle).bold()
+                        .foregroundColor(.white)
+                        .shadow(radius: 5)
+
+                    if let author = passage.author {
+                        Text("By \(author)")
+                            .font(.headline)
+                            .foregroundColor(.white.opacity(0.9))
+                            .shadow(radius: 3)
+                    }
+
+                    Text(passage.content)
+                        .font(.title3)
+                        .lineSpacing(8)
+                        .foregroundColor(.white)
+                        .shadow(radius: 3)
+                }
+                .padding()
+                .padding()
+                .background(.black.opacity(0.5))
+                .cornerRadius(20)
+                .padding()
+            }
         }
-        .navigationTitle("Passage")
+        .navigationTitle("") // Hide title to maximize view
         .navigationBarTitleDisplayMode(.inline)
+        .toolbarBackground(.hidden, for: .navigationBar)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {
