@@ -1,3 +1,41 @@
+### 2025-06-11 (Session 2)
+
+**Key Tasks Worked On:**
+*   Implemented dynamic video backgrounds for passages.
+*   Unified the UI of `Collect`, `Align`, and `Explore` views using a consistent card layout.
+*   Refactored `PassageDetailView` to support full-screen video playback.
+
+**Accomplishments:**
+*   **New Reusable Components:**
+    *   Created `PassageCardView.swift` as a highly reusable component for displaying passages with thumbnail image backgrounds, gradients, and clean typography.
+    *   Created `VideoPlayerView.swift` for seamless, looping video playback using `AVPlayer` and `UIViewRepresentable`.
+*   **UI Unification:**
+    *   Successfully refactored `CollectView`, `AlignView`, and `ExploreView` to use a modern two-column grid of `PassageCardView`s, replacing the previous inconsistent list-based layouts.
+    *   Overhauled `PassageDetailView` to feature an immersive, full-screen video background with readable text overlaid on a translucent material background.
+*   **Functionality Preservation:**
+    *   Ensured all existing functionality—starring passages in `Collect`, sharing from `Explore`, and launching the alignment player from `Align`—was preserved and cleanly integrated into the new card-based UI.
+*   **Data & Asset Integration:**
+    *   Updated the `Passage` model and `DummyData.swift` to include `thumbnailName` and `videoName` properties, enabling dynamic media backgrounds.
+*   **Code Health & Bug Fixes:**
+    *   Fixed multiple build errors and warnings that arose during implementation, including a view redeclaration error in `ShareCardRenderer.swift`, several deprecated `onChange` modifiers, a deprecated `AVAsset` initializer, and an incorrect `await` call.
+
+**Key Decisions Made:**
+*   Adopted a consistent two-column grid layout across all main views (`Collect`, `Align`, `Explore`) to create a modern, visually cohesive user experience.
+*   Used a `ZStack` in `PassageDetailView` to layer the video background behind the scrollable content. A semi-transparent material background was added to the text container to ensure readability over any video.
+*   Re-implemented the "Share" function in `ExploreView` using a `contextMenu` (long-press) to keep the primary card UI clean and uncluttered.
+*   Maintained dedicated overlay buttons for primary actions (e.g., the "Play" button in `AlignView`, the "Star" button in `CollectView`) to ensure they remain easily discoverable and don't conflict with the main navigation tap gesture.
+
+**Issues Encountered:**
+*   Encountered a `replace_file_content` tool error due to non-unique target content when modifying `CollectView`. This was resolved by fetching the full, up-to-date file content and replacing the entire view `body` to avoid ambiguity.
+*   Addressed several build errors and warnings post-implementation, reinforcing the importance of running a final build check before considering a feature complete.
+
+**Next Steps (for this session):**
+*   Update `Docs/Roadmap.md` to mark the UI unification and video background task as complete.
+*   Commit all code and documentation changes to version control.
+*   Guide the user on pushing the changes to the GitHub repository.
+
+---
+
 
 ### 2025-05-24
 
@@ -168,3 +206,37 @@
 *   Address any remaining visual inconsistencies or bugs with the tab bar or gradient.
 *   Proceed with updating other documentation files (`Architecture.md`, `DailyBriefing.md`, `WorkflowGuide.md`).
 *   Continue with feature development as per `Roadmap.md`.
+
+---
+
+### 2025-06-11
+
+**Key Tasks Worked On:**
+*   **`CollectView` Refactor:** Completed a full refactor of the `Collect` page to manage individual passages instead of collections.
+*   **Model Updates:** Modified `Passage.swift` to include `isActive: Bool` and `tags: [String]?` properties.
+*   **ViewModel Updates:** Overhauled `CollectViewModel.swift` to manage a single array of `Passage` objects, with computed properties for active/added passages and functions for adding, deleting, and toggling passage state.
+*   **UI Implementation:**
+    *   Rebuilt `CollectView.swift` to display "Active" and "Added" passage sections.
+    *   Created `PassageRowView` for consistent passage display.
+    *   Implemented swipe-to-delete functionality for passages.
+    *   Created `AddPassageView.swift` as a detailed sheet for creating new passages (title, content, author, category, tags).
+    *   Updated the navigation bar add button to a white "+" icon.
+*   **Data Updates:** Updated `Utilities/DummyData.swift` to provide sample data for the new `isActive` and `tags` properties.
+*   **Documentation:** Updated `Docs/Roadmap.md`, `Docs/Architecture.md`, and `Docs/DailyBriefing.md` to reflect the completed feature. Reviewed `Docs/WorkflowGuide.md` and confirmed it is current.
+
+**Accomplishments:**
+*   Successfully transitioned `CollectView` from a placeholder concept to a fully functional passage management feature.
+*   The data model (`Passage`), state management (`CollectViewModel`), and UI (`CollectView`) are now fully aligned with the new design.
+*   All project documentation accurately reflects the current state of the `CollectView` feature and architecture.
+
+**Key Decisions Made:**
+*   Pivoted from a collection-based architecture to a more flexible, direct passage management system. This simplifies the data model and user experience for the `Collect` tab.
+*   Tags are handled as a simple comma-separated string in the UI, which is then converted to a `[String]` array in the view model, providing a straightforward UX for tag input.
+
+**Issues Encountered:**
+*   Encountered minor inaccuracies with the `replace_file_content` tool when updating documentation. The `TargetContent` did not always match exactly, but the tool was able to apply the changes correctly. This serves as a reminder to be precise with target content.
+
+**Next Steps (for next session):**
+*   **CRITICAL:** Thoroughly test all aspects of the new `CollectView` on a simulator or device, including adding, deleting, and toggling passages.
+*   Review the `Roadmap.md` to plan and prioritize the next development task.
+*   Commit all code and documentation changes to version control.

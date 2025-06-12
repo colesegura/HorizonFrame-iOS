@@ -1,6 +1,6 @@
 # Daily Briefing - HorizonFrame
 
-**Session Start:** 2025-06-06 (To be filled by USER)
+**Session Start:** 2025-06-12 (To be filled by USER)
 
 ---
 
@@ -11,39 +11,45 @@
 
 ---
 
-## 2. Status from Previous Session (2025-06-05)
+## 2. Status from Previous Session (2025-06-11)
 
 *   **Key Accomplishments:**
-    *   **Custom Animated Tab Bar:** Successfully implemented a custom animated expanding/collapsing tab bar (`CustomTabBarView`, `MainAppView`) to replace the standard `TabView`. The new tab bar is text-only and features a kinetic frame around the selected tab.
-    *   **Global Animated Gradient Background:** Refined the `AnimatedGradientBackground` to be darker and animate more slowly. Ensured this gradient is visible across all main tab views (`AlignView`, `CollectView`, `ExploreView`, `SettingsView`) by making their respective backgrounds transparent.
-    *   **UI Consistency:** Addressed various UI elements (local gradients, opaque view backgrounds) that were obscuring the global gradient.
-    *   **Documentation:** Updated `Docs/DevLog.md` with the session's activities. Began updates to `Docs/Architecture.md`.
+    *   **`CollectView` Refactor Complete:** Successfully refactored `CollectView` to be passage-focused. This included:
+        *   Updating the `Passage` model (`Passage.swift`) with `isActive` and `tags` properties.
+        *   Overhauling `CollectViewModel.swift` for passage management (add, delete, toggle active state).
+        *   Rebuilding `CollectView.swift` with "Active"/"Added" sections, `PassageRowView`, swipe-to-delete, and a new `AddPassageView` sheet (for title, content, author, category, tags).
+        *   Styling the add button ("+") in `CollectView` to white.
+    *   **`DummyData.swift` Updated:** Aligned sample passages in `Utilities/DummyData.swift` with the new `Passage` model structure, including `isActive` and `tags`.
+    *   **Documentation Updated:**
+        *   `Docs/Roadmap.md`: Marked the `CollectView` feature as complete.
+        *   `Docs/Architecture.md`: Updated the `CollectView` description to reflect the new passage-centric architecture.
 *   **Key Decisions Made:**
-    *   `MainAppView` now orchestrates the main UI with `CustomTabBarView`.
-    *   `AppTab.swift` defines tab metadata.
-    *   Individual views (`AlignView`, `CollectView`, etc.) modified for background transparency.
+    *   Adopted direct passage management for `CollectView`, moving away from a collection-based model.
+    *   Confirmed `Docs/WorkflowGuide.md` remains current and requires no changes for this development cycle.
 *   **Issues Encountered/Pending:**
-    *   **Critical Build Error Risk:** Potential "Cannot find type 'AppTab' in scope" errors if `Models/AppTab.swift` lacks correct Target Membership in Xcode. USER advised to verify and fix.
-    *   Minor UI/animation adjustments might still be needed after thorough testing.
+    *   Noted minor inaccuracies with `replace_file_content` tool's `TargetContent` matching for documentation updates, though the tool successfully applied the intended changes.
 
 ---
 
-## 3. 🔥 Key Tasks for This Session (2025-06-06) 🔥
+## 3. 🔥 Key Tasks for This Session (2025-06-12) 🔥
 
-*   **Primary Objective:** Verify UI stability, complete documentation updates, and prepare for next feature development cycle.
-*   **Task 1 (Build & UI Verification - CRITICAL):**
-    *   **Action:** In Xcode, ensure `Models/AppTab.swift` is included in the "Horizon-Frame" target's "Compile Sources" build phase and has Target Membership checked for "Horizon-Frame".
-    *   **Action:** Clean build folder (Shift+Cmd+K) and rebuild the project (Cmd+B).
-    *   **Goal:** Confirm there are NO "Cannot find type 'AppTab' in scope" errors or other build-time issues.
-    *   **Action:** Run the app on a simulator or device. Thoroughly test the new custom tab bar (expansion, collapse, tab selection) and verify the animated gradient background is visible and correct on all main views (`Align`, `Collect`, `Explore`, `Settings`).
-*   **Task 2 (Documentation - Finalize Updates):**
-    *   Complete updates to `Docs/Architecture.md` (if anything pending from previous session).
-    *   Review and update `Docs/WorkflowGuide.md` to ensure it reflects current project state and processes, especially regarding UI component creation or modification if relevant.
-*   **Task 3 (Roadmap Review & Next Feature Planning):**
-    *   Review `Docs/Roadmap.md`.
-    *   Discuss and select the next UI feature or development task for HorizonFrame.
+*   **Primary Objective:** Thoroughly test the refactored `CollectView`, ensure UI/UX quality, and plan the next development cycle.
+*   **Task 1 (CollectView Testing - CRITICAL):**
+    *   **Action:** Run the app on a simulator or device.
+    *   **Goal:** Test all aspects of `CollectView`:
+        *   Adding new passages with all fields (text, author, category, tags).
+        *   Correct display of passages in "Active" and "Added" sections.
+        *   Toggling the "isActive" state of passages (star button) and verifying they move between sections.
+        *   Deleting passages using swipe-to-delete from both sections.
+        *   Verify the "+" button appearance and functionality.
+        *   Check UI for different passage lengths and content, ensuring no layout issues.
+*   **Task 2 (Roadmap Review & Next Feature Planning):**
+    *   Review `Docs/Roadmap.md` for remaining tasks in the current sprint or for v0.2.0.
+    *   Discuss and select the next UI feature or development task for HorizonFrame. Consider areas like "AlignView Improvements" (e.g., personal code editing) or "Progress Tab Enhancements."
+*   **Task 3 (Code Review & Refinement - Optional):**
+    *   Briefly review the newly added/modified Swift files (`Passage.swift`, `CollectViewModel.swift`, `CollectView.swift`, `DummyData.swift`) for any obvious improvements or adherence to `CodeStyle.md` (if available).
 *   **Task 4 (Session Wrap-up):**
-    *   Commit all new code and documentation changes.
+    *   Commit all new code and documentation changes (if any from this session).
     *   Update `Docs/DevLog.md` for today's session.
     *   Prepare `Docs/DailyBriefing.md` for the next session.
 
@@ -60,8 +66,8 @@
 
 ## 5. For the User (Cole): Quick Re-entry Notes
 
-*   **Last thing we did (2025-06-05):** Implemented the custom animated tab bar, refined the global gradient background, ensured gradient visibility across all main views, and updated `DevLog.md` and `Architecture.md`.
-*   **Focus for this session (2025-06-06):** CRITICAL: Verify `AppTab.swift` target membership to resolve build errors. Test the new UI thoroughly. Finalize documentation updates (`Architecture.md`, `WorkflowGuide.md`). Plan next development steps from `Roadmap.md`.
+*   **Last thing we did (2025-06-11):** Completed the `CollectView` refactor (passage-centric UI, new `AddPassageView`, add/delete/toggle state functionality), updated `DummyData.swift` to match the new `Passage` model, and updated `Roadmap.md` and `Architecture.md`.
+*   **Focus for this session (2025-06-12):** CRITICAL: Thoroughly test all functionalities of the newly refactored `CollectView` (add, delete, toggle active, display in sections, tag input). Plan the next development task based on `Roadmap.md`.
 *   **Mental State/Energy Level:** (User to fill)
 *   **Quick Reminders/Todos:** (User to fill)
     *   Remember to check Xcode Target Membership for `AppTab.swift`!

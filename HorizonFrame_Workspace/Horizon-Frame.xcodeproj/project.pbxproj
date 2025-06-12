@@ -90,6 +90,8 @@
 				Models/PassageCollection.swift,
 				Models/UserProfile.swift,
 				"Preview Content/Preview Assets.xcassets",
+				Resources/Media/Thumbnails/Thumbnail1.png,
+				Resources/Media/Videos/placeholder_video.mp4,
 				Services/AuthService.swift,
 				Services/FirebaseService.swift,
 				Services/FirestorePassageRepository.swift,
@@ -123,6 +125,8 @@
 				Views/MainAppView.swift,
 				Views/PassageDetailView.swift,
 				Views/SettingsView.swift,
+				Views/Shared/PassageCardView.swift,
+				Views/Shared/VideoPlayerView.swift,
 			);
 			target = F430CCE82DDF800C0030565D /* Horizon-Frame */;
 		};
