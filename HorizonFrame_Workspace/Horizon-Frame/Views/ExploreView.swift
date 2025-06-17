@@ -92,7 +92,7 @@ struct ExploreView: View {
                     LazyVGrid(columns: columns, spacing: 20) {
                         ForEach(filteredPassages) { passage in
                             NavigationLink {
-                                PassageDetailView(passage: passage)
+                                AlignPassageView(passage: passage, videoName: passage.videoName ?? "HF_Vid_Waves_01")
                             } label: {
                                 PassageCardView(passage: passage)
                                     .contextMenu {
