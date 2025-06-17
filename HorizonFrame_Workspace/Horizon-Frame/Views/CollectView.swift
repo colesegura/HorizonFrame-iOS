@@ -3,128 +3,155 @@ import SwiftUI
 struct CollectView: View {
     @EnvironmentObject var vm: CollectViewModel
     @State private var showAddSheet = false
-    @State private var editingCollection: Collection? = nil
+
+    private let columns = [
+        GridItem(.flexible(), spacing: 16),
+        GridItem(.flexible(), spacing: 16)
+    ]
 
     var body: some View {
-        List {
-            ForEach(vm.collections, id: \.id) { collection in
-                CollectionRowView(
-                    collection: collection,
-                    onTap: { self.editingCollection = collection },
-                    onDelete: { self.vm.deleteCollection(collection) }
-                )
+        ScrollView {
+            VStack(alignment: .leading, spacing: 0) {
+                // Active Section
+                if !vm.activePassages.isEmpty {
+                    SectionHeader(title: "Active")
+                    LazyVGrid(columns: columns, spacing: 16) {
+                        ForEach(vm.activePassages) { passage in
+                            NavigationLink(destination: PassageDetailView(passage: passage)) {
+                                ZStack(alignment: .topTrailing) {
+                                    PassageCardView(passage: passage)
+                                    
+                                    Button(action: { vm.toggleIsActive(for: passage) }) {
+                                        Image(systemName: passage.isActive ? "star.fill" : "star")
+                                            .font(.title3)
+                                            .foregroundColor(passage.isActive ? .yellow : .white)
+                                            .padding(6)
+                                            .background(Color.black.opacity(0.6))
+                                            .clipShape(Circle())
+                                    }
+                                    .buttonStyle(.plain) // Ensures the button action is localized and doesn't trigger the NavLink
+                                    .padding(8)
+                                }
+                            }
+                        }
+                        .onDelete { offsets in
+                            vm.deletePassage(at: offsets, from: vm.activePassages)
+                        }
+                    }
+                    .padding(.horizontal)
+                }
+
+                // Added Section
+                if !vm.addedPassages.isEmpty {
+                    SectionHeader(title: "Added")
+                    LazyVGrid(columns: columns, spacing: 16) {
+                        ForEach(vm.addedPassages) { passage in
+                            NavigationLink(destination: PassageDetailView(passage: passage)) {
+                                ZStack(alignment: .topTrailing) {
+                                    PassageCardView(passage: passage)
+
+                                    Button(action: { vm.toggleIsActive(for: passage) }) {
+                                        Image(systemName: passage.isActive ? "star.fill" : "star")
+                                            .font(.title3)
+                                            .foregroundColor(passage.isActive ? .yellow : .white)
+                                            .padding(6)
+                                            .background(Color.black.opacity(0.6))
+                                            .clipShape(Circle())
+                                    }
+                                    .buttonStyle(.plain) // Ensures the button action is localized and doesn't trigger the NavLink
+                                    .padding(8)
+                                }
+                            }
+                        }
+                        .onDelete { offsets in
+                            vm.deletePassage(at: offsets, from: vm.addedPassages)
+                        }
+                    }
+                    .padding(.horizontal)
+                }
             }
+            .padding(.vertical)
         }
-        .scrollContentBackground(.hidden) // Make List background transparent
-        .background(Color.clear) // Ensure the view itself is transparent
-        .navigationTitle("Collections")
+        .scrollContentBackground(.hidden)
+        .background(Color.clear)
+        .navigationTitle("Collection")
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button {
-                    showAddSheet = true
-                } label: {
-                    Image(systemName: "plus.circle.fill")
+                Button(action: { showAddSheet = true }) {
+                    Image(systemName: "plus")
+                        .font(.headline)
+                        .foregroundColor(.white)
                 }
             }
         }
         .sheet(isPresented: $showAddSheet) {
-            AddCollectionView() {
-                vm.addCollection(title: $0)
-            }
-        }
-        .sheet(item: $editingCollection) { collection in
-            EditCollectionView(collection: collection) {
-                vm.updateCollection(collection, title: $0)
+            AddPassageView {
+                vm.addPassage(title: $0, content: $1, author: $2, category: $3, tags: $4)
             }
         }
     }
 }
 
-// Row view for a single collection item
-private struct CollectionRowView: View {
-    let collection: Collection
-    let onTap: () -> Void
-    let onDelete: () -> Void
+// MARK: - Subviews
+
+private struct SectionHeader: View {
+    let title: String
 
     var body: some View {
-        HStack {
-            Text(collection.title)
-                .font(.headline)
-            Spacer()
-            Text("\(collection.passages.count) passages")
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-        }
-        .padding(.vertical, 4)
-        .contentShape(Rectangle()) // Make whole row tappable
-        .onTapGesture {
-            onTap()
-        }
-        .swipeActions {
-            Button(role: .destructive) {
-                onDelete()
-            } label: {
-                Label("Delete", systemImage: "trash")
-            }
-        }
+        Text(title)
+            .font(.title2).bold()
+            .foregroundColor(.white.opacity(0.9))
+            .padding(.horizontal)
+            .padding(.top, 20)
+            .padding(.bottom, 10)
     }
 }
 
-// Sheet for adding a new collection
-private struct AddCollectionView: View {
+
+
+private struct AddPassageView: View {
     @Environment(\.dismiss) var dismiss
     @State private var title: String = ""
-    var onSave: (String) -> Void
+    @State private var content: String = ""
+    @State private var author: String = ""
+    @State private var category: String = "Bible"
+    @State private var tags: String = ""
+
+    let onSave: (String, String, String?, String, [String]?) -> Void
+    let categories = ["Bible", "Philosophical", "Ancient Wisdom", "Poetry & Literature", "Scientific Insights", "Mindfulness & Meditation", "Art & Creativity", "Nature & Cosmos", "Human Experience"]
 
     var body: some View {
         NavigationView {
             Form {
-                TextField("Collection Title", text: $title)
+                Section(header: Text("Passage Details")) {
+                    TextField("Title", text: $title)
+                    TextField("Author (Optional)", text: $author)
+                    Picker("Category", selection: $category) {
+                        ForEach(categories, id: \.self) { Text($0) }
+                    }
+                }
+
+                Section(header: Text("Content")) {
+                    TextEditor(text: $content)
+                        .frame(minHeight: 150)
+                }
+
+                Section(header: Text("Tags"), footer: Text("Separate tags with commas.")) {
+                    TextField("e.g. faith, hope, love", text: $tags)
+                }
             }
-            .navigationTitle("New Collection")
+            .navigationTitle("Add New Passage")
             .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel") { dismiss() }
+                }
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Save") {
-                        onSave(title)
+                        let tagArray = tags.split(separator: ",").map { String($0.trimmingCharacters(in: .whitespaces)) }
+                        onSave(title, content, author.isEmpty ? nil : author, category, tagArray.isEmpty ? nil : tagArray)
                         dismiss()
                     }
-                    .disabled(title.isEmpty)
-                }
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel", role: .cancel) { dismiss() }
-                }
-            }
-        }
-    }
-}
-
-// Sheet for editing an existing collection
-private struct EditCollectionView: View {
-    @Environment(\.dismiss) var dismiss
-    @State private var title: String
-    var onSave: (String) -> Void
-
-    init(collection: Collection, onSave: @escaping (String) -> Void) {
-        _title = State(initialValue: collection.title)
-        self.onSave = onSave
-    }
-
-    var body: some View {
-        NavigationView {
-            Form {
-                TextField("Collection Title", text: $title)
-            }
-            .navigationTitle("Edit Collection")
-            .toolbar {
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("Save") {
-                        onSave(title)
-                        dismiss()
-                    }
-                    .disabled(title.isEmpty)
-                }
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel", role: .cancel) { dismiss() }
+                    .disabled(title.isEmpty || content.isEmpty)
                 }
             }
         }

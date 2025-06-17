@@ -5,6 +5,7 @@ struct PassageDetailView: View {
 
     @State private var showShareSheet = false
     @State private var shareImage: UIImage? = nil
+    @Environment(\.dismiss) var dismiss // Environment variable to dismiss the view
 
     var body: some View {
         ZStack {
@@ -13,6 +14,10 @@ struct PassageDetailView: View {
             if let videoName = passage.videoName {
                 VideoPlayerView(videoName: videoName)
                     .ignoresSafeArea()
+                    .overlay(
+                        Color.black.opacity(0.4) // Adjust opacity as needed for readability
+                            .ignoresSafeArea()
+                    )
             }
 
             // Scrollable content on top
@@ -36,17 +41,24 @@ struct PassageDetailView: View {
                         .foregroundColor(.white)
                         .shadow(radius: 3)
                 }
-                .padding()
-                .padding()
-                .background(.black.opacity(0.5))
-                .cornerRadius(20)
-                .padding()
+                .padding() // Keep overall padding for the text block
+                // Removed .background(.black.opacity(0.5)) and .cornerRadius(20)
+                // The outer .padding() might also need adjustment or removal depending on desired text inset
             }
         }
         .navigationTitle("") // Hide title to maximize view
         .navigationBarTitleDisplayMode(.inline)
         .toolbarBackground(.hidden, for: .navigationBar)
+        .navigationBarBackButtonHidden(true) // Hide the default back button
         .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: {
+                    dismiss()
+                }) {
+                    Image(systemName: "chevron.left")
+                        .foregroundColor(.white)
+                }
+            }
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {
                     // Generate shareable image of the passage
@@ -56,6 +68,7 @@ struct PassageDetailView: View {
                     }
                 }) {
                     Image(systemName: "square.and.arrow.up")
+                        .foregroundColor(.white) // Set icon color to white
                 }
             }
         }

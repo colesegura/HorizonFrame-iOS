@@ -72,6 +72,8 @@ This table describes the main code components (modules or classes) and what they
 | **ProgressViewPage**    | `Views/Progress/ProgressViewPage.swift` (Tentative)| Shows user's alignment streak, a placeholder for a calendar view of completed dates, and summary stat cards for daily, weekly, and monthly progress. |
 | **SettingsView**        | `Views/Settings/SettingsView.swift` (Tentative)| Provides options for managing alignment reminders (enable, time, daily goal), data management (export, clear), appearance (theme), and an 'About' section. |
 | **OnboardingOverlay**   | `Views/Components/OnboardingOverlay.swift` | A semi-transparent guide that appears once for each new feature to help users understand it. Information about whether it has been shown is stored in `UserDefaults`. |
+| **PassageVideoGenerator**  | `Services/PassageVideoGenerator.swift`         | Handles the generation of animated passage videos. Loads video assets, composites text overlays (rendered by `PassageTextRendererView`) onto video frames, and encodes the final video using AVFoundation. |
+| **PassageTextRendererView**| `Views/Utility/PassageTextRendererView.swift`| A SwiftUI utility view responsible for rendering individual passage lines with specific styling (e.g., current line highlighting) on a transparent background, for use in video frame compositing.        |
 
 ---
 

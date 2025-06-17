@@ -116,7 +116,7 @@ struct AnimatedFrameView: View {
         .scaleEffect(currentScale)
         .offset(currentOffset)
         .opacity(currentOpacity)
-        .onChange(of: triggerAnimation) { newValue in
+        .onChange(of: triggerAnimation) { oldValue, newValue in
             if newValue {
                 withAnimation(.spring(response: animationDuration, dampingFraction: 0.7).delay(config.delay)) {
                     currentOffset = .zero

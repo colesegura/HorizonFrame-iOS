@@ -31,103 +31,89 @@ struct AlignView: View {
         return completionMessages[day] ?? "You've completed your alignments for the day. Rest and prepare for tomorrow!"
     }
 
+    private let columns = [
+        GridItem(.flexible(), spacing: 16),
+        GridItem(.flexible(), spacing: 16)
+    ]
+
     var body: some View {
-        VStack(spacing: 16) { 
+        VStack(spacing: 0) {
             HStack {
-                Button {
-                    vm.goToPreviousDay()
-                } label: {
-                    Image(systemName: "arrow.left")
-                }
+                Button { vm.goToPreviousDay() } label: { Image(systemName: "arrow.left") }
                 Spacer()
-                Text(vm.selectedDate, style: .date).bold() 
+                Text(vm.selectedDate, style: .date).bold().font(.title2)
                 Spacer()
-                Button {
-                    vm.goToNextDay()
-                } label: {
-                    Image(systemName: "arrow.right")
-                }
+                Button { vm.goToNextDay() } label: { Image(systemName: "arrow.right") }
             }
-            .padding(.horizontal)
-            .padding(.top)
+            .padding()
 
-            if let next = vm.upcomingSessionsForSelectedDate.first {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(next.passage.title).font(.headline)
-                    if let date = next.date {
-                        Text(date, style: .time)
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
+            ScrollView {
+                VStack(alignment: .leading, spacing: 24) {
+                    if vm.upcomingSessionsForSelectedDate.isEmpty {
+                        VStack(alignment: .center, spacing: 12) {
+                            Text("All Clear!")
+                                .font(.title.bold())
+                                .foregroundColor(.white)
+                            Text(currentDayCompletionMessage)
+                                .font(.headline)
+                                .foregroundColor(.white.opacity(0.8))
+                                .multilineTextAlignment(.center)
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 50)
+                    } else {
+                        SectionHeader(title: "Upcoming")
+                        LazyVGrid(columns: columns, spacing: 20) {
+                            ForEach(Array(vm.upcomingSessionsForSelectedDate.enumerated()), id: \.element.id) { index, session in
+                                NavigationLink(destination: AlignPassageView(passage: session.passage, videoName: session.passage.videoName ?? "HF_Vid_Waves_01")) {
+                                    PassageCardView(passage: session.passage)
+                                }
+                                .buttonStyle(.plain)
+                            }
+                        }
                     }
-                }
-                .padding()
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .foregroundColor(.primary)
-                .expandingButton {
-                    playSession = next
-                }
-                .padding(.horizontal)
-                .cardStyle()
-            } else {
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("All Clear!")
-                        .font(.title.bold())
-                    Text(currentDayCompletionMessage)
-                        .font(.headline)
-                        .foregroundColor(.secondary)
-                }
-                .padding()
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.top, 40) 
-                .padding(.horizontal)
-            }
 
-            List {
-                if !vm.upcomingSessionsForSelectedDate.isEmpty {
-                    Section("Upcoming for \(vm.selectedDate, formatter: dateFormatter)") {
-                        ForEach(vm.upcomingSessionsForSelectedDate) { s in
-                            SessionRow(session: s)
+                    if !vm.completedSessionsForSelectedDate.isEmpty {
+                        SectionHeader(title: "Completed")
+                        LazyVGrid(columns: columns, spacing: 20) {
+                            ForEach(vm.completedSessionsForSelectedDate) { session in
+                                NavigationLink(destination: PassageDetailView(passage: session.passage)) {
+                                    PassageCardView(passage: session.passage)
+                                        .opacity(0.7)
+                                        .overlay(
+                                            Image(systemName: "checkmark.circle.fill")
+                                                .font(.system(size: 44))
+                                                .foregroundColor(.green)
+                                                .background(Color.white.opacity(0.5).clipShape(Circle()))
+                                        )
+                                }
+                                .buttonStyle(.plain)
+                            }
                         }
                     }
                 }
-                
-                if !vm.completedSessionsForSelectedDate.isEmpty {
-                    Section("Completed on \(vm.selectedDate, formatter: dateFormatter)") {
-                        ForEach(vm.completedSessionsForSelectedDate) { s in
-                            SessionRow(session: s)
-                        }
-                    }
-                }
+                .padding(.horizontal)
             }
-            .listStyle(.insetGrouped)
-            .scrollContentBackground(.hidden) // Make List background transparent
         }
-        .background(Color.clear) // Ensure the VStack itself is also transparent
+        .background(Color.clear)
         .navigationTitle("Align")
         .sheet(item: $playSession) { sessionToPlay in
             AlignmentPlayerContainer(session: sessionToPlay) {
                 vm.markFirstUpcomingDone()
             }
             .presentationDetents([.large])
-            .interactiveDismissDisabled() 
+            .interactiveDismissDisabled()
         }
     }
 }
 
-private struct SessionRow: View {
-    let session: Session
+private struct SectionHeader: View {
+    let title: String
 
     var body: some View {
-        HStack {
-            VStack(alignment: .leading) {
-                Text(session.passage.title)
-                if let date = session.date {
-                    Text(date, style: .time).font(.caption).foregroundColor(.secondary)
-                }
-            }
-            Spacer()
-            Image(systemName: session.isCompleted ? "checkmark.circle.fill" : "circle")
-                .foregroundColor(session.isCompleted ? .green : .secondary)
-        }
+        Text(title)
+            .font(.title2).bold()
+            .foregroundColor(.white.opacity(0.9))
+            .padding(.bottom, -8)
     }
 }

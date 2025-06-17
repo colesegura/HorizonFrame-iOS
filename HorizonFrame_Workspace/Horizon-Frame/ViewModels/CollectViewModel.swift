@@ -1,32 +1,46 @@
 import SwiftUI
 
 class CollectViewModel: ObservableObject {
-    @Published var collections: [Collection] = []
-    @Published var userName: String = ""
+    @Published var passages: [Passage] = []
+
+    // Computed properties to filter passages for the view
+    var activePassages: [Passage] {
+        passages.filter { $0.isActive }
+    }
+
+    var addedPassages: [Passage] {
+        passages.filter { !$0.isActive }
+    }
 
     init() {
-        // Use dummy user profile data
-        let user = DummyData.user
-        self.collections = user.collections
-        self.userName = user.name
-        // Normally, you'd load the user's collections from a database or backend here.
+        // Load dummy passages. In a real app, this would come from a database.
+        self.passages = DummyData.passages
     }
 
-    // MARK: - CRUD Operations for Collections
+    // MARK: - CRUD Operations for Passages
 
-    func addCollection(title: String) {
-        let newCollection = Collection(title: title, passages: []) // New collections start empty
-        collections.append(newCollection)
+    func addPassage(title: String, content: String, author: String?, category: String, tags: [String]?) {
+        let newPassage = Passage(
+            title: title,
+            content: content,
+            author: author,
+            category: category,
+            tags: tags,
+            isActive: false // New passages start in the 'Added' section
+        )
+        passages.append(newPassage)
     }
 
-    func updateCollection(_ collectionToUpdate: Collection, title: String) {
-        if let index = collections.firstIndex(where: { $0.id == collectionToUpdate.id }) {
-            collections[index].title = title
-            // If passages could also be updated, handle that here too
+    func deletePassage(at offsets: IndexSet, from passageList: [Passage]) {
+        // Find the IDs of the passages to delete from the filtered list
+        let idsToDelete = offsets.map { passageList[$0].id }
+        // Remove all passages with those IDs from the main source array
+        passages.removeAll { idsToDelete.contains($0.id) }
+    }
+
+    func toggleIsActive(for passage: Passage) {
+        if let index = passages.firstIndex(where: { $0.id == passage.id }) {
+            passages[index].isActive.toggle()
         }
-    }
-
-    func deleteCollection(_ collectionToDelete: Collection) {
-        collections.removeAll { $0.id == collectionToDelete.id }
     }
 }

@@ -9,6 +9,11 @@ struct ExploreView: View {
     @State private var renderedShareImage: UIImage? = nil
     @State private var showShareSheet: Bool = false
 
+    private let columns = [
+        GridItem(.flexible(), spacing: 16),
+        GridItem(.flexible(), spacing: 16)
+    ]
+
     // Dynamically get all unique categories from passages, plus "All"
     private var allCategories: [String] {
         ["All"] + Array(Set(viewModel.passages.map { $0.category })).sorted()
@@ -79,16 +84,20 @@ struct ExploreView: View {
                         .padding(.horizontal)
                     }
 
-                    // Passages List
-                    LazyVStack(spacing: 20) {
+                    // Passages Grid
+                    LazyVGrid(columns: columns, spacing: 20) {
                         ForEach(filteredPassages) { passage in
                             NavigationLink {
                                 PassageDetailView(passage: passage)
                             } label: {
-                                PassageItemView(passage: passage) {
-                                    // Share action
-                                    self.passageToShare = passage
-                                }
+                                PassageCardView(passage: passage)
+                                    .contextMenu {
+                                        Button {
+                                            passageToShare = passage
+                                        } label: {
+                                            Label("Share Passage", systemImage: "square.and.arrow.up")
+                                        }
+                                    }
                             }
                             .buttonStyle(PlainButtonStyle())
                         }
@@ -115,16 +124,13 @@ struct ExploreView: View {
                     }
                 }
             }
-            .onChange(of: passageToShare) { newPassageToShare in
-                guard let passage = newPassageToShare else { return }
+            .onChange(of: passageToShare) {
+                guard let passage = passageToShare else { return }
                 Task {
                     // Ensure ShareCardRenderer is called on MainActor if it does UI work internally
-                    // or if ImageRenderer needs it, which it does.
-                    await MainActor.run {
-                        self.renderedShareImage = ShareCardRenderer().renderPassageCard(for: passage)
-                        if self.renderedShareImage != nil {
-                            self.showShareSheet = true
-                        }
+                                        if let image = ShareCardRenderer().renderPassageCard(for: passage) {
+                        renderedShareImage = image
+                        showShareSheet = true
                     }
                 }
             }
@@ -143,57 +149,7 @@ struct ExploreView: View {
     }
 }
 
-// Custom view for displaying each passage item
-struct PassageItemView: View {
-    let passage: Passage
-    var onShare: () -> Void // Closure for share action
 
-    var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text(passage.title)
-                .font(.system(.headline, design: .serif))
-                .foregroundColor(.primary)
-                .lineLimit(2)
-
-            Text(passage.content)
-                .font(.system(.body, design: .serif).weight(.light))
-                .foregroundColor(.primary.opacity(0.85))
-                .lineSpacing(4)
-                .lineLimit(4) // Show a snippet, full view in detail
-
-            HStack {
-                Text(passage.author ?? "Unknown Author")
-                    .font(.caption)
-                    .foregroundColor(.gray)
-                Spacer()
-                Text(passage.category)
-                    .font(.caption2.bold())
-                    .padding(.vertical, 3)
-                    .padding(.horizontal, 8)
-                    .background(Color.accentColor.opacity(0.2))
-                    .foregroundColor(Color.accentColor)
-                    .clipShape(Capsule())
-                
-                Button {
-                    onShare()
-                } label: {
-                    Image(systemName: "square.and.arrow.up")
-                        .font(.callout)
-                        .foregroundColor(.gray)
-                }
-                .padding(.top, 4)
-            }
-        }
-        .padding(15)
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background(Color.black.opacity(0.1))
-        .cornerRadius(12)
-        .overlay(
-            RoundedRectangle(cornerRadius: 12)
-                .stroke(Color.gray.opacity(0.2), lineWidth: 1)
-        )
-    }
-}
 
 #if DEBUG
 struct ExploreView_Previews: PreviewProvider {

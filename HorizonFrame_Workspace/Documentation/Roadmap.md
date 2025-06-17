@@ -88,6 +88,11 @@ This document outlines planned features and improvements for the HorizonFrame ap
     - [ ] Complete personal code editing functionality
     - [ ] Add visual feedback for actions
     - [ ] Implement proper error handling
+    - [x] **Revamp Passage Viewing Experience (Universal & Align-Specific) (Related to Onboarding Alignment Introduction)**
+        - [x] Universal Passage View: Transparent Nav Bar & Darkened Video Background (No distinct text background box)
+        - [x] Universal Passage View: Consistent White Top Buttons & Simplified Back Button (Icon only)
+        - [x] Align Passage View: Interactive Line-by-Line Progression (Tap-based, visual emphasis change)
+        - [x] Align Passage View: Share as Animated Video (Text iterates over video background)
 
 ### Sprint 0.1.4 (Next)
 

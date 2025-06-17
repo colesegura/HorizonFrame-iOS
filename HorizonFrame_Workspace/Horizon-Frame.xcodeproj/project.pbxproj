@@ -89,6 +89,7 @@
 				Models/Passage.swift,
 				Models/PassageCollection.swift,
 				Models/UserProfile.swift,
+				PassageVideoGenerator.swift,
 				"Preview Content/Preview Assets.xcassets",
 				Resources/Media/Thumbnails/Thumbnail1.png,
 				Resources/Media/Videos/placeholder_video.mp4,
@@ -103,6 +104,7 @@
 				Utilities/Extensions.swift,
 				Utilities/LineFadeText.swift,
 				Utilities/LineFocusText.swift,
+				Utilities/PassageTextRendererView.swift,
 				Utilities/ShareSheet.swift,
 				Utilities/TypewriterText.swift,
 				ViewModels/AlignViewModel.swift,
@@ -114,6 +116,7 @@
 				Views/AlignmentCompleteView.swift,
 				Views/AlignmentPlayerContainer.swift,
 				Views/AlignmentPlayerView.swift,
+				Views/AlignPassageView.swift,
 				Views/AlignView.swift,
 				Views/AnimatedGradientBackground.swift,
 				Views/CollectionDetailView.swift,
@@ -125,8 +128,10 @@
 				Views/MainAppView.swift,
 				Views/PassageDetailView.swift,
 				Views/SettingsView.swift,
+				Views/Shared/FillingCircleProgressView.swift,
 				Views/Shared/PassageCardView.swift,
 				Views/Shared/VideoPlayerView.swift,
+				Views/VideoFrameView.swift,
 			);
 			target = F430CCE82DDF800C0030565D /* Horizon-Frame */;
 		};
