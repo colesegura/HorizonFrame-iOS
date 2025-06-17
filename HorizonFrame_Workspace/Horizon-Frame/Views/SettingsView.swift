@@ -1,7 +1,9 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
     @EnvironmentObject var storeManager: StoreManager
+    @EnvironmentObject var appState: AppStateManager
     // Assuming ReferralViewModel might not be available, using a placeholder for referral code
     // @EnvironmentObject var referralViewModel: ReferralViewModel 
     @State private var userReferralCode: String = ReferralCodeManager.shared.getReferralCode()
@@ -88,6 +90,14 @@ struct SettingsView: View {
                 Section(header: Text("Legal")) {
                     Link("Privacy Policy", destination: URL(string: "https://www.example.com/privacy")!)
                     Link("Terms of Service", destination: URL(string: "https://www.example.com/terms")!)
+                }
+                
+                // MARK: - Developer Section
+                Section(header: Text("Developer")) {
+                    Button("Rerun Onboarding") {
+                        hasCompletedOnboarding = false
+                        appState.showOnboarding = true
+                    }
                 }
                 
                 // MARK: - App Info Section

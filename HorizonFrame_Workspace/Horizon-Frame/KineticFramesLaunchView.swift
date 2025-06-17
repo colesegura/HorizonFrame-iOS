@@ -24,6 +24,8 @@ struct KineticFramesLaunchView: View {
     @State private var overallZoomScale: CGFloat = 1.0
     @State private var framesGroupOpacity: Double = 1.0
     @State private var showMainContent = false
+    @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
+    @StateObject private var appState = AppStateManager()
 
     // Initialize view models for each feature
     @StateObject private var exploreVM = ExploreViewModel()
@@ -65,8 +67,13 @@ struct KineticFramesLaunchView: View {
                     .environmentObject(exploreVM)
                     .environmentObject(settingsVM)
                     .environmentObject(storeManager)
+                    .environmentObject(appState)
                     .transition(.opacity.animation(.easeInOut(duration: finalTransitionDuration)))
             }
+        }
+        .fullScreenCover(isPresented: $appState.showOnboarding) {
+            OnboardingView(isPresented: $appState.showOnboarding)
+                .environmentObject(storeManager)
         }
         .onAppear {
             if !framesHaveAnimatedIn {
@@ -83,6 +90,14 @@ struct KineticFramesLaunchView: View {
                     // 3. Schedule showing main content after zoom completes
                     DispatchQueue.main.asyncAfter(deadline: .now() + zoomAnimationDuration - (finalTransitionDuration * 0.5) ) { // Start transition a bit later, closer to zoom end
                         showMainContent = true
+                        
+                        // 4. Check if onboarding needs to be shown
+                        if !hasCompletedOnboarding {
+                            // A slight delay to ensure the main view is settled before presenting the sheet
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                appState.showOnboarding = true
+                            }
+                        }
                     }
                 }
             }
