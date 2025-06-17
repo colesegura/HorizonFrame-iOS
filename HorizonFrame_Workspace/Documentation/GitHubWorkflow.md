@@ -8,6 +8,26 @@ This document outlines the standard Git and GitHub workflow for the HorizonFrame
 2.  **Feature Branches for All Work:** All development, including new features, bug fixes, and refactoring, must occur on separate feature branches.
 3.  **Pull Requests (PRs) for Review:** All changes destined for `main` must be submitted via a Pull Request, reviewed, and then merged.
 
+## Daily Quick-Start Checklist (GitHub Desktop)
+
+> Run this 30-second routine every time you sit down to code so you and your teammate stay in sync.
+>
+> 1. **Quit Xcode** if it is open (protects `.xcodeproj` from merge conflicts).
+> 2. In **GitHub Desktop**, verify the branch dropdown shows **main**, then pull the latest code:
+>    • Toolbar **Pull origin** button  
+>    • OR menu **Repository ▸ Pull**  (⌘⇧P)  
+>    (If the button says **Fetch origin** first, click that, then Pull.)
+> 3. **Branch ▸ New Branch…** → create `feature/<short-description>` off `main` and **Checkout**.
+> 4. Code in Xcode. Build.
+> 5. **Commit** frequently (bottom-left Summary field → *Commit to <branch>*).
+> 6. **Push** (top-right *Push origin*) after each commit or at logical milestones.
+> 7. When the feature is ready → *Create Pull Request* (banner in GitHub Desktop).
+> 8. On GitHub: **Squash & Merge** the PR.
+> 9. Back in GitHub Desktop: switch to `main` → **Pull origin**.
+> 10. Optionally delete the finished branch (both local & remote).
+
+---
+
 ## Critical Note: Handling Xcode Project File (`.xcodeproj`) Conflicts
 
 **This is the most common and frustrating source of project-breaking issues in a collaborative Xcode project.** The `Horizon-Frame.xcodeproj` file (specifically, the `project.pbxproj` file within it) is a complex database that tracks all files, targets, and build settings. Git has no special understanding of this file and can easily corrupt it during a merge or rebase, leading to a cascade of errors.
@@ -60,21 +80,29 @@ If the project suddenly fails to build after a Git operation, with errors like "
         ```
 
 3.  **Keep Your Branch Synchronized (Optional but Recommended for Long-Lived Branches):**
-    *   Periodically, update your feature branch with the latest changes from `main` to avoid large merge conflicts later.
-        ```bash
-        git fetch origin
-        git rebase origin/main  # Preferred for a cleaner history
-        # OR
-        # git merge origin/main # Simpler, creates a merge commit
-        ```
+    *   Periodically update your feature branch with the latest changes from `main` to avoid large merge conflicts later.
+
+    **GitHub Desktop:**  Repository ▸ **Fetch origin**  → Branch ▸ **Rebase current branch onto main…**  (or **Merge into current branch…** for a merge commit)
+
+    **CLI:**
+    ```bash
+    git fetch origin
+    git rebase origin/main   # Preferred for a cleaner history
+    # OR
+    # git merge origin/main  # Simpler, creates a merge commit
+    ```
     *   Resolve any conflicts locally before pushing.
 
 4.  **Push Your Feature Branch to Remote:**
-    *   Regularly push your local feature branch to the remote repository (GitHub). This backs up your work and makes it visible for collaboration if needed.
-        ```bash
-        git push -u origin <your-branch-name>  # For the first push
-        git push                             # For subsequent pushes
-        ```
+    *   Regularly push your local feature branch to the remote repository. This backs up your work and makes it visible for collaboration.
+
+    **GitHub Desktop:** click the blue **Push origin** button (top-right).
+
+    **CLI:**
+    ```bash
+    git push -u origin <your-branch-name>  # First push sets tracking
+    git push                              # Subsequent pushes
+    ```
 
 5.  **Create a Pull Request (PR):**
     *   When your feature is complete, tested, and ready for integration, go to the HorizonFrame repository on GitHub.
