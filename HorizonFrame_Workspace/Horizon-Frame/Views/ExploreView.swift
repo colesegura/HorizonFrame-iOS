@@ -1,13 +1,17 @@
 import SwiftUI
 
 struct ExploreView: View {
-    @EnvironmentObject var viewModel: ExploreViewModel
+    @EnvironmentObject private var viewModel: ExploreViewModel
+    @EnvironmentObject private var storeManager: StoreManager
     @State private var searchText: String = ""
     @State private var selectedCategory: String = "All"
     @State private var isSearchActive: Bool = false
     @State private var passageToShare: Passage? = nil
     @State private var renderedShareImage: UIImage? = nil
     @State private var showShareSheet: Bool = false
+    @State private var showSubscriptionSheet = false
+    @State private var showReferralShare = false
+    @State private var showPremiumStatusSheet = false
 
     private let columns = [
         GridItem(.flexible(), spacing: 16),
@@ -111,16 +115,36 @@ struct ExploreView: View {
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        withAnimation {
-                            isSearchActive.toggle()
+                    HStack(spacing: 22) {
+                        Button(action: {
+                            if storeManager.isPremium {
+                                showPremiumStatusSheet = true
+                            } else {
+                                showSubscriptionSheet = true
+                            }
+                        }) {
+                            Image(systemName: storeManager.isPremium ? "crown.fill" : "crown")
+                                .foregroundColor(.primary)
                         }
-                        if !isSearchActive {
-                            searchText = "" // Clear search text when hiding
+
+                        Button(action: {
+                            showReferralShare = true
+                        }) {
+                            Image(systemName: "square.and.arrow.up")
+                                .foregroundColor(.primary)
                         }
-                    } label: {
-                        Image(systemName: isSearchActive ? "xmark.circle" : "magnifyingglass")
-                            .foregroundColor(.primary)
+
+                        Button {
+                            withAnimation {
+                                isSearchActive.toggle()
+                            }
+                            if !isSearchActive {
+                                searchText = "" // Clear search text when hiding
+                            }
+                        } label: {
+                            Image(systemName: isSearchActive ? "xmark.circle" : "magnifyingglass")
+                                .foregroundColor(.primary)
+                        }
                     }
                 }
             }
@@ -141,6 +165,15 @@ struct ExploreView: View {
                     // Optional: Show an error or a placeholder if image rendering failed
                     Text("Could not prepare content for sharing.")
                 }
+            }
+            .sheet(isPresented: $showSubscriptionSheet) {
+                SubscriptionOptionsView()
+            }
+            .sheet(isPresented: $showReferralShare) {
+                ReferralView()
+            }
+            .sheet(isPresented: $showPremiumStatusSheet) {
+                PremiumStatusView()
             }
         }
         .toolbarBackground(Color.clear, for: .navigationBar) // Keep it clear, though hidden should override

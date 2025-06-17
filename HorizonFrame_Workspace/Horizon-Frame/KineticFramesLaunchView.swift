@@ -30,6 +30,7 @@ struct KineticFramesLaunchView: View {
     @StateObject private var collectVM = CollectViewModel()
     @StateObject private var alignVM   = AlignViewModel()
     @StateObject private var settingsVM = SettingsViewModel() // Added SettingsViewModel
+    @StateObject private var storeManager = StoreManager()
 
     // Durations and timing
     let individualFrameAnimationDuration: Double = 0.8 // Spring response for each frame
@@ -63,6 +64,7 @@ struct KineticFramesLaunchView: View {
                     .environmentObject(collectVM)
                     .environmentObject(exploreVM)
                     .environmentObject(settingsVM)
+                    .environmentObject(storeManager)
                     .transition(.opacity.animation(.easeInOut(duration: finalTransitionDuration)))
             }
         }

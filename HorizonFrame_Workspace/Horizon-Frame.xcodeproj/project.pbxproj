@@ -84,6 +84,9 @@
 				KineticFramesLaunchView.swift,
 				KineticFrameView.swift,
 				LaunchScreen.storyboard,
+				Managers/ReferralCodeManager.swift,
+				Managers/ReferralManager.swift,
+				Managers/StoreManager.swift,
 				Models/AlignmentSession.swift,
 				Models/AppTab.swift,
 				Models/Passage.swift,
@@ -127,10 +130,13 @@
 				Views/FramedContentWrapper.swift,
 				Views/MainAppView.swift,
 				Views/PassageDetailView.swift,
+				Views/PremiumStatusView.swift,
+				Views/ReferralView.swift,
 				Views/SettingsView.swift,
 				Views/Shared/FillingCircleProgressView.swift,
 				Views/Shared/PassageCardView.swift,
 				Views/Shared/VideoPlayerView.swift,
+				Views/SubscriptionOptionsView.swift,
 				Views/VideoFrameView.swift,
 			);
 			target = F430CCE82DDF800C0030565D /* Horizon-Frame */;
