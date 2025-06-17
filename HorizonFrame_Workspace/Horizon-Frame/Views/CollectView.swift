@@ -1,8 +1,12 @@
 import SwiftUI
 
 struct CollectView: View {
-    @EnvironmentObject var vm: CollectViewModel
+    @EnvironmentObject private var viewModel: CollectViewModel
+    @EnvironmentObject private var storeManager: StoreManager
     @State private var showAddSheet = false
+    @State private var showSubscriptionSheet = false
+    @State private var showReferralShare = false
+    @State private var showPremiumStatusSheet = false
 
     private let columns = [
         GridItem(.flexible(), spacing: 16),
@@ -13,15 +17,15 @@ struct CollectView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 0) {
                 // Active Section
-                if !vm.activePassages.isEmpty {
+                if !viewModel.activePassages.isEmpty {
                     SectionHeader(title: "Active")
                     LazyVGrid(columns: columns, spacing: 16) {
-                        ForEach(vm.activePassages) { passage in
+                        ForEach(viewModel.activePassages) { passage in
                             NavigationLink(destination: PassageDetailView(passage: passage)) {
                                 ZStack(alignment: .topTrailing) {
                                     PassageCardView(passage: passage)
                                     
-                                    Button(action: { vm.toggleIsActive(for: passage) }) {
+                                    Button(action: { viewModel.toggleIsActive(for: passage) }) {
                                         Image(systemName: passage.isActive ? "star.fill" : "star")
                                             .font(.title3)
                                             .foregroundColor(passage.isActive ? .yellow : .white)
@@ -35,22 +39,22 @@ struct CollectView: View {
                             }
                         }
                         .onDelete { offsets in
-                            vm.deletePassage(at: offsets, from: vm.activePassages)
+                            viewModel.deletePassage(at: offsets, from: viewModel.activePassages)
                         }
                     }
                     .padding(.horizontal)
                 }
 
                 // Added Section
-                if !vm.addedPassages.isEmpty {
+                if !viewModel.addedPassages.isEmpty {
                     SectionHeader(title: "Added")
                     LazyVGrid(columns: columns, spacing: 16) {
-                        ForEach(vm.addedPassages) { passage in
+                        ForEach(viewModel.addedPassages) { passage in
                             NavigationLink(destination: PassageDetailView(passage: passage)) {
                                 ZStack(alignment: .topTrailing) {
                                     PassageCardView(passage: passage)
 
-                                    Button(action: { vm.toggleIsActive(for: passage) }) {
+                                    Button(action: { viewModel.toggleIsActive(for: passage) }) {
                                         Image(systemName: passage.isActive ? "star.fill" : "star")
                                             .font(.title3)
                                             .foregroundColor(passage.isActive ? .yellow : .white)
@@ -64,7 +68,7 @@ struct CollectView: View {
                             }
                         }
                         .onDelete { offsets in
-                            vm.deletePassage(at: offsets, from: vm.addedPassages)
+                            viewModel.deletePassage(at: offsets, from: viewModel.addedPassages)
                         }
                     }
                     .padding(.horizontal)
@@ -76,7 +80,23 @@ struct CollectView: View {
         .background(Color.clear)
         .navigationTitle("Collection")
         .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                Button {
+                    if storeManager.isPremium {
+                        showPremiumStatusSheet = true
+                    } else {
+                        showSubscriptionSheet = true
+                    }
+                } label: {
+                    Image(systemName: storeManager.isPremium ? "crown.fill" : "crown")
+                        .foregroundColor(.white)
+                }
+
+                Button(action: { showReferralShare = true }) {
+                    Image(systemName: "square.and.arrow.up")
+                        .foregroundColor(.white)
+                }
+
                 Button(action: { showAddSheet = true }) {
                     Image(systemName: "plus")
                         .font(.headline)
@@ -86,8 +106,18 @@ struct CollectView: View {
         }
         .sheet(isPresented: $showAddSheet) {
             AddPassageView {
-                vm.addPassage(title: $0, content: $1, author: $2, category: $3, tags: $4)
+                
+                viewModel.addPassage(title: $0, content: $1, author: $2, category: $3, tags: $4)
             }
+        }
+        .sheet(isPresented: $showSubscriptionSheet) {
+            SubscriptionOptionsView()
+        }
+        .sheet(isPresented: $showReferralShare) {
+            ReferralView()
+        }
+        .sheet(isPresented: $showPremiumStatusSheet) {
+            PremiumStatusView()
         }
     }
 }

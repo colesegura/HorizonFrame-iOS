@@ -1,8 +1,12 @@
 import SwiftUI
 
 struct AlignView: View {
-    @EnvironmentObject var vm: AlignViewModel
+    @EnvironmentObject private var vm: AlignViewModel
+    @EnvironmentObject private var storeManager: StoreManager
     @State private var playSession: Session?
+    @State private var showSubscriptionSheet = false
+    @State private var showReferralShare = false
+    @State private var showPremiumStatusSheet = false
 
     private var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -97,12 +101,39 @@ struct AlignView: View {
         }
         .background(Color.clear)
         .navigationTitle("Align")
+        .toolbar {
+            ToolbarItemGroup(placement: .navigationBarTrailing) {
+                Button {
+                    showReferralShare = true
+                } label: {
+                    Image(systemName: "square.and.arrow.up")
+                }
+                Button {
+                    if storeManager.isPremium {
+                        showPremiumStatusSheet = true
+                    } else {
+                        showSubscriptionSheet = true
+                    }
+                } label: {
+                    Image(systemName: storeManager.isPremium ? "crown.fill" : "crown")
+                }
+            }
+        }
         .sheet(item: $playSession) { sessionToPlay in
             AlignmentPlayerContainer(session: sessionToPlay) {
                 vm.markFirstUpcomingDone()
             }
             .presentationDetents([.large])
             .interactiveDismissDisabled()
+        }
+        .sheet(isPresented: $showSubscriptionSheet) {
+            SubscriptionOptionsView()
+        }
+        .sheet(isPresented: $showReferralShare) {
+            ReferralView()
+        }
+        .sheet(isPresented: $showPremiumStatusSheet) {
+            PremiumStatusView()
         }
     }
 }
