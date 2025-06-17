@@ -14,26 +14,3 @@ class ShareCardRenderer {
         return renderer.uiImage
     }
 }
-
-// Private SwiftUI view defining the layout/styling of the share card
-fileprivate struct PassageCardView: View {
-    let passage: Passage
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text(passage.title)
-                .font(.title3).bold()
-            if let author = passage.author {
-                Text("- \(author)")
-                    .font(.subheadline)
-                    .padding(.bottom, 8)
-            }
-            Text(passage.content)
-                .font(.body)
-        }
-        .padding(16)
-        .background(Color(UIColor.systemBackground))
-        .foregroundColor(.primary)
-        .frame(width: 300, alignment: .leading)
-    }
-}

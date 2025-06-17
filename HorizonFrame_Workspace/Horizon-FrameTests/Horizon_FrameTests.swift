@@ -5,13 +5,20 @@
 //  Created by Cole Segura on 5/22/25.
 //
 
-import Testing
+import XCTest
 @testable import Horizon_Frame
 
-struct Horizon_FrameTests {
+final class Horizon_FrameTests: XCTestCase {
 
-    @Test func example() async throws {
-        // Write your test here and use APIs like `#expect(...)` to check expected conditions.
+    func testExample() throws {
+        // This is an example of a functional test case.
+        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        // Any test you write for XCTest must begin with the word 'test', for example:
+        // class MyTests: XCTestCase {
+        //     func testMyFeature() {
+        //         // Test code here.
+        //     }
+        // }
     }
 
 }

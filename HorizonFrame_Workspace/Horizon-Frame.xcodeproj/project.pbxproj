@@ -60,38 +60,26 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		F408BC932DEF7242002A33A8 /* Exceptions for "HorizonFrameWidgets" folder in "HorizonFrameWidgetsExtension" target */ = {
+		B08841B82E01FD840015C107 /* Exceptions for "HorizonFrameWidgets" folder in "HorizonFrameWidgetsExtension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
 			target = F408BC7A2DEF7241002A33A8 /* HorizonFrameWidgetsExtension */;
 		};
-		F408BCB32DEF83A0002A33A8 /* Exceptions for "HorizonFrameWidgets" folder in "Horizon-Frame" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				ScreenTimeActivityAttributes.swift,
-			);
-			target = F430CCE82DDF800C0030565D /* Horizon-Frame */;
-		};
-		F430CD402DDF80710030565D /* Exceptions for "Horizon-Frame" folder in "Horizon-Frame" target */ = {
+		B08841BB2E01FE8A0015C107 /* Exceptions for "Horizon-Frame" folder in "Horizon-Frame" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				App/AppDelegate.swift,
 				App/HorizonFrameApp.swift,
-				Assets.xcassets,
 				FrameCornerView.swift,
 				KineticFramesLaunchView.swift,
 				KineticFrameView.swift,
-				LaunchScreen.storyboard,
 				Models/AlignmentSession.swift,
 				Models/AppTab.swift,
 				Models/Passage.swift,
 				Models/PassageCollection.swift,
 				Models/UserProfile.swift,
-				"Preview Content/Preview Assets.xcassets",
-				Resources/Media/Thumbnails/Thumbnail1.png,
-				Resources/Media/Videos/placeholder_video.mp4,
 				Services/AuthService.swift,
 				Services/FirebaseService.swift,
 				Services/FirestorePassageRepository.swift,
@@ -130,22 +118,13 @@
 			);
 			target = F430CCE82DDF800C0030565D /* Horizon-Frame */;
 		};
-		F430CD412DDF80710030565D /* Exceptions for "Horizon-Frame" folder in "Horizon-FrameTests" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Assets.xcassets,
-				"Preview Content/Preview Assets.xcassets",
-			);
-			target = F430CCF82DDF800E0030565D /* Horizon-FrameTests */;
-		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		F408BC812DEF7241002A33A8 /* HorizonFrameWidgets */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				F408BCB32DEF83A0002A33A8 /* Exceptions for "HorizonFrameWidgets" folder in "Horizon-Frame" target */,
-				F408BC932DEF7242002A33A8 /* Exceptions for "HorizonFrameWidgets" folder in "HorizonFrameWidgetsExtension" target */,
+				B08841B82E01FD840015C107 /* Exceptions for "HorizonFrameWidgets" folder in "HorizonFrameWidgetsExtension" target */,
 			);
 			path = HorizonFrameWidgets;
 			sourceTree = "<group>";
@@ -163,8 +142,7 @@
 		F430CD3B2DDF80710030565D /* Horizon-Frame */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				F430CD402DDF80710030565D /* Exceptions for "Horizon-Frame" folder in "Horizon-Frame" target */,
-				F430CD412DDF80710030565D /* Exceptions for "Horizon-Frame" folder in "Horizon-FrameTests" target */,
+				B08841BB2E01FE8A0015C107 /* Exceptions for "Horizon-Frame" folder in "Horizon-Frame" target */,
 			);
 			path = "Horizon-Frame";
 			sourceTree = "<group>";
@@ -338,7 +316,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1620;
-				LastUpgradeCheck = 1620;
+				LastUpgradeCheck = 1640;
 				TargetAttributes = {
 					F408BC7A2DEF7241002A33A8 = {
 						CreatedOnToolsVersion = 16.2;
